@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0a6ed19494714efbbca9376a25499b26" Name="Diagrama1">
+        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Cama" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Cama_Paciente" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Diagnostico" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Medico" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Medico_Paciente" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Paciente" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Planta" Width="1.5" PointX="1.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Models.TarjetaVisita" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Cama__idPlanta__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Cama_Paci__idCam__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Cama_Pacien__DPI__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Diagnostico__DPI__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Medico_Pa__codig__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.Models.FK__TarjetaVisi__DPI__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.Models.Diagnostico_Medico" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
