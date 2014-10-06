@@ -7,6 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Label Content="Ingreso de Tarjetas de Visita" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="50" HorizontalContentAlignment="Center" FontSize="21"/>
+        <Label Content="DPI del Paciente: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Hora de Comienzo: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Hora de Finalizacion: " HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,127,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <Label Content="Listado De Tarjetas de Visita" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="280" HorizontalContentAlignment="Center" FontSize="15"/>
+        <DataGrid HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Height="97" Width="280"/>
+
     </Grid>
 </UserControl>

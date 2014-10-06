@@ -5,8 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Plant.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" Width="600">
     <Grid>
-            
+        <Label Content="Asignacion de Cama a Paciente" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="18" HorizontalContentAlignment="Center"/>
+        <Label Content="Numero de Cama: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="DPI del Paciente: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Fecha de Asignacion:" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Content="Agregar" HorizontalAlignment="Left" Margin="109,158,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+
     </Grid>
 </UserControl>

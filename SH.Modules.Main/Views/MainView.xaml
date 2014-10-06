@@ -4,9 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:myViewModels="clr-namespace:SH.Modules.Main.ViewModels"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             xmlns:myDiagnosticControl="clr-namespace:SH.Modules.Diagnostic.Views;assembly=SH.Modules.Diagnostic"
+             xmlns:myDoctorControl="clr-namespace:SH.Modules.Doctor.Views;assembly=SH.Modules.Doctor"
+             xmlns:myBedControl="clr-namespace:SH.Modules.Bed.Views;assembly=SH.Modules.Bed"
+             xmlns:myCardControl="clr-namespace:SH.Modules.Card.Views;assembly=SH.Modules.Card"
+             xmlns:myPatientControl="clr-namespace:SH.Modules.Patient.Views;assembly=SH.Modules.Patient"
+             xmlns:myPlantControl="clr-namespace:SH.Modules.Plant.Views;assembly=SH.Modules.Plant"
+             mc:Ignorable="d" Width="620" Height="392">
     <Grid>
-            
+        <Label Content="Sistema Hospitalario" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="600" Height="50" FontSize="25" HorizontalContentAlignment="Center"/>
+        <Button Content="Paciente" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Medico" HorizontalAlignment="Left" Margin="485,65,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Diagnostico" HorizontalAlignment="Left" Margin="390,65,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Visita" HorizontalAlignment="Left" Margin="295,65,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Planta" HorizontalAlignment="Left" Margin="200,65,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Cama" HorizontalAlignment="Left" Margin="105,65,0,0" VerticalAlignment="Top" Width="90"/>
+        <!--myDiagnosticControl:AddDiagnosticView Margin="18,92,10,10" Visibility="{Binding DiagnosticView}"/-->
+        <!--myBedControl:AddBedView Margin="10,92,10,10" Visibility="{Binding BedView}"/-->
+        <!--myCardControl:AddCardView Margin="10,92,10,10" Visibility="{Binding  CardView}"/-->
+        <!--myDoctorControl:AddDoctorView Visibility="{Binding DoctorView}" Margin="10,92,10,10"></myDoctorControl:AddDoctorView-->
+        <!--myPatientControl:AddPatientView Visibility="{Binding PatientView}" Margin="10,92,10,10"/-->
+        <!--myPlantControl:AddPlantView Margin="0,92,10,10" Visibility="{Binding PlantView}"></myPlantControl:AddPlantView-->
+        <Button Content="?" HorizontalAlignment="Left" Margin="580,65,0,0" VerticalAlignment="Top" Width="30" ToolTip="Creado Por Brandon Castro"/>
     </Grid>
 </UserControl>

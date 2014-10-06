@@ -143,13 +143,33 @@
       <Project>{0dfd643a-eec4-4dc0-b981-a383237dc642}</Project>
       <Name>SH.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SH.Modules.Bed\SH.Modules.Bed.vbproj">
+      <Project>{f02a990e-33c7-4ac7-b00f-8d8144f084f9}</Project>
+      <Name>SH.Modules.Bed</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SH.Modules.Card\SH.Modules.Card.vbproj">
+      <Project>{ea35f1df-b17f-4b63-8be8-8a6c484b66f2}</Project>
+      <Name>SH.Modules.Card</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SH.Modules.Diagnostic\SH.Modules.Diagnostic.vbproj">
+      <Project>{aae22f4d-c7df-480f-8efd-a806399b3eac}</Project>
+      <Name>SH.Modules.Diagnostic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SH.Modules.Doctor\SH.Modules.Doctor.vbproj">
       <Project>{28cc7368-0414-4688-a337-2401ac04ec5c}</Project>
       <Name>SH.Modules.Doctor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SH.Modules.Main\SH.Modules.Main.vbproj">
+      <Project>{05de0a0e-00da-451c-a274-7b4159a689a8}</Project>
+      <Name>SH.Modules.Main</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SH.Modules.Patient\SH.Modules.Patient.vbproj">
       <Project>{8c7e91f1-c053-48c5-b203-c8bbbd9372c6}</Project>
       <Name>SH.Modules.Patient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SH.Modules.Plant\SH.Modules.Plant.vbproj">
+      <Project>{630a06b3-8d87-46ba-af70-927b8951c364}</Project>
+      <Name>SH.Modules.Plant</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -5,8 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Diagnostic.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" Width="600">
     <Grid>
-            
+        <Label Content="Ingreso de Diagnostico por Paciente" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="280" Height="34" HorizontalContentAlignment="Center" FontSize="16"/>
+        <Label Content="Ingreso de Diagnostico por Medico" HorizontalAlignment="Left" Margin="310,142,0,0" VerticalAlignment="Top" Width="280" Height="33" HorizontalContentAlignment="Center" FontSize="17"/>
+        <Label Content="Codigo de Diagnostico: " HorizontalAlignment="Left" Margin="310,49,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="DPI del Paciente: " HorizontalAlignment="Left" Margin="310,80,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Fecha: " HorizontalAlignment="Left" Margin="310,111,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Ingreso de Diagnosticos" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="50" HorizontalContentAlignment="Center" FontSize="25"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="295,10,0,0" VerticalAlignment="Top" Height="280" Width="5" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <Label Content="Descripcion: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Agregar Nuevo Diagnostico" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="280"/>
+        <Label Content="Listado De Diagnosticos" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="280" HorizontalContentAlignment="Center" FontSize="13"/>
+        <DataGrid HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Height="136" Width="280"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="465,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="465,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="465,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <Label Content="Codigo del Medico: " HorizontalAlignment="Left" Margin="310,180,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Codigo del Diagnostico: " HorizontalAlignment="Left" Margin="310,211,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="460,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="460,211,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130"/>
+
     </Grid>
 </UserControl>

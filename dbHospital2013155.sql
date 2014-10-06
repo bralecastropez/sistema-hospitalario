@@ -15,7 +15,7 @@ CREATE TABLE Paciente(
 	PRIMARY KEY (DPI)
 )
 CREATE TABLE Medico(
-	codigoMedico INT IDENTITY (1,1) NOT NULL,
+	codigoMedico INT NOT NULL,
 	nombre VARCHAR (255) NOT NULL,
 	apellido VARCHAR(255) NOT NULL,
 	PRIMARY KEY(codigoMedico)
@@ -51,10 +51,16 @@ CREATE TABLE TarjetaVisita(
 )
 CREATE TABLE Diagnostico(
 	codigoDiagnostico INT IDENTITY (1,1) NOT NULL,
-	DPI INT NOT NULL,
 	descripcion VARCHAR (255) NOT NULL,
-	PRIMARY KEY (codigoDiagnostico),
-	FOREIGN KEY (DPI) REFERENCES Paciente(DPI)
+	PRIMARY KEY (codigoDiagnostico)
+)
+CREATE TABLE Diagnostico_Paciente(
+	codigoDiagnostico INT NOT NULL,
+	DPI INT NOT NULL,
+	fecha DATE NOT NULL,
+	PRIMARY KEY (codigoDiagnostico, DPI),
+	FOREIGN KEY (DPI) REFERENCES Paciente(DPI),
+	FOREIGN KEY (codigoDiagnostico)	 REFERENCES Diagnostico(codigoDiagnostico)
 )
 CREATE TABLE Diagnostico_Medico(
 	codigoMedico INT NOT NULL,
