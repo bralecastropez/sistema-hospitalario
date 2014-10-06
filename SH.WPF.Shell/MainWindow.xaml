@@ -1,9 +1,8 @@
 ﻿<Window x:Class="MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:myPatientControl="clr-namespace:SH.Modules.Patient.Views;assembly=SH.Modules.Patient"
-        Title="Sistema Hospitalario" Height="510" Width="500" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+    Title="Sistema Hospitalario" Height="510" Width="500" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
     <Grid>
-        <myPatientControl:AddPatientView/>
+        
     </Grid>
 </Window>

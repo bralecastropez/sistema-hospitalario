@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{28CC7368-0414-4688-A337-2401AC04EC5C}</ProjectGuid>
+    <ProjectGuid>{05DE0A0E-00DA-451C-A274-7B4159A689A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>
     </RootNamespace>
-    <AssemblyName>SH.Modules.Doctor</AssemblyName>
+    <AssemblyName>SH.Modules.Main</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -19,7 +19,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SH.Modules.Doctor.xml</DocumentationFile>
+    <DocumentationFile>SH.Modules.Main.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -28,7 +28,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SH.Modules.Doctor.xml</DocumentationFile>
+    <DocumentationFile>SH.Modules.Main.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -84,6 +84,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\MainViewModel.vb" />
+    <Compile Include="Views\MainView.xaml.vb">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -105,6 +109,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SH.BusinessLogic\SH.BusinessLogic.vbproj">
       <Project>{db563493-3167-479f-b64d-9a99c4ccdefd}</Project>
       <Name>SH.BusinessLogic</Name>
@@ -117,10 +127,30 @@
       <Project>{0dfd643a-eec4-4dc0-b981-a383237dc642}</Project>
       <Name>SH.Infrastructure</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+    <ProjectReference Include="..\SH.Modules.Bed\SH.Modules.Bed.vbproj">
+      <Project>{f02a990e-33c7-4ac7-b00f-8d8144f084f9}</Project>
+      <Name>SH.Modules.Bed</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SH.Modules.Card\SH.Modules.Card.vbproj">
+      <Project>{ea35f1df-b17f-4b63-8be8-8a6c484b66f2}</Project>
+      <Name>SH.Modules.Card</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SH.Modules.Diagnostic\SH.Modules.Diagnostic.vbproj">
+      <Project>{aae22f4d-c7df-480f-8efd-a806399b3eac}</Project>
+      <Name>SH.Modules.Diagnostic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SH.Modules.Doctor\SH.Modules.Doctor.vbproj">
+      <Project>{28cc7368-0414-4688-a337-2401ac04ec5c}</Project>
+      <Name>SH.Modules.Doctor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SH.Modules.Patient\SH.Modules.Patient.vbproj">
+      <Project>{8c7e91f1-c053-48c5-b203-c8bbbd9372c6}</Project>
+      <Name>SH.Modules.Patient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SH.Modules.Plant\SH.Modules.Plant.vbproj">
+      <Project>{630a06b3-8d87-46ba-af70-927b8951c364}</Project>
+      <Name>SH.Modules.Plant</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
