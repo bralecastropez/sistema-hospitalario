@@ -3,20 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:myViewModels="clr-namespace:SH.Modules.Main.ViewModels"
     xmlns:myMainControl="clr-namespace:SH.Modules.Main.Views;assembly=SH.Modules.Main"
-    xmlns:myDiagnosticControl="clr-namespace:SH.Modules.Diagnostic.Views;assembly=SH.Modules.Diagnostic"
-    xmlns:myDoctorControl="clr-namespace:SH.Modules.Doctor.Views;assembly=SH.Modules.Doctor"
-    xmlns:myBedControl="clr-namespace:SH.Modules.Bed.Views;assembly=SH.Modules.Bed"
-    xmlns:myCardControl="clr-namespace:SH.Modules.Card.Views;assembly=SH.Modules.Card"
-    xmlns:myPatientControl="clr-namespace:SH.Modules.Patient.Views;assembly=SH.Modules.Patient"
-    xmlns:myPlantControl="clr-namespace:SH.Modules.Plant.Views;assembly=SH.Modules.Plant"
     Title="Sistema Hospitalario" Height="415" Width="715" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
     <Grid>
         <myMainControl:MainView></myMainControl:MainView>
-        <myDiagnosticControl:AddDiagnosticView Margin="18,92,10,10"     Visibility="{Binding DiagnosticView}"/>
-        <myBedControl:AddBedView Margin="10,92,10,10"                   Visibility="{Binding BedView}"/>
-        <myCardControl:AddCardView Margin="10,92,10,10"                 Visibility="{Binding CardView}"/>
-        <myDoctorControl:AddDoctorView   Margin="10,92,10,10"           Visibility="{Binding DoctorView}"/>
-        <myPatientControl:AddPatientView Margin="10,92,10,10"           Visibility="{Binding PatientView}"/>
-        <myPlantControl:AddPlantView Margin="0,92,10,10"                Visibility="{Binding PlantView}"/>
     </Grid>
 </Window>

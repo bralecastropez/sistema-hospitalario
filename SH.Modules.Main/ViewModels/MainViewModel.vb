@@ -4,6 +4,12 @@ Imports System.Windows.Input
 Imports System.Threading
 Imports System.Windows
 Imports SH.BusinessObjects.Models
+Imports SH.Modules.Bed.Views
+Imports SH.Modules.Card.Views
+Imports SH.Modules.Patient.Views
+Imports SH.Modules.Doctor.Views
+Imports SH.Modules.Diagnostic.Views
+Imports SH.Modules.Plant.Views
 Imports SH.Infrastructure
 Imports SH.Infrastructure.Helpers
 Imports SH.BusinessLogic.Services
@@ -11,78 +17,7 @@ Imports SH.BusinessLogic.Services
 Namespace SH.Modules.Main.ViewModels
     Public Class MainViewModel
         Inherits ViewModelBase
-        Private _mainViewModel As MainViewModel
-        Private _BedView As Visibility = Visibility.Hidden
-        Private _CardView As Visibility = Visibility.Hidden
-        Private _DiagnosticView As Visibility = Visibility.Hidden
-        Private _DoctorView As Visibility = Visibility.Hidden
-        Private _PatientView As Visibility = Visibility.Hidden
-        Private _PlantView As Visibility = Visibility.Hidden
 #Region "Properties"
-        Public Property MainViewModel As MainViewModel
-            Get
-                Return _mainViewModel
-            End Get
-            Set(value As MainViewModel)
-                _mainViewModel = value
-            End Set
-        End Property
-
-        Public Property BedView As Windows.Visibility
-            Get
-                Return _BedView
-            End Get
-            Set(value As Windows.Visibility)
-                _BedView = value
-                OnPropertyChanged("Cama")
-            End Set
-        End Property
-        Public Property CardView As Windows.Visibility
-            Get
-                Return _CardView
-            End Get
-            Set(value As Windows.Visibility)
-                _CardView = value
-                OnPropertyChanged("Visita")
-            End Set
-        End Property
-        Public Property DiagnosticView As Windows.Visibility
-            Get
-                Return _DiagnosticView
-            End Get
-            Set(value As Windows.Visibility)
-                _DiagnosticView = value
-                OnPropertyChanged("Diagnostico")
-            End Set
-        End Property
-        Public Property DoctorView As Windows.Visibility
-            Get
-                Return _DoctorView
-            End Get
-            Set(value As Windows.Visibility)
-                _DoctorView = value
-                OnPropertyChanged("Medico")
-            End Set
-        End Property
-        Public Property PatientView As Windows.Visibility
-            Get
-                Return _PatientView
-            End Get
-            Set(value As Windows.Visibility)
-                _PatientView = value
-                OnPropertyChanged("Paciente")
-            End Set
-        End Property
-        Public Property PlantView As Windows.Visibility
-            Get
-                Return _PlantView
-            End Get
-            Set(value As Windows.Visibility)
-                _PlantView = value
-                OnPropertyChanged("Planta")
-            End Set
-        End Property
-
         Public Property Cama As ICommand
         Public Property Visita As ICommand
         Public Property Diagnostico As ICommand
@@ -91,7 +26,6 @@ Namespace SH.Modules.Main.ViewModels
         Public Property Planta As ICommand
 #End Region
         Sub New()
-            Me.MainViewModel = Me
             Cama = New RelayCommand(AddressOf CamaControl)
             Visita = New RelayCommand(AddressOf VisitaControl)
             Paciente = New RelayCommand(AddressOf PacienteControl)
@@ -101,58 +35,53 @@ Namespace SH.Modules.Main.ViewModels
         End Sub
 
         Public Sub CamaControl()
-            CardView = Visibility.Hidden
-            BedView = Visibility.Visible
-            DiagnosticView = Visibility.Hidden
-            DoctorView = Visibility.Hidden
-            PatientView = Visibility.Hidden
-            PlantView = Visibility.Hidden
-            MsgBox(BedView.ToString)
+            Dim BedWindow As New Window
+            Dim bedView As New AddBedView
+            BedWindow.ResizeMode = ResizeMode.NoResize
+            BedWindow.SizeToContent = SizeToContent.WidthAndHeight
+            BedWindow.Content() = bedView
+            BedWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen
+            BedWindow.Show()
         End Sub
         Public Sub VisitaControl()
-            CardView = Visibility.Visible
-            BedView = Visibility.Hidden
-            DiagnosticView = Visibility.Hidden
-            DoctorView = Visibility.Hidden
-            PatientView = Visibility.Hidden
-            PlantView = Visibility.Hidden
-            MsgBox(CardView.ToString)
+            Dim CardWindow As New Window
+            Dim cardView As New AddCardView
+            CardWindow.ResizeMode = ResizeMode.NoResize
+            CardWindow.SizeToContent = SizeToContent.WidthAndHeight
+            CardWindow.Content() = cardView
+            CardWindow.Show()
         End Sub
         Public Sub PacienteControl()
-            CardView = Visibility.Hidden
-            BedView = Visibility.Hidden
-            DiagnosticView = Visibility.Hidden
-            DoctorView = Visibility.Hidden
-            PatientView = Visibility.Visible
-            PlantView = Visibility.Hidden
-            MsgBox(PatientView.ToString)
+            Dim PatientWindow As New Window
+            Dim patientView As New AddPatientView
+            PatientWindow.ResizeMode = ResizeMode.NoResize
+            PatientWindow.SizeToContent = SizeToContent.WidthAndHeight
+            PatientWindow.Content() = patientView
+            PatientWindow.Show()
         End Sub
         Public Sub DiagnosticoControl()
-            CardView = Visibility.Hidden
-            BedView = Visibility.Hidden
-            DiagnosticView = Visibility.Visible
-            DoctorView = Visibility.Hidden
-            PatientView = Visibility.Hidden
-            PlantView = Visibility.Hidden
-            MsgBox(DiagnosticView.ToString)
+            Dim DiagnosticWindow As New Window
+            Dim diagnosticView As New AddDiagnosticView
+            DiagnosticWindow.ResizeMode = ResizeMode.NoResize
+            DiagnosticWindow.SizeToContent = SizeToContent.WidthAndHeight
+            DiagnosticWindow.Content() = diagnosticView
+            DiagnosticWindow.Show()
         End Sub
         Public Sub PlantaControl()
-            CardView = Visibility.Hidden
-            BedView = Visibility.Hidden
-            DiagnosticView = Visibility.Hidden
-            DoctorView = Visibility.Hidden
-            PatientView = Visibility.Hidden
-            PlantView = Visibility.Visible
-            MsgBox(PlantView.ToString)
+            Dim PlantWindow As New Window
+            Dim plantView As New AddPlantView
+            PlantWindow.ResizeMode = ResizeMode.NoResize
+            PlantWindow.SizeToContent = SizeToContent.WidthAndHeight
+            PlantWindow.Content() = plantView
+            PlantWindow.Show()
         End Sub
         Public Sub MedicoControl()
-            CardView = Visibility.Hidden
-            BedView = Visibility.Hidden
-            DiagnosticView = Visibility.Hidden
-            DoctorView = Visibility.Visible
-            PatientView = Visibility.Hidden
-            PlantView = Visibility.Hidden
-            MsgBox(DoctorView.ToString)
+            Dim DoctorWindow As New Window
+            Dim doctorView As New AddDoctorView
+            DoctorWindow.ResizeMode = ResizeMode.NoResize
+            DoctorWindow.SizeToContent = SizeToContent.WidthAndHeight
+            DoctorWindow.Content() = doctorView
+            DoctorWindow.Show()
         End Sub
     End Class
 End Namespace

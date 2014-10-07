@@ -5,24 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Plant.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" Width="600">
+             d:DesignHeight="300" Width="634">
     <Grid>
         <Label Content="Asignacion de Cama a Paciente" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="18" HorizontalContentAlignment="Center"/>
         <Label Content="Numero de Cama: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="DPI del Paciente: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Fecha de Asignacion:" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="150"/>
-        <Button Content="Agregar" HorizontalAlignment="Left" Margin="165,153,0,0" VerticalAlignment="Top" Width="125"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Agregar" Command="{Binding AgregarCamaAPaciente}" HorizontalAlignment="Left" Margin="165,124,0,0" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="txtNumeroCama" HorizontalAlignment="Left" Height="23" Margin="165,68,0,0" TextWrapping="Wrap" Text="{Binding NumeroCama}" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="txtDPI" HorizontalAlignment="Left" Height="23" Margin="165,96,0,0" TextWrapping="Wrap" Text="{Binding DPICama}" VerticalAlignment="Top" Width="125"/>
         <Label Content="Asignacion de Medico a Paciente" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="18" HorizontalContentAlignment="Center"/>
         <Label Content="Codigo del Medico: " HorizontalAlignment="Left" Margin="310,65,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="DPI del Paciente: " HorizontalAlignment="Left" Margin="310,96,0,0" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Fecha de Asignacion:" HorizontalAlignment="Left" Margin="310,127,0,0" VerticalAlignment="Top" Width="150"/>
-        <Button Content="Agregar" HorizontalAlignment="Left" Margin="465,153,0,0" VerticalAlignment="Top" Width="125"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="465,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="465,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="465,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Agregar" Command="{Binding AgregarMedicoAPaciente}" HorizontalAlignment="Left" Margin="465,124,0,0" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="txtCodigoMedico" HorizontalAlignment="Left" Height="23" Margin="465,68,0,0" TextWrapping="Wrap" Text="{Binding CodigoMedico}" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="txtDPIMedico" HorizontalAlignment="Left" Height="23" Margin="465,96,0,0" TextWrapping="Wrap" Text="{Binding DPIMedico}" VerticalAlignment="Top" Width="125"/>
+        <DataGrid HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="200" Height="107"/>
+        <DataGrid HorizontalAlignment="Left" Margin="420,183,0,0" VerticalAlignment="Top" Width="200" Height="107"/>
+        <DataGrid HorizontalAlignment="Left" Margin="215,183,0,0" VerticalAlignment="Top" Width="200" Height="107"/>
+        <Label Content="Listado De Pacientes" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Width="200" FontSize="13" HorizontalContentAlignment="Center"/>
+        <Label Content="Listado De Camas" HorizontalAlignment="Left" Margin="215,151,0,0" VerticalAlignment="Top" Width="200" FontSize="13" HorizontalContentAlignment="Center"/>
+        <Label Content="Listado De Medicos" HorizontalAlignment="Left" Margin="420,151,0,0" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center" FontSize="13"/>
 
     </Grid>
 </UserControl>

@@ -11,12 +11,12 @@
         <Label Content="Nombre: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Numero de Camas: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Ingreso de Camas" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="30" HorizontalContentAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="165,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="txtNombrePlanta" Text="{Binding Path=NombrePlanta, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="165,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="txtNumeroCamas" Text="{Binding Path=NumeroCamas, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="165,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
         <Label Content="Numero de Planta: " HorizontalAlignment="Left" Margin="310,65,0,0" VerticalAlignment="Top" Width="150"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="465,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
-        <Button Content="Agregar Planta" HorizontalAlignment="Left" Margin="140,156,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Agregar Cama" HorizontalAlignment="Left" Margin="465,156,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="txtNumeroPlanta" Text="{Binding Path=NumeroPlanta, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="465,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Agregar Planta" Command="{Binding AgregarPlanta}" HorizontalAlignment="Left" Margin="140,156,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Agregar Cama" Command="{Binding AgregarCama}" HorizontalAlignment="Left" Margin="465,156,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="295,0,0,0" VerticalAlignment="Top" Width="10" Height="300"/>
 
 
