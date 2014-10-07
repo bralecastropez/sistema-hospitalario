@@ -10,6 +10,7 @@
           <EntitySet Name="Cama_Paciente" EntityType="SH.BusinessObjects.Models.Store.Cama_Paciente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Diagnostico" EntityType="SH.BusinessObjects.Models.Store.Diagnostico" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Diagnostico_Medico" EntityType="SH.BusinessObjects.Models.Store.Diagnostico_Medico" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Diagnostico_Paciente" EntityType="SH.BusinessObjects.Models.Store.Diagnostico_Paciente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Medico" EntityType="SH.BusinessObjects.Models.Store.Medico" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Medico_Paciente" EntityType="SH.BusinessObjects.Models.Store.Medico_Paciente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Paciente" EntityType="SH.BusinessObjects.Models.Store.Paciente" store:Type="Tables" Schema="dbo" />
@@ -28,22 +29,26 @@
             <End Role="Cama_Paciente" EntitySet="Cama_Paciente" />
           </AssociationSet>
           <AssociationSet Name="FK__Diagnosti__codig__22AA2996" Association="SH.BusinessObjects.Models.Store.FK__Diagnosti__codig__22AA2996">
+            <End Role="Diagnostico" EntitySet="Diagnostico" />
+            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__codig__25869641" Association="SH.BusinessObjects.Models.Store.FK__Diagnosti__codig__25869641">
             <End Role="Medico" EntitySet="Medico" />
             <End Role="Diagnostico_Medico" EntitySet="Diagnostico_Medico" />
           </AssociationSet>
-          <AssociationSet Name="FK__Diagnosti__codig__239E4DCF" Association="SH.BusinessObjects.Models.Store.FK__Diagnosti__codig__239E4DCF">
+          <AssociationSet Name="FK__Diagnosti__codig__267ABA7A" Association="SH.BusinessObjects.Models.Store.FK__Diagnosti__codig__267ABA7A">
             <End Role="Diagnostico" EntitySet="Diagnostico" />
             <End Role="Diagnostico_Medico" EntitySet="Diagnostico_Medico" />
           </AssociationSet>
-          <AssociationSet Name="FK__Diagnostico__DPI__1FCDBCEB" Association="SH.BusinessObjects.Models.Store.FK__Diagnostico__DPI__1FCDBCEB">
+          <AssociationSet Name="FK__Diagnostico__DPI__21B6055D" Association="SH.BusinessObjects.Models.Store.FK__Diagnostico__DPI__21B6055D">
             <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="Diagnostico" EntitySet="Diagnostico" />
+            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medico_Pa__codig__267ABA7A" Association="SH.BusinessObjects.Models.Store.FK__Medico_Pa__codig__267ABA7A">
+          <AssociationSet Name="FK__Medico_Pa__codig__29572725" Association="SH.BusinessObjects.Models.Store.FK__Medico_Pa__codig__29572725">
             <End Role="Medico" EntitySet="Medico" />
             <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medico_Paci__DPI__276EDEB3" Association="SH.BusinessObjects.Models.Store.FK__Medico_Paci__DPI__276EDEB3">
+          <AssociationSet Name="FK__Medico_Paci__DPI__2A4B4B5E" Association="SH.BusinessObjects.Models.Store.FK__Medico_Paci__DPI__2A4B4B5E">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
           </AssociationSet>
@@ -74,7 +79,6 @@
             <PropertyRef Name="codigoDiagnostico" />
           </Key>
           <Property Name="codigoDiagnostico" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="DPI" Type="int" Nullable="false" />
           <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="255" />
         </EntityType>
         <EntityType Name="Diagnostico_Medico">
@@ -85,11 +89,20 @@
           <Property Name="codigoMedico" Type="int" Nullable="false" />
           <Property Name="codigoDiagnostico" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Diagnostico_Paciente">
+          <Key>
+            <PropertyRef Name="codigoDiagnostico" />
+            <PropertyRef Name="DPI" />
+          </Key>
+          <Property Name="codigoDiagnostico" Type="int" Nullable="false" />
+          <Property Name="DPI" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="Medico">
           <Key>
             <PropertyRef Name="codigoMedico" />
           </Key>
-          <Property Name="codigoMedico" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codigoMedico" Type="int" Nullable="false" />
           <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="apellido" Type="varchar" Nullable="false" MaxLength="255" />
         </EntityType>
@@ -166,6 +179,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Diagnosti__codig__22AA2996">
+          <End Role="Diagnostico" Type="SH.BusinessObjects.Models.Store.Diagnostico" Multiplicity="1" />
+          <End Role="Diagnostico_Paciente" Type="SH.BusinessObjects.Models.Store.Diagnostico_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnostico">
+              <PropertyRef Name="codigoDiagnostico" />
+            </Principal>
+            <Dependent Role="Diagnostico_Paciente">
+              <PropertyRef Name="codigoDiagnostico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosti__codig__25869641">
           <End Role="Medico" Type="SH.BusinessObjects.Models.Store.Medico" Multiplicity="1" />
           <End Role="Diagnostico_Medico" Type="SH.BusinessObjects.Models.Store.Diagnostico_Medico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -177,7 +202,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnosti__codig__239E4DCF">
+        <Association Name="FK__Diagnosti__codig__267ABA7A">
           <End Role="Diagnostico" Type="SH.BusinessObjects.Models.Store.Diagnostico" Multiplicity="1" />
           <End Role="Diagnostico_Medico" Type="SH.BusinessObjects.Models.Store.Diagnostico_Medico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -189,19 +214,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnostico__DPI__1FCDBCEB">
+        <Association Name="FK__Diagnostico__DPI__21B6055D">
           <End Role="Paciente" Type="SH.BusinessObjects.Models.Store.Paciente" Multiplicity="1" />
-          <End Role="Diagnostico" Type="SH.BusinessObjects.Models.Store.Diagnostico" Multiplicity="*" />
+          <End Role="Diagnostico_Paciente" Type="SH.BusinessObjects.Models.Store.Diagnostico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="DPI" />
             </Principal>
-            <Dependent Role="Diagnostico">
+            <Dependent Role="Diagnostico_Paciente">
               <PropertyRef Name="DPI" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medico_Pa__codig__267ABA7A">
+        <Association Name="FK__Medico_Pa__codig__29572725">
           <End Role="Medico" Type="SH.BusinessObjects.Models.Store.Medico" Multiplicity="1" />
           <End Role="Medico_Paciente" Type="SH.BusinessObjects.Models.Store.Medico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -213,7 +238,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medico_Paci__DPI__276EDEB3">
+        <Association Name="FK__Medico_Paci__DPI__2A4B4B5E">
           <End Role="Paciente" Type="SH.BusinessObjects.Models.Store.Paciente" Multiplicity="1" />
           <End Role="Medico_Paciente" Type="SH.BusinessObjects.Models.Store.Medico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -246,6 +271,7 @@
           <EntitySet Name="Cama" EntityType="SH.BusinessObjects.Models.Cama" />
           <EntitySet Name="Cama_Paciente" EntityType="SH.BusinessObjects.Models.Cama_Paciente" />
           <EntitySet Name="Diagnostico" EntityType="SH.BusinessObjects.Models.Diagnostico" />
+          <EntitySet Name="Diagnostico_Paciente" EntityType="SH.BusinessObjects.Models.Diagnostico_Paciente" />
           <EntitySet Name="Medico" EntityType="SH.BusinessObjects.Models.Medico" />
           <EntitySet Name="Medico_Paciente" EntityType="SH.BusinessObjects.Models.Medico_Paciente" />
           <EntitySet Name="Paciente" EntityType="SH.BusinessObjects.Models.Paciente" />
@@ -263,15 +289,19 @@
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="Cama_Paciente" EntitySet="Cama_Paciente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Diagnostico__DPI__1FCDBCEB" Association="SH.BusinessObjects.Models.FK__Diagnostico__DPI__1FCDBCEB">
-            <End Role="Paciente" EntitySet="Paciente" />
+          <AssociationSet Name="FK__Diagnosti__codig__22AA2996" Association="SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996">
             <End Role="Diagnostico" EntitySet="Diagnostico" />
+            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medico_Pa__codig__267ABA7A" Association="SH.BusinessObjects.Models.FK__Medico_Pa__codig__267ABA7A">
+          <AssociationSet Name="FK__Diagnostico__DPI__21B6055D" Association="SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medico_Pa__codig__29572725" Association="SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725">
             <End Role="Medico" EntitySet="Medico" />
             <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medico_Paci__DPI__276EDEB3" Association="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__276EDEB3">
+          <AssociationSet Name="FK__Medico_Paci__DPI__2A4B4B5E" Association="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
           </AssociationSet>
@@ -310,19 +340,29 @@
             <PropertyRef Name="codigoDiagnostico" />
           </Key>
           <Property Name="codigoDiagnostico" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="DPI" Type="Int32" Nullable="false" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Paciente" Relationship="SH.BusinessObjects.Models.FK__Diagnostico__DPI__1FCDBCEB" FromRole="Diagnostico" ToRole="Paciente" />
+          <NavigationProperty Name="Diagnostico_Paciente" Relationship="SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996" FromRole="Diagnostico" ToRole="Diagnostico_Paciente" />
           <NavigationProperty Name="Medico" Relationship="SH.BusinessObjects.Models.Diagnostico_Medico" FromRole="Diagnostico" ToRole="Medico" />
+        </EntityType>
+        <EntityType Name="Diagnostico_Paciente">
+          <Key>
+            <PropertyRef Name="codigoDiagnostico" />
+            <PropertyRef Name="DPI" />
+          </Key>
+          <Property Name="codigoDiagnostico" Type="Int32" Nullable="false" />
+          <Property Name="DPI" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Diagnostico" Relationship="SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996" FromRole="Diagnostico_Paciente" ToRole="Diagnostico" />
+          <NavigationProperty Name="Paciente" Relationship="SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D" FromRole="Diagnostico_Paciente" ToRole="Paciente" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
             <PropertyRef Name="codigoMedico" />
           </Key>
-          <Property Name="codigoMedico" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoMedico" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="apellido" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Medico_Paciente" Relationship="SH.BusinessObjects.Models.FK__Medico_Pa__codig__267ABA7A" FromRole="Medico" ToRole="Medico_Paciente" />
+          <NavigationProperty Name="Medico_Paciente" Relationship="SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725" FromRole="Medico" ToRole="Medico_Paciente" />
           <NavigationProperty Name="Diagnostico" Relationship="SH.BusinessObjects.Models.Diagnostico_Medico" FromRole="Medico" ToRole="Diagnostico" />
         </EntityType>
         <EntityType Name="Medico_Paciente">
@@ -333,8 +373,8 @@
           <Property Name="codigoMedico" Type="Int32" Nullable="false" />
           <Property Name="DPI" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Medico" Relationship="SH.BusinessObjects.Models.FK__Medico_Pa__codig__267ABA7A" FromRole="Medico_Paciente" ToRole="Medico" />
-          <NavigationProperty Name="Paciente" Relationship="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__276EDEB3" FromRole="Medico_Paciente" ToRole="Paciente" />
+          <NavigationProperty Name="Medico" Relationship="SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725" FromRole="Medico_Paciente" ToRole="Medico" />
+          <NavigationProperty Name="Paciente" Relationship="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E" FromRole="Medico_Paciente" ToRole="Paciente" />
         </EntityType>
         <EntityType Name="Paciente">
           <Key>
@@ -346,8 +386,8 @@
           <Property Name="apellido" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Cama_Paciente" Relationship="SH.BusinessObjects.Models.FK__Cama_Pacien__DPI__1A14E395" FromRole="Paciente" ToRole="Cama_Paciente" />
-          <NavigationProperty Name="Diagnostico" Relationship="SH.BusinessObjects.Models.FK__Diagnostico__DPI__1FCDBCEB" FromRole="Paciente" ToRole="Diagnostico" />
-          <NavigationProperty Name="Medico_Paciente" Relationship="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__276EDEB3" FromRole="Paciente" ToRole="Medico_Paciente" />
+          <NavigationProperty Name="Diagnostico_Paciente" Relationship="SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D" FromRole="Paciente" ToRole="Diagnostico_Paciente" />
+          <NavigationProperty Name="Medico_Paciente" Relationship="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E" FromRole="Paciente" ToRole="Medico_Paciente" />
           <NavigationProperty Name="TarjetaVisita" Relationship="SH.BusinessObjects.Models.FK__TarjetaVisi__DPI__1CF15040" FromRole="Paciente" ToRole="TarjetaVisita" />
         </EntityType>
         <EntityType Name="Planta">
@@ -405,19 +445,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnostico__DPI__1FCDBCEB">
+        <Association Name="FK__Diagnosti__codig__22AA2996">
+          <End Role="Diagnostico" Type="SH.BusinessObjects.Models.Diagnostico" Multiplicity="1" />
+          <End Role="Diagnostico_Paciente" Type="SH.BusinessObjects.Models.Diagnostico_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnostico">
+              <PropertyRef Name="codigoDiagnostico" />
+            </Principal>
+            <Dependent Role="Diagnostico_Paciente">
+              <PropertyRef Name="codigoDiagnostico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnostico__DPI__21B6055D">
           <End Role="Paciente" Type="SH.BusinessObjects.Models.Paciente" Multiplicity="1" />
-          <End Role="Diagnostico" Type="SH.BusinessObjects.Models.Diagnostico" Multiplicity="*" />
+          <End Role="Diagnostico_Paciente" Type="SH.BusinessObjects.Models.Diagnostico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="DPI" />
             </Principal>
-            <Dependent Role="Diagnostico">
+            <Dependent Role="Diagnostico_Paciente">
               <PropertyRef Name="DPI" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medico_Pa__codig__267ABA7A">
+        <Association Name="FK__Medico_Pa__codig__29572725">
           <End Role="Medico" Type="SH.BusinessObjects.Models.Medico" Multiplicity="1" />
           <End Role="Medico_Paciente" Type="SH.BusinessObjects.Models.Medico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -429,7 +481,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medico_Paci__DPI__276EDEB3">
+        <Association Name="FK__Medico_Paci__DPI__2A4B4B5E">
           <End Role="Paciente" Type="SH.BusinessObjects.Models.Paciente" Multiplicity="1" />
           <End Role="Medico_Paciente" Type="SH.BusinessObjects.Models.Medico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -485,8 +537,16 @@
             <EntityTypeMapping TypeName="SH.BusinessObjects.Models.Diagnostico">
               <MappingFragment StoreEntitySet="Diagnostico">
                 <ScalarProperty Name="codigoDiagnostico" ColumnName="codigoDiagnostico" />
-                <ScalarProperty Name="DPI" ColumnName="DPI" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagnostico_Paciente">
+            <EntityTypeMapping TypeName="SH.BusinessObjects.Models.Diagnostico_Paciente">
+              <MappingFragment StoreEntitySet="Diagnostico_Paciente">
+                <ScalarProperty Name="codigoDiagnostico" ColumnName="codigoDiagnostico" />
+                <ScalarProperty Name="DPI" ColumnName="DPI" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

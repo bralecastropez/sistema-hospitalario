@@ -81,7 +81,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Services\Implementations\BedDataService.vb" />
+    <Compile Include="Services\Implementations\CardDataService.vb" />
+    <Compile Include="Services\Implementations\DiagnosticDataService.vb" />
+    <Compile Include="Services\Implementations\DoctorDataService.vb" />
+    <Compile Include="Services\Implementations\PlantDataService.vb" />
     <Compile Include="Services\Implementations\PatientDataService.vb" />
+    <Compile Include="Services\Interfaces\IPlantDataService.vb" />
+    <Compile Include="Services\Interfaces\IDoctorDataService.vb" />
+    <Compile Include="Services\Interfaces\IDiagnosticDataService.vb" />
+    <Compile Include="Services\Interfaces\ICardDataService.vb" />
+    <Compile Include="Services\Interfaces\IBedDataService.vb" />
     <Compile Include="Services\Interfaces\IPatientDataService.vb" />
   </ItemGroup>
   <ItemGroup>

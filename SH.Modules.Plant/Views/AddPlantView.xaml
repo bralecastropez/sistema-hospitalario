@@ -11,10 +11,18 @@
         <Label Content="Numero de Cama: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="DPI del Paciente: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Fecha de Asignacion:" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="150"/>
-        <Button Content="Agregar" HorizontalAlignment="Left" Margin="109,158,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Agregar" HorizontalAlignment="Left" Margin="165,153,0,0" VerticalAlignment="Top" Width="125"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="165,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="165,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="165,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <Label Content="Asignacion de Medico a Paciente" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="18" HorizontalContentAlignment="Center"/>
+        <Label Content="Codigo del Medico: " HorizontalAlignment="Left" Margin="310,65,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="DPI del Paciente: " HorizontalAlignment="Left" Margin="310,96,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Fecha de Asignacion:" HorizontalAlignment="Left" Margin="310,127,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Content="Agregar" HorizontalAlignment="Left" Margin="465,153,0,0" VerticalAlignment="Top" Width="125"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="465,68,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="465,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="465,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
 
     </Grid>
 </UserControl>

@@ -17,14 +17,15 @@ Imports System.Linq
 Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
-<Assembly: EdmSchemaAttribute("d21a3f2b-d5c1-4b8c-b5ef-d6dd21f9006a")>
+<Assembly: EdmSchemaAttribute("a2e06354-3d25-4630-8c05-48506d3a07fb")>
 #Region "Metadatos de relaciones en EDM"
 <Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Cama__idPlanta__164452B1", "Planta", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Planta), "Cama", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Cama), True)>
 <Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Cama_Paci__idCam__1920BF5C", "Cama", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Cama), "Cama_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Cama_Paciente), True)>
 <Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Cama_Pacien__DPI__1A14E395", "Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Paciente), "Cama_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Cama_Paciente), True)>
-<Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Diagnostico__DPI__1FCDBCEB", "Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Paciente), "Diagnostico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Diagnostico), True)>
-<Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Medico_Pa__codig__267ABA7A", "Medico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Medico), "Medico_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Medico_Paciente), True)>
-<Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Medico_Paci__DPI__276EDEB3", "Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Paciente), "Medico_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Medico_Paciente), True)>
+<Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Diagnosti__codig__22AA2996", "Diagnostico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Diagnostico), "Diagnostico_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Diagnostico_Paciente), True)>
+<Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Diagnostico__DPI__21B6055D", "Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Paciente), "Diagnostico_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Diagnostico_Paciente), True)>
+<Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Medico_Pa__codig__29572725", "Medico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Medico), "Medico_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Medico_Paciente), True)>
+<Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Medico_Paci__DPI__2A4B4B5E", "Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Paciente), "Medico_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Medico_Paciente), True)>
 <Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__TarjetaVisi__DPI__1CF15040", "Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Paciente), "TarjetaVisita", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.TarjetaVisita), True)>
 <Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "Diagnostico_Medico", "Medico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Medico), "Diagnostico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Diagnostico))>
 
@@ -125,6 +126,20 @@ Namespace SH.BusinessObjects.Models
         ''' <summary>
         ''' No hay documentación de metadatos disponible.
         ''' </summary>
+        Public ReadOnly Property Diagnostico_Paciente() As ObjectSet(Of Diagnostico_Paciente)
+            Get
+                If (_Diagnostico_Paciente Is Nothing) Then
+                    _Diagnostico_Paciente = MyBase.CreateObjectSet(Of Diagnostico_Paciente)("Diagnostico_Paciente")
+                End If
+                Return _Diagnostico_Paciente
+            End Get
+        End Property
+    
+        Private _Diagnostico_Paciente As ObjectSet(Of Diagnostico_Paciente)
+    
+        ''' <summary>
+        ''' No hay documentación de metadatos disponible.
+        ''' </summary>
         Public ReadOnly Property Medico() As ObjectSet(Of Medico)
             Get
                 If (_Medico Is Nothing) Then
@@ -215,6 +230,13 @@ Namespace SH.BusinessObjects.Models
         ''' </summary>
         Public Sub AddToDiagnostico(ByVal diagnostico As Diagnostico)
             MyBase.AddObject("Diagnostico", diagnostico)
+        End Sub
+    
+        ''' <summary>
+        ''' Método desusado para agregar un nuevo objeto al EntitySet Diagnostico_Paciente. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet(Of T) asociada.
+        ''' </summary>
+        Public Sub AddToDiagnostico_Paciente(ByVal diagnostico_Paciente As Diagnostico_Paciente)
+            MyBase.AddObject("Diagnostico_Paciente", diagnostico_Paciente)
         End Sub
     
         ''' <summary>
@@ -613,12 +635,10 @@ Namespace SH.BusinessObjects.Models
         ''' Crear un nuevo objeto Diagnostico.
         ''' </summary>
         ''' <param name="codigoDiagnostico">Valor inicial de la propiedad codigoDiagnostico.</param>
-        ''' <param name="dPI">Valor inicial de la propiedad DPI.</param>
         ''' <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
-        Public Shared Function CreateDiagnostico(codigoDiagnostico As Global.System.Int32, dPI As Global.System.Int32, descripcion As Global.System.String) As Diagnostico
+        Public Shared Function CreateDiagnostico(codigoDiagnostico As Global.System.Int32, descripcion As Global.System.String) As Diagnostico
             Dim diagnostico as Diagnostico = New Diagnostico
             diagnostico.codigoDiagnostico = codigoDiagnostico
-            diagnostico.DPI = dPI
             diagnostico.descripcion = descripcion
             Return diagnostico
         End Function
@@ -659,31 +679,6 @@ Namespace SH.BusinessObjects.Models
         ''' </summary>
         <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
         <DataMemberAttribute()>
-        Public Property DPI() As Global.System.Int32
-            Get
-                Return _DPI
-            End Get
-            Set
-                OnDPIChanging(value)
-                ReportPropertyChanging("DPI")
-                _DPI = StructuralObject.SetValidValue(value, "DPI")
-                ReportPropertyChanged("DPI")
-                OnDPIChanged()
-            End Set
-        End Property
-    
-        Private _DPI As Global.System.Int32
-        Private Partial Sub OnDPIChanging(value As Global.System.Int32)
-        End Sub
-    
-        Private Partial Sub OnDPIChanged()
-        End Sub
-    
-        ''' <summary>
-        ''' No hay documentación de metadatos disponible.
-        ''' </summary>
-        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
-        <DataMemberAttribute()>
         Public Property descripcion() As Global.System.String
             Get
                 Return _descripcion
@@ -714,27 +709,14 @@ Namespace SH.BusinessObjects.Models
         <XmlIgnoreAttribute()>
         <SoapIgnoreAttribute()>
         <DataMemberAttribute()>
-        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Diagnostico__DPI__1FCDBCEB", "Paciente")>
-        Public Property Paciente() As Paciente
+        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Diagnosti__codig__22AA2996", "Diagnostico_Paciente")>
+         Public Property Diagnostico_Paciente() As EntityCollection(Of Diagnostico_Paciente)
             Get
-                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__1FCDBCEB", "Paciente").Value
-            End Get
-            Set
-                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__1FCDBCEB", "Paciente").Value = value
-            End Set
-        End Property
-        ''' <summary>
-        ''' No hay documentación de metadatos disponible.
-        ''' </summary>
-        <BrowsableAttribute(False)>
-        <DataMemberAttribute()>
-        Public Property PacienteReference() As EntityReference(Of Paciente)
-            Get
-                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__1FCDBCEB", "Paciente")
+                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of Diagnostico_Paciente)("SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996", "Diagnostico_Paciente")
             End Get
             Set
                 If (Not value Is Nothing)
-                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__1FCDBCEB", "Paciente", value)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of Diagnostico_Paciente)("SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996", "Diagnostico_Paciente", value)
                 End If
             End Set
         End Property
@@ -753,6 +735,183 @@ Namespace SH.BusinessObjects.Models
             Set
                 If (Not value Is Nothing)
                     CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of Medico)("SH.BusinessObjects.Models.Diagnostico_Medico", "Medico", value)
+                End If
+            End Set
+        End Property
+
+        #End Region
+
+    End Class
+    
+    ''' <summary>
+    ''' No hay documentación de metadatos disponible.
+    ''' </summary>
+    <EdmEntityTypeAttribute(NamespaceName:="SH.BusinessObjects.Models", Name:="Diagnostico_Paciente")>
+    <Serializable()>
+    <DataContractAttribute(IsReference:=True)>
+    Public Partial Class Diagnostico_Paciente
+        Inherits EntityObject
+        #Region "Método de generador"
+    
+        ''' <summary>
+        ''' Crear un nuevo objeto Diagnostico_Paciente.
+        ''' </summary>
+        ''' <param name="codigoDiagnostico">Valor inicial de la propiedad codigoDiagnostico.</param>
+        ''' <param name="dPI">Valor inicial de la propiedad DPI.</param>
+        ''' <param name="fecha">Valor inicial de la propiedad fecha.</param>
+        Public Shared Function CreateDiagnostico_Paciente(codigoDiagnostico As Global.System.Int32, dPI As Global.System.Int32, fecha As Global.System.DateTime) As Diagnostico_Paciente
+            Dim diagnostico_Paciente as Diagnostico_Paciente = New Diagnostico_Paciente
+            diagnostico_Paciente.codigoDiagnostico = codigoDiagnostico
+            diagnostico_Paciente.DPI = dPI
+            diagnostico_Paciente.fecha = fecha
+            Return diagnostico_Paciente
+        End Function
+
+        #End Region
+
+        #Region "Propiedades simples"
+    
+        ''' <summary>
+        ''' No hay documentación de metadatos disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property codigoDiagnostico() As Global.System.Int32
+            Get
+                Return _codigoDiagnostico
+            End Get
+            Set
+                If (_codigoDiagnostico <> Value) Then
+                    OncodigoDiagnosticoChanging(value)
+                    ReportPropertyChanging("codigoDiagnostico")
+                    _codigoDiagnostico = StructuralObject.SetValidValue(value, "codigoDiagnostico")
+                    ReportPropertyChanged("codigoDiagnostico")
+                    OncodigoDiagnosticoChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _codigoDiagnostico As Global.System.Int32
+        Private Partial Sub OncodigoDiagnosticoChanging(value As Global.System.Int32)
+        End Sub
+    
+        Private Partial Sub OncodigoDiagnosticoChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' No hay documentación de metadatos disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property DPI() As Global.System.Int32
+            Get
+                Return _DPI
+            End Get
+            Set
+                If (_DPI <> Value) Then
+                    OnDPIChanging(value)
+                    ReportPropertyChanging("DPI")
+                    _DPI = StructuralObject.SetValidValue(value, "DPI")
+                    ReportPropertyChanged("DPI")
+                    OnDPIChanged()
+                End If
+            End Set
+        End Property
+    
+        Private _DPI As Global.System.Int32
+        Private Partial Sub OnDPIChanging(value As Global.System.Int32)
+        End Sub
+    
+        Private Partial Sub OnDPIChanged()
+        End Sub
+    
+        ''' <summary>
+        ''' No hay documentación de metadatos disponible.
+        ''' </summary>
+        <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+        <DataMemberAttribute()>
+        Public Property fecha() As Global.System.DateTime
+            Get
+                Return _fecha
+            End Get
+            Set
+                OnfechaChanging(value)
+                ReportPropertyChanging("fecha")
+                _fecha = StructuralObject.SetValidValue(value, "fecha")
+                ReportPropertyChanged("fecha")
+                OnfechaChanged()
+            End Set
+        End Property
+    
+        Private _fecha As Global.System.DateTime
+        Private Partial Sub OnfechaChanging(value As Global.System.DateTime)
+        End Sub
+    
+        Private Partial Sub OnfechaChanged()
+        End Sub
+
+        #End Region
+
+        #Region "Propiedades de navegación"
+    
+        ''' <summary>
+        ''' No hay documentación de metadatos disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Diagnosti__codig__22AA2996", "Diagnostico")>
+        Public Property Diagnostico() As Diagnostico
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Diagnostico)("SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996", "Diagnostico").Value
+            End Get
+            Set
+                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Diagnostico)("SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996", "Diagnostico").Value = value
+            End Set
+        End Property
+        ''' <summary>
+        ''' No hay documentación de metadatos disponible.
+        ''' </summary>
+        <BrowsableAttribute(False)>
+        <DataMemberAttribute()>
+        Public Property DiagnosticoReference() As EntityReference(Of Diagnostico)
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Diagnostico)("SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996", "Diagnostico")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of Diagnostico)("SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996", "Diagnostico", value)
+                End If
+            End Set
+        End Property
+    
+        ''' <summary>
+        ''' No hay documentación de metadatos disponible.
+        ''' </summary>
+        <XmlIgnoreAttribute()>
+        <SoapIgnoreAttribute()>
+        <DataMemberAttribute()>
+        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Diagnostico__DPI__21B6055D", "Paciente")>
+        Public Property Paciente() As Paciente
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D", "Paciente").Value
+            End Get
+            Set
+                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D", "Paciente").Value = value
+            End Set
+        End Property
+        ''' <summary>
+        ''' No hay documentación de metadatos disponible.
+        ''' </summary>
+        <BrowsableAttribute(False)>
+        <DataMemberAttribute()>
+        Public Property PacienteReference() As EntityReference(Of Paciente)
+            Get
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D", "Paciente")
+            End Get
+            Set
+                If (Not value Is Nothing)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D", "Paciente", value)
                 End If
             End Set
         End Property
@@ -876,14 +1035,14 @@ Namespace SH.BusinessObjects.Models
         <XmlIgnoreAttribute()>
         <SoapIgnoreAttribute()>
         <DataMemberAttribute()>
-        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Medico_Pa__codig__267ABA7A", "Medico_Paciente")>
+        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Medico_Pa__codig__29572725", "Medico_Paciente")>
          Public Property Medico_Paciente() As EntityCollection(Of Medico_Paciente)
             Get
-                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of Medico_Paciente)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__267ABA7A", "Medico_Paciente")
+                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of Medico_Paciente)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725", "Medico_Paciente")
             End Get
             Set
                 If (Not value Is Nothing)
-                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of Medico_Paciente)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__267ABA7A", "Medico_Paciente", value)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of Medico_Paciente)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725", "Medico_Paciente", value)
                 End If
             End Set
         End Property
@@ -1027,13 +1186,13 @@ Namespace SH.BusinessObjects.Models
         <XmlIgnoreAttribute()>
         <SoapIgnoreAttribute()>
         <DataMemberAttribute()>
-        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Medico_Pa__codig__267ABA7A", "Medico")>
+        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Medico_Pa__codig__29572725", "Medico")>
         Public Property Medico() As Medico
             Get
-                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Medico)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__267ABA7A", "Medico").Value
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Medico)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725", "Medico").Value
             End Get
             Set
-                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Medico)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__267ABA7A", "Medico").Value = value
+                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Medico)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725", "Medico").Value = value
             End Set
         End Property
         ''' <summary>
@@ -1043,11 +1202,11 @@ Namespace SH.BusinessObjects.Models
         <DataMemberAttribute()>
         Public Property MedicoReference() As EntityReference(Of Medico)
             Get
-                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Medico)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__267ABA7A", "Medico")
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Medico)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725", "Medico")
             End Get
             Set
                 If (Not value Is Nothing)
-                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of Medico)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__267ABA7A", "Medico", value)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of Medico)("SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725", "Medico", value)
                 End If
             End Set
         End Property
@@ -1058,13 +1217,13 @@ Namespace SH.BusinessObjects.Models
         <XmlIgnoreAttribute()>
         <SoapIgnoreAttribute()>
         <DataMemberAttribute()>
-        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Medico_Paci__DPI__276EDEB3", "Paciente")>
+        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Medico_Paci__DPI__2A4B4B5E", "Paciente")>
         Public Property Paciente() As Paciente
             Get
-                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__276EDEB3", "Paciente").Value
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E", "Paciente").Value
             End Get
             Set
-                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__276EDEB3", "Paciente").Value = value
+                CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E", "Paciente").Value = value
             End Set
         End Property
         ''' <summary>
@@ -1074,11 +1233,11 @@ Namespace SH.BusinessObjects.Models
         <DataMemberAttribute()>
         Public Property PacienteReference() As EntityReference(Of Paciente)
             Get
-                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__276EDEB3", "Paciente")
+                Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E", "Paciente")
             End Get
             Set
                 If (Not value Is Nothing)
-                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__276EDEB3", "Paciente", value)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E", "Paciente", value)
                 End If
             End Set
         End Property
@@ -1274,14 +1433,14 @@ Namespace SH.BusinessObjects.Models
         <XmlIgnoreAttribute()>
         <SoapIgnoreAttribute()>
         <DataMemberAttribute()>
-        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Diagnostico__DPI__1FCDBCEB", "Diagnostico")>
-         Public Property Diagnostico() As EntityCollection(Of Diagnostico)
+        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Diagnostico__DPI__21B6055D", "Diagnostico_Paciente")>
+         Public Property Diagnostico_Paciente() As EntityCollection(Of Diagnostico_Paciente)
             Get
-                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of Diagnostico)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__1FCDBCEB", "Diagnostico")
+                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of Diagnostico_Paciente)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D", "Diagnostico_Paciente")
             End Get
             Set
                 If (Not value Is Nothing)
-                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of Diagnostico)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__1FCDBCEB", "Diagnostico", value)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of Diagnostico_Paciente)("SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D", "Diagnostico_Paciente", value)
                 End If
             End Set
         End Property
@@ -1292,14 +1451,14 @@ Namespace SH.BusinessObjects.Models
         <XmlIgnoreAttribute()>
         <SoapIgnoreAttribute()>
         <DataMemberAttribute()>
-        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Medico_Paci__DPI__276EDEB3", "Medico_Paciente")>
+        <EdmRelationshipNavigationPropertyAttribute("SH.BusinessObjects.Models", "FK__Medico_Paci__DPI__2A4B4B5E", "Medico_Paciente")>
          Public Property Medico_Paciente() As EntityCollection(Of Medico_Paciente)
             Get
-                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of Medico_Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__276EDEB3", "Medico_Paciente")
+                Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of Medico_Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E", "Medico_Paciente")
             End Get
             Set
                 If (Not value Is Nothing)
-                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of Medico_Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__276EDEB3", "Medico_Paciente", value)
+                    CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of Medico_Paciente)("SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E", "Medico_Paciente", value)
                 End If
             End Set
         End Property
