@@ -14,6 +14,7 @@ Namespace SH.Modules.Plant.ViewModels
         Private _strDPICama As String
         Private _strNumeroCama As String
         Private _strCodigoMedico As String
+        Private _DiagnosticAccess As IDiagnosticDataService
 
         Public Property DPIMedico As String
             Get
@@ -55,14 +56,17 @@ Namespace SH.Modules.Plant.ViewModels
         Public Property AgregarMedicoAPaciente As ICommand
 
         Sub New()
+            ServiceLocator.RegisterService(Of IDiagnosticDataService)(New DiagnosticDataService)
+            _DiagnosticAccess = GetService(Of IDiagnosticDataService)()
             AgregarCamaAPaciente = New RelayCommand(AddressOf AddBedToPatient)
             AgregarMedicoAPaciente = New RelayCommand(AddressOf AddDoctorToPatient)
         End Sub
 
         Public Sub AddBedToPatient()
-            MsgBox("Agregado Satisfactoriamente")
+            _DiagnosticAccess.AddBedToPatient(DPICama, NumeroCama)
         End Sub
         Public Sub AddDoctorToPatient()
+            _DiagnosticAccess.AddPatientToDoctor(CodigoMedico, DPIMedico)
             MsgBox("Agregado Satisfactoriamente")
         End Sub
     End Class

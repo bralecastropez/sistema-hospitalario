@@ -78,4 +78,13 @@ CREATE TABLE Medico_Paciente(
 	FOREIGN KEY (DPI) REFERENCES Paciente(DPI)
 )
 INSERT INTO Paciente(DPI, noIGSS, nombre, apellido, fechaNacimiento) VALUES(2013155,12345, 'Brandon','Castro','2013-12-12')
+SELECT * FROM Diagnostico
 SELECT * FROM Paciente
+SELECT * FROM Medico
+SELECT * FROM Medico_Paciente
+SELECT * FROM Diagnostico_Medico
+SELECT * FROM Diagnostico_Paciente
+SELECT * FROM TarjetaVisita
+SELECT * FROM Cama
+SELECT * FROM Planta
+SELECT * FROM Cama_Paciente

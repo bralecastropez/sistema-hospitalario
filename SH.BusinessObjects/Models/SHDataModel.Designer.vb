@@ -17,7 +17,7 @@ Imports System.Linq
 Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
-<Assembly: EdmSchemaAttribute("a2e06354-3d25-4630-8c05-48506d3a07fb")>
+<Assembly: EdmSchemaAttribute("ffa2d111-26fe-4baa-b2e8-097a42d62307")>
 #Region "Metadatos de relaciones en EDM"
 <Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Cama__idPlanta__164452B1", "Planta", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Planta), "Cama", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Cama), True)>
 <Assembly: EdmRelationshipAttribute("SH.BusinessObjects.Models", "FK__Cama_Paci__idCam__1920BF5C", "Cama", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(SH.BusinessObjects.Models.Cama), "Cama_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(SH.BusinessObjects.Models.Cama_Paciente), True)>
