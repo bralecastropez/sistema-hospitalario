@@ -10,12 +10,12 @@
         <Label Content="Sistema Hospitalario" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="600" Height="50" FontSize="25" HorizontalContentAlignment="Center"/>
 
         <Button Content="Paciente"      Command="{Binding Paciente}"     HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="90"/>
-        <Button Content="Medico"        Command="{Binding Medico}"      HorizontalAlignment="Left" Margin="485,65,0,0" VerticalAlignment="Top" Width="90"/>
-        <Button Content="Diagnostico"   Command="{Binding Diagnostico}"   HorizontalAlignment="Left" Margin="390,65,0,0" VerticalAlignment="Top" Width="90"/>
-        <Button Content="Visita"        Command="{Binding Visita}"        HorizontalAlignment="Left" Margin="295,65,0,0" VerticalAlignment="Top" Width="90"/>
-        <Button Content="Planta"        Command="{Binding Planta}"       HorizontalAlignment="Left" Margin="200,65,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Medico"        Command="{Binding Medico}"      HorizontalAlignment="Left" Margin="490,65,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Diagnostico"   Command="{Binding Diagnostico}"   HorizontalAlignment="Left" Margin="395,65,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Visita"        Command="{Binding Visita}"        HorizontalAlignment="Left" Margin="300,65,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Detalle Pacientes"        Command="{Binding Planta}"       HorizontalAlignment="Left" Margin="200,65,0,0" VerticalAlignment="Top" Width="95"/>
         <Button Content="Cama"          Command="{Binding Cama}"       HorizontalAlignment="Left" Margin="105,65,0,0" VerticalAlignment="Top" Width="90"/>
 
-        <Button Content="?" HorizontalAlignment="Left" Margin="580,65,0,0" VerticalAlignment="Top" Width="30" ToolTip="Creado Por Brandon Castro"/>
+        <Button Content="?" HorizontalAlignment="Left" Margin="585,65,0,0" VerticalAlignment="Top" Width="30" ToolTip="Creado Por Brandon Castro"/>
     </Grid>
 </UserControl>

@@ -19,9 +19,9 @@
         <Button Content="Agregar" Command="{Binding AgregarMedicoAPaciente}" HorizontalAlignment="Left" Margin="465,124,0,0" VerticalAlignment="Top" Width="125"/>
         <TextBox x:Name="txtCodigoMedico" HorizontalAlignment="Left" Height="23" Margin="465,68,0,0" TextWrapping="Wrap" Text="{Binding CodigoMedico}" VerticalAlignment="Top" Width="125"/>
         <TextBox x:Name="txtDPIMedico" HorizontalAlignment="Left" Height="23" Margin="465,96,0,0" TextWrapping="Wrap" Text="{Binding DPIMedico}" VerticalAlignment="Top" Width="125"/>
-        <DataGrid HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="200" Height="107"/>
-        <DataGrid HorizontalAlignment="Left" Margin="420,183,0,0" VerticalAlignment="Top" Width="200" Height="107"/>
-        <DataGrid HorizontalAlignment="Left" Margin="215,183,0,0" VerticalAlignment="Top" Width="200" Height="107"/>
+        <DataGrid x:Name="dgPacientes" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Pacientes}" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="215" Height="107" IsReadOnly="True"/>
+        <DataGrid x:Name="dgMedicos" CanUserAddRows="False"  HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Medicos}" HorizontalAlignment="Left" Margin="420,183,0,0" VerticalAlignment="Top" Width="200" Height="107" IsReadOnly="True"/>
+        <DataGrid x:Name="dgCamas" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Camas}" HorizontalAlignment="Left" Margin="240,183,0,0" VerticalAlignment="Top" Width="153" Height="107" IsReadOnly="True"/>
         <Label Content="Listado De Pacientes" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Width="200" FontSize="13" HorizontalContentAlignment="Center"/>
         <Label Content="Listado De Camas" HorizontalAlignment="Left" Margin="215,151,0,0" VerticalAlignment="Top" Width="200" FontSize="13" HorizontalContentAlignment="Center"/>
         <Label Content="Listado De Medicos" HorizontalAlignment="Left" Margin="420,151,0,0" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center" FontSize="13"/>

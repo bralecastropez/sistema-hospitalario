@@ -15,6 +15,38 @@ Namespace SH.Modules.Plant.ViewModels
         Private _strNumeroCama As String
         Private _strCodigoMedico As String
         Private _DiagnosticAccess As IDiagnosticDataService
+        Private _mainAccess As IMainDataService
+        Private _dgMedicos As List(Of Medico)
+        Private _dgCamas As List(Of Cama)
+        Private _dgPacientes As List(Of Paciente)
+
+        Public Property Medicos As List(Of Medico)
+            Get
+                Return _dgMedicos
+            End Get
+            Set(value As List(Of Medico))
+                _dgMedicos = value
+                OnPropertyChanged("Medicos")
+            End Set
+        End Property
+        Public Property Camas As List(Of Cama)
+            Get
+                Return _dgCamas
+            End Get
+            Set(value As List(Of Cama))
+                _dgCamas = value
+                OnPropertyChanged("Camas")
+            End Set
+        End Property
+        Public Property Pacientes As List(Of Paciente)
+            Get
+                Return _dgPacientes
+            End Get
+            Set(value As List(Of Paciente))
+                _dgPacientes = value
+                OnPropertyChanged("Pacientes")
+            End Set
+        End Property
 
         Public Property DPIMedico As String
             Get
@@ -60,13 +92,25 @@ Namespace SH.Modules.Plant.ViewModels
             _DiagnosticAccess = GetService(Of IDiagnosticDataService)()
             AgregarCamaAPaciente = New RelayCommand(AddressOf AddBedToPatient)
             AgregarMedicoAPaciente = New RelayCommand(AddressOf AddDoctorToPatient)
+            ServiceLocator.RegisterService(Of IMainDataService)(New MainDataService)
+            _mainAccess = GetService(Of IMainDataService)()
+            Pacientes = _mainAccess.GetPatients
+            Medicos = _mainAccess.GetDoctors
+            Camas = _mainAccess.GetBeds
         End Sub
 
         Public Sub AddBedToPatient()
             _DiagnosticAccess.AddBedToPatient(DPICama, NumeroCama)
+            Pacientes = _mainAccess.GetPatients
+            Medicos = _mainAccess.GetDoctors
+            Camas = _mainAccess.GetBeds
+            MsgBox("Agregado Satisfactoriamente")
         End Sub
         Public Sub AddDoctorToPatient()
             _DiagnosticAccess.AddPatientToDoctor(CodigoMedico, DPIMedico)
+            Pacientes = _mainAccess.GetPatients
+            Medicos = _mainAccess.GetDoctors
+            Camas = _mainAccess.GetBeds
             MsgBox("Agregado Satisfactoriamente")
         End Sub
     End Class

@@ -14,7 +14,7 @@
         <TextBox  x:Name="txtCodigoMedico" HorizontalAlignment="Left" Height="23" Margin="165,68,0,0" TextWrapping="Wrap" Text="{Binding CodigoMedico}" VerticalAlignment="Top" Width="125"/>
         <TextBox x:Name="txtNombreMedico" HorizontalAlignment="Left" Height="23" Margin="165,99,0,0" TextWrapping="Wrap" Text="{Binding Nombre}" VerticalAlignment="Top" Width="125"/>
         <TextBox x:Name="txtApellidoMedico" HorizontalAlignment="Left" Height="23" Margin="165,130,0,0" TextWrapping="Wrap" Text="{Binding Apellido}" VerticalAlignment="Top" Width="125"/>
-        <DataGrid HorizontalAlignment="Left" Margin="310,45,0,0" VerticalAlignment="Top" Height="245" Width="280"/>
+        <DataGrid x:Name="dgMedicos" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Medicos}" HorizontalAlignment="Left" Margin="310,45,0,0" VerticalAlignment="Top" Height="245" Width="280"/>
         <Label Content="Listado De  Medicos" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="280" HorizontalContentAlignment="Center" FontSize="15"/>
         <Button x:Name="btnAgregarMedico" Command="{Binding AgregarMedico}" Content="Agregar Medico" HorizontalAlignment="Left" Margin="165,158,0,0" VerticalAlignment="Top" Width="125"/>
     </Grid>

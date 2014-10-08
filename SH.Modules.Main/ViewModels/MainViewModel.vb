@@ -48,6 +48,7 @@ Namespace SH.Modules.Main.ViewModels
             Dim cardView As New AddCardView
             CardWindow.ResizeMode = ResizeMode.NoResize
             CardWindow.SizeToContent = SizeToContent.WidthAndHeight
+            CardWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen
             CardWindow.Content() = cardView
             CardWindow.Show()
         End Sub
@@ -56,6 +57,7 @@ Namespace SH.Modules.Main.ViewModels
             Dim patientView As New AddPatientView
             PatientWindow.ResizeMode = ResizeMode.NoResize
             PatientWindow.SizeToContent = SizeToContent.WidthAndHeight
+            PatientWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen
             PatientWindow.Content() = patientView
             PatientWindow.Show()
         End Sub
@@ -64,6 +66,7 @@ Namespace SH.Modules.Main.ViewModels
             Dim diagnosticView As New AddDiagnosticView
             DiagnosticWindow.ResizeMode = ResizeMode.NoResize
             DiagnosticWindow.SizeToContent = SizeToContent.WidthAndHeight
+            DiagnosticWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen
             DiagnosticWindow.Content() = diagnosticView
             DiagnosticWindow.Show()
         End Sub
@@ -72,6 +75,7 @@ Namespace SH.Modules.Main.ViewModels
             Dim plantView As New AddPlantView
             PlantWindow.ResizeMode = ResizeMode.NoResize
             PlantWindow.SizeToContent = SizeToContent.WidthAndHeight
+            PlantWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen
             PlantWindow.Content() = plantView
             PlantWindow.Show()
         End Sub
@@ -80,6 +84,7 @@ Namespace SH.Modules.Main.ViewModels
             Dim doctorView As New AddDoctorView
             DoctorWindow.ResizeMode = ResizeMode.NoResize
             DoctorWindow.SizeToContent = SizeToContent.WidthAndHeight
+            DoctorWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen
             DoctorWindow.Content() = doctorView
             DoctorWindow.Show()
         End Sub

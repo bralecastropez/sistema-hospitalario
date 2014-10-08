@@ -14,6 +14,28 @@ Namespace SH.Modules.Card.ViewModels
         Private _datHoraInicio As Date
         Private _datHoraFin As Date
         Private _cardAccess As ICardDataService
+        Private _mainAccess As IMainDataService
+        Private _dgPacientes As List(Of Paciente)
+        Private _dgVisitas As List(Of TarjetaVisita)
+
+        Public Property Pacientes As List(Of Paciente)
+            Get
+                Return _dgPacientes
+            End Get
+            Set(value As List(Of Paciente))
+                _dgPacientes = value
+                OnPropertyChanged("Pacientes")
+            End Set
+        End Property
+        Public Property Visitas As List(Of TarjetaVisita)
+            Get
+                Return _dgVisitas
+            End Get
+            Set(value As List(Of TarjetaVisita))
+                _dgVisitas = value
+                OnPropertyChanged("Visitas")
+            End Set
+        End Property
 
         Public Property DPI As String
             Get
@@ -46,11 +68,17 @@ Namespace SH.Modules.Card.ViewModels
 
         Public Sub New()
             ServiceLocator.RegisterService(Of ICardDataService)(New CardDataService)
+            ServiceLocator.RegisterService(Of IMainDataService)(New MainDataService)
+            _mainAccess = GetService(Of IMainDataService)()
             _cardAccess = GetService(Of ICardDataService)()
             AgregarTarjeta = New RelayCommand(AddressOf AgregarNuevaTarjeta)
+            Pacientes = _mainAccess.GetPatients
+            Visitas = _mainAccess.GetCards
         End Sub
         Public Sub AgregarNuevaTarjeta()
             _cardAccess.AddCard(DPI, HoraComienzo, HoraFin)
+            Pacientes = _mainAccess.GetPatients
+            Visitas = _mainAccess.GetCards
             MsgBox("Tarjeta Agregada")
         End Sub
     End Class

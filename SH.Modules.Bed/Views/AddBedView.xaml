@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Bed.ViewModels"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="600">
+             mc:Ignorable="d" d:DesignWidth="600" Height="365">
     <Grid>
         <Label Content="Ingreso de Plantas" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="30" HorizontalContentAlignment="Center"/>
         <Label Content="Nombre: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
@@ -18,6 +17,10 @@
         <Button Content="Agregar Planta" Command="{Binding AgregarPlanta}" HorizontalAlignment="Left" Margin="140,156,0,0" VerticalAlignment="Top" Width="100"/>
         <Button Content="Agregar Cama" Command="{Binding AgregarCama}" HorizontalAlignment="Left" Margin="465,156,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="295,0,0,0" VerticalAlignment="Top" Width="10" Height="300"/>
+        <DataGrid x:Name="dgListadoDePlantas" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Plantas}" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Height="141" Width="198"/>
+        <Label Content="Listado De Plantas"  HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="198" HorizontalContentAlignment="Center" FontSize="14"/>
+        <DataGrid x:Name="dgListadoDeCamas" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Camas}" HorizontalAlignment="Left" Margin="371,214,0,0" VerticalAlignment="Top" Height="141" Width="156"/>
+        <Label Content="Listado De Camas" HorizontalAlignment="Left" Margin="371,183,0,0" VerticalAlignment="Top" Width="156" HorizontalContentAlignment="Center" FontSize="14"/>
 
 
     </Grid>

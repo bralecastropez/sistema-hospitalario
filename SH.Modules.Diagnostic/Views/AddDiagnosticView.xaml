@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Diagnostic.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="320" Width="890">
+             d:DesignHeight="320" Width="930">
     <Grid>
         <Label Content="Ingreso de Diagnostico por Paciente" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="280" Height="34" HorizontalContentAlignment="Center" FontSize="16"/>
         <Label Content="Ingreso de Diagnostico por Medico" HorizontalAlignment="Left" Margin="310,142,0,0" VerticalAlignment="Top" Width="280" Height="33" HorizontalContentAlignment="Center" FontSize="17"/>
@@ -16,18 +16,18 @@
         <Label Content="Descripcion: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
         <TextBox x:Name="txtDescripcion"  HorizontalAlignment="Left" Height="23" Margin="165,68,0,0" TextWrapping="Wrap"                Text="{Binding Descripcion}" VerticalAlignment="Top" Width="125"/>
         <Button x:Name="btnAgregarDiagnostico"          Command="{Binding AgregarDiagnostico}" Content="Agregar Nuevo Diagnostico" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="280"/>
-        <Label Content="Listado De Diagnosticos" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="280" HorizontalContentAlignment="Center" FontSize="13"/>
-        <DataGrid HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Height="136" Width="280"/>
+        <Label Content="Listado De Diagnosticos" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="270" HorizontalContentAlignment="Center" FontSize="13"/>
+        <DataGrid x:Name="dgDiagnosticos" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Diagnosticos}" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Height="136" Width="270"/>
         <TextBox x:Name="txtCodigoDiagnosticoPaciente" HorizontalAlignment="Left" Height="23" Margin="465,49,0,0" TextWrapping="Wrap"   Text="{Binding CodigoDiagnosticoPaciente}" VerticalAlignment="Top" Width="125"/>
         <TextBox x:Name="txtDPI" HorizontalAlignment="Left" Height="23" Margin="465,80,0,0" TextWrapping="Wrap"                         Text="{Binding DPI}" VerticalAlignment="Top" Width="125"/>
         <Label Content="Codigo del Medico: " HorizontalAlignment="Left" Margin="305,180,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Codigo del Diagnostico: " HorizontalAlignment="Left" Margin="305,206,0,0" VerticalAlignment="Top" Width="150"/>
         <TextBox x:Name="txtCodigoMedico" HorizontalAlignment="Left" Height="23" Margin="460,183,0,0" TextWrapping="Wrap"               Text="{Binding CodigoMedico}" VerticalAlignment="Top" Width="130"/>
         <TextBox x:Name="txtCodigoDiagnosticoMedico" HorizontalAlignment="Left" Height="23" Margin="460,211,0,0" TextWrapping="Wrap"    Text="{Binding CodigoDiagnosticoMedico}" VerticalAlignment="Top" Width="130"/>
-        <DataGrid HorizontalAlignment="Left" Margin="595,180,0,0" VerticalAlignment="Top" Height="110" Width="280"/>
-        <DataGrid HorizontalAlignment="Left" Margin="595,49,0,0" VerticalAlignment="Top" Height="85" Width="280"/>
-        <Label Content="Listado De Pacientes" HorizontalAlignment="Left" Margin="595,10,0,0" VerticalAlignment="Top" Width="280" Height="34" HorizontalContentAlignment="Center" FontSize="16"/>
-        <Label Content="Listado De Medicos" HorizontalAlignment="Left" Margin="595,139,0,0" VerticalAlignment="Top" Width="280" Height="36" HorizontalContentAlignment="Center" FontSize="16"/>
+        <DataGrid x:Name="dgListadoMedicos" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Medicos}" HorizontalAlignment="Left" Margin="595,180,0,0" VerticalAlignment="Top" Height="110" Width="280"/>
+        <DataGrid x:Name="dgListadoPacientes" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Pacientes}" HorizontalAlignment="Left" Margin="595,49,0,0" VerticalAlignment="Top" Height="85" Width="325"/>
+        <Label Content="Listado De Pacientes" HorizontalAlignment="Left" Margin="595,10,0,0" VerticalAlignment="Top" Width="306" Height="34" HorizontalContentAlignment="Center" FontSize="16"/>
+        <Label Content="Listado De Medicos" HorizontalAlignment="Left" Margin="595,139,0,0" VerticalAlignment="Top" Width="325" Height="36" HorizontalContentAlignment="Center" FontSize="16"/>
         <Button x:Name="btnAgregarDiagnosticoAPaciente"     Command="{Binding AgregarDiagnosticoAPaciente}" Content="Agregar Diagnostico" HorizontalAlignment="Left" Margin="460,239,0,0" VerticalAlignment="Top" Width="130"/>
         <Button x:Name="btnAgregarDiagnosticoAMedico"       Command="{Binding AgregarDiagnsoticoAMedico}" Content="Agregar Diagnostico" HorizontalAlignment="Left" Margin="465,108,0,0" VerticalAlignment="Top" Width="125"/>
 

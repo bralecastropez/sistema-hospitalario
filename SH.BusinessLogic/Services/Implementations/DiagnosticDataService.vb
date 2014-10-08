@@ -62,10 +62,10 @@ Namespace SH.BusinessLogic.Services
         Public Sub AddDiagnosticToDoctor(CodigoMedico As String, CodigoDiagnostico As String) Implements IDiagnosticDataService.AddDiagnosticToDoctor
             Try
                 Dim db As New dbHospitalEntities
-                Dim diagnosticDoctor As New Diagnostico_Medico
-                diagnosticDoctor.codigoMedico = CInt(CodigoMedico)
-                diagnosticDoctor.codigoDiagnostico = CInt(CodigoDiagnostico)
-                db.AddToDiagnostico_Medico(diagnosticDoctor)
+                ' Dim diagnosticDoctor As New Diagnostico_Medico
+                'diagnosticDoctor.codigoMedico = CInt(CodigoMedico)
+                'diagnosticDoctor.codigoDiagnostico = CInt(CodigoDiagnostico)
+                'db.AddToDiagnostico_Medico(diagnosticDoctor)
                 db.SaveChanges()
             Catch ex As Exception
                 MsgBox(ex.Message)

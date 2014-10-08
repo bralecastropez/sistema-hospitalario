@@ -15,6 +15,28 @@ Namespace SH.Modules.Bed.ViewModels
         Private _strNumeroPlanta As String
         Private _bedAccess As IBedDataService
         Private _plantAccess As IPlantDataService
+        Private _mainAccess As IMainDataService
+        Private _dgPlantas As List(Of Planta)
+        Private _dgCamas As List(Of Cama)
+
+        Public Property Camas As List(Of Cama)
+            Get
+                Return _dgCamas
+            End Get
+            Set(value As List(Of Cama))
+                _dgCamas = value
+                OnPropertyChanged("Camas")
+            End Set
+        End Property
+        Public Property Plantas As List(Of Planta)
+            Get
+                Return _dgPlantas
+            End Get
+            Set(value As List(Of Planta))
+                _dgPlantas = value
+                OnPropertyChanged("Plantas")
+            End Set
+        End Property
 
         Public Property NombrePlanta As String
             Get
@@ -49,17 +71,25 @@ Namespace SH.Modules.Bed.ViewModels
         Public Sub New()
             ServiceLocator.RegisterService(Of IBedDataService)(New BedDataService)
             ServiceLocator.RegisterService(Of IPlantDataService)(New PlantDataService)
+            ServiceLocator.RegisterService(Of IMainDataService)(New MainDataService)
             _bedAccess = GetService(Of IBedDataService)()
             _plantAccess = GetService(Of IPlantDataService)()
+            _mainAccess = GetService(Of IMainDataService)()
             AgregarCama = New RelayCommand(AddressOf AddBed)
             AgregarPlanta = New RelayCommand(AddressOf AddPlant)
+            Plantas = _mainAccess.GetPlants
+            Camas = _mainAccess.GetBeds
         End Sub
         Public Sub AddBed()
             _bedAccess.AddBed(NumeroPlanta)
+            Plantas = _mainAccess.GetPlants
+            Camas = _mainAccess.GetBeds
             MsgBox("Cama Agregada Satisfactoriamente")
         End Sub
         Public Sub AddPlant()
             _plantAccess.AddPlant(NombrePlanta, NumeroCamas)
+            Plantas = _mainAccess.GetPlants
+            Camas = _mainAccess.GetBeds
             MsgBox("Planta Agregada Satisfactoriamente")
         End Sub
     End Class

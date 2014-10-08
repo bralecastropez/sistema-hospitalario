@@ -10,11 +10,23 @@ Imports SH.BusinessLogic.Services
 Namespace SH.Modules.Doctor.ViewModels
     Public Class AddDoctorViewModel
         Inherits ViewModelBase
-        Public _strCodigoMedico As String
-        Public _strNombre As String
-        Public _strApellido As String
-        Public _doctorAccess As IDoctorDataService
+        Private _strCodigoMedico As String
+        Private _strNombre As String
+        Private _strApellido As String
+        Private _doctorAccess As IDoctorDataService
+        Private _mainAccess As IMainDataService
+        Private _dgMedicos As List(Of Medico)
 
+
+        Public Property Medicos As List(Of Medico)
+            Get
+                Return _dgMedicos
+            End Get
+            Set(value As List(Of Medico))
+                _dgMedicos = value
+                OnPropertyChanged("Medicos")
+            End Set
+        End Property
         Public Property CodigoMedico As String
             Get
                 Return _strCodigoMedico
@@ -48,10 +60,14 @@ Namespace SH.Modules.Doctor.ViewModels
             ServiceLocator.RegisterService(Of IDoctorDataService)(New DoctorDataService)
             _doctorAccess = GetService(Of IDoctorDataService)()
             AgregarMedico = New RelayCommand(AddressOf AgregarNuevoMedico)
+            ServiceLocator.RegisterService(Of IMainDataService)(New MainDataService)
+            _mainAccess = GetService(Of IMainDataService)()
+            Medicos = _mainAccess.GetDoctors
         End Sub
 
         Public Sub AgregarNuevoMedico()
             _doctorAccess.AddDoctor(CodigoMedico, Nombre, Apellido)
+            Medicos = _mainAccess.GetDoctors
             MsgBox("Medico Agregado Satisfactoriamente")
         End Sub
     End Class
