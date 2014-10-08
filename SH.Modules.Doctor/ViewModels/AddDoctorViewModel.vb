@@ -68,7 +68,6 @@ Namespace SH.Modules.Doctor.ViewModels
         Public Sub AgregarNuevoMedico()
             _doctorAccess.AddDoctor(CodigoMedico, Nombre, Apellido)
             Medicos = _mainAccess.GetDoctors
-            MsgBox("Medico Agregado Satisfactoriamente")
         End Sub
     End Class
 End Namespace

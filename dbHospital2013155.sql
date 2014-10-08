@@ -78,6 +78,7 @@ CREATE TABLE Medico_Paciente(
 	FOREIGN KEY (DPI) REFERENCES Paciente(DPI)
 )
 INSERT INTO Paciente(DPI, noIGSS, nombre, apellido, fechaNacimiento) VALUES(2013155,12345, 'Brandon','Castro','2013-12-12')
+SELECT COUNT(*) FROM TarjetaVisita 	WHERE DPI = 2013155
 SELECT * FROM Diagnostico
 SELECT * FROM Paciente
 SELECT * FROM Medico

@@ -13,6 +13,7 @@ Namespace SH.Modules.Card.ViewModels
         Private _strDPI As String
         Private _datHoraInicio As Date
         Private _datHoraFin As Date
+        Private _card As TarjetaVisita
         Private _cardAccess As ICardDataService
         Private _mainAccess As IMainDataService
         Private _dgPacientes As List(Of Paciente)
@@ -36,7 +37,15 @@ Namespace SH.Modules.Card.ViewModels
                 OnPropertyChanged("Visitas")
             End Set
         End Property
-
+        Public Property TarjetaVisita As TarjetaVisita
+            Get
+                Return _card
+            End Get
+            Set(value As TarjetaVisita)
+                _card = value
+                OnPropertyChanged("TarjetaVisita")
+            End Set
+        End Property
         Public Property DPI As String
             Get
                 Return _strDPI
@@ -65,6 +74,7 @@ Namespace SH.Modules.Card.ViewModels
             End Set
         End Property
         Public Property AgregarTarjeta As ICommand
+        Public Property ModificarTarjeta As ICommand
 
         Public Sub New()
             ServiceLocator.RegisterService(Of ICardDataService)(New CardDataService)
@@ -72,6 +82,7 @@ Namespace SH.Modules.Card.ViewModels
             _mainAccess = GetService(Of IMainDataService)()
             _cardAccess = GetService(Of ICardDataService)()
             AgregarTarjeta = New RelayCommand(AddressOf AgregarNuevaTarjeta)
+            ModificarTarjeta = New RelayCommand(AddressOf EditarTarjeta)
             Pacientes = _mainAccess.GetPatients
             Visitas = _mainAccess.GetCards
         End Sub
@@ -79,7 +90,11 @@ Namespace SH.Modules.Card.ViewModels
             _cardAccess.AddCard(DPI, HoraComienzo, HoraFin)
             Pacientes = _mainAccess.GetPatients
             Visitas = _mainAccess.GetCards
-            MsgBox("Tarjeta Agregada")
+        End Sub
+        Public Sub EditarTarjeta()
+            HoraComienzo() = TarjetaVisita.horaComienzo
+            HoraFin() = TarjetaVisita.horaFin
+
         End Sub
     End Class
 End Namespace

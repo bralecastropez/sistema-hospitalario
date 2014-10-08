@@ -16,8 +16,19 @@ Namespace SH.Modules.Patient.ViewModels
         Private _intDPI As String
         Private _intNoIGSS As String
         Private _datFecha As Date
+        Private _paciente As Paciente
         Private _mainAccess As IMainDataService
         Private _dgPacientes As List(Of Paciente)
+
+        Public Property Paciente As Paciente
+            Get
+                Return _paciente
+            End Get
+            Set(value As Paciente)
+                _paciente = value
+                OnPropertyChanged("Paciente")
+            End Set
+        End Property
 
         Public Property Pacientes As List(Of Paciente)
             Get
@@ -75,6 +86,7 @@ Namespace SH.Modules.Patient.ViewModels
             End Set
         End Property
         Public Property AgregarPaciente As ICommand
+        Public Property EliminarPaciente As ICommand
         Public Sub New()
             ServiceLocator.RegisterService(Of IPatientDataService)(New PatientDataService)
             _patientAccess = GetService(Of IPatientDataService)()
@@ -82,11 +94,16 @@ Namespace SH.Modules.Patient.ViewModels
             _mainAccess = GetService(Of IMainDataService)()
             Pacientes = _mainAccess.GetPatients
             AgregarPaciente = New RelayCommand(AddressOf AgregarNuevoPaciente)
+            EliminarPaciente = New RelayCommand(AddressOf EliminarNuevoPaciente)
         End Sub
         Public Sub AgregarNuevoPaciente()
             _patientAccess.AddPatient(idPaciente, NoIGSS, Nombre, Apellido, FechaNacimiento)
             Pacientes = _mainAccess.GetPatients
-            MsgBox("Paciente Agregado Satisfactoriamente")
+        End Sub
+
+        Public Sub EliminarNuevoPaciente()
+            _patientAccess.DeletePatient(Paciente)
+            MsgBox("Hola Mundo!!!")
         End Sub
     End Class
 End Namespace

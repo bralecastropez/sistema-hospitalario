@@ -13,11 +13,13 @@ Namespace SH.BusinessLogic.Services
             Try
                 Dim db As New dbHospitalEntities
                 Dim doctor As New Medico
-                doctor.codigoMedico = CInt(codigoMedico)
+                doctor.codigoMedico = CDbl(codigoMedico)
                 doctor.nombre = Nombre
                 doctor.apellido = Apellido
-                db.AddToMedico(doctor)
+                'db.AddToMedico(doctor)
+                db.Medico.Add(doctor)
                 db.SaveChanges()
+                MsgBox("Doctor Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
                 MsgBox(ex.InnerException.ToString)

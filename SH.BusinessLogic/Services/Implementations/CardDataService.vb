@@ -13,11 +13,20 @@ Namespace SH.BusinessLogic.Services
             Try
                 Dim db As New dbHospitalEntities
                 Dim tarjetaVisita As New TarjetaVisita
-                tarjetaVisita.DPI = DPI
-                tarjetaVisita.horaComienzo = horaComienzo
-                tarjetaVisita.horaFin = horaFin
-                db.AddToTarjetaVisita(tarjetaVisita)
-                db.SaveChanges()
+                Dim tarjetas = (From visita In DataContext.DBEntities.TarjetaVisita Where visita.DPI = DPI).Count
+                MsgBox(tarjetas.ToString)
+                If tarjetas = 1 Or tarjetas = 2 Or tarjetas = 3 Or tarjetas = 4 Then
+                    tarjetaVisita.DPI = CDbl(DPI)
+                    tarjetaVisita.horaComienzo = horaComienzo
+                    tarjetaVisita.horaFin = horaFin
+                    'db.AddToTarjetaVisita(tarjetaVisita)
+                    db.TarjetaVisita.Add(tarjetaVisita)
+                    db.SaveChanges()
+                    MsgBox("Tarjeta de Visita Agregada Satisfactoriamente")
+                Else
+                    MsgBox("El Paciente ha llegado al Maximo de Tarjetas de Visita")
+                End If
+
             Catch ex As Exception
                 MsgBox(ex.Message)
                 MsgBox(ex.InnerException.ToString)

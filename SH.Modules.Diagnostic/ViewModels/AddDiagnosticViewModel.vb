@@ -117,21 +117,18 @@ Namespace SH.Modules.Diagnostic.ViewModels
             Pacientes = _mainAccess.GetPatients
             Medicos = _mainAccess.GetDoctors
             Diagnosticos = _mainAccess.GetDiagnostics
-            MsgBox("Diagnostico  Agregado Satisfactoriamente", MsgBoxStyle.MsgBoxRight)
         End Sub
         Public Sub AgregarNuevoDiagnosticoAPaciente()
             _diagnosticAccess.AddDiagnosticToPatient(DPI, CodigoDiagnosticoPaciente)
             Pacientes = _mainAccess.GetPatients
             Medicos = _mainAccess.GetDoctors
             Diagnosticos = _mainAccess.GetDiagnostics
-            MsgBox("Diagnostico  Agregado Satisfactoriamente", MsgBoxStyle.MsgBoxRight)
         End Sub
         Public Sub AgregarNuevoDiagnosticoMedico()
             _diagnosticAccess.AddDiagnosticToDoctor(CodigoMedico, CodigoDiagnosticoMedico)
             Pacientes = _mainAccess.GetPatients
             Medicos = _mainAccess.GetDoctors
             Diagnosticos = _mainAccess.GetDiagnostics
-            MsgBox("Diagnostico  Agregado Satisfactoriamente", MsgBoxStyle.MsgBoxRight)
         End Sub
     End Class
 End Namespace

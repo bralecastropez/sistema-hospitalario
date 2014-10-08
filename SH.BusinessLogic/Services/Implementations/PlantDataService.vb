@@ -14,9 +14,11 @@ Namespace SH.BusinessLogic.Services
                 Dim db As New dbHospitalEntities
                 Dim planta As New Planta
                 planta.nombre = nombrePlanta
-                planta.noCamas = CInt(numeroCamas)
-                db.AddToPlanta(planta)
+                planta.noCamas = CDbl(numeroCamas)
+                'db.AddToPlanta(planta)
+                db.Planta.Add(planta)
                 db.SaveChanges()
+                MsgBox("Planta Agregada Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
                 MsgBox(ex.InnerException.ToString)

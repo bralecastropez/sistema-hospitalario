@@ -104,14 +104,12 @@ Namespace SH.Modules.Plant.ViewModels
             Pacientes = _mainAccess.GetPatients
             Medicos = _mainAccess.GetDoctors
             Camas = _mainAccess.GetBeds
-            MsgBox("Agregado Satisfactoriamente")
         End Sub
         Public Sub AddDoctorToPatient()
             _DiagnosticAccess.AddPatientToDoctor(CodigoMedico, DPIMedico)
             Pacientes = _mainAccess.GetPatients
             Medicos = _mainAccess.GetDoctors
             Camas = _mainAccess.GetBeds
-            MsgBox("Agregado Satisfactoriamente")
         End Sub
     End Class
 End Namespace

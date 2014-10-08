@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Patient.ViewModels"
-             mc:Ignorable="d" Height="300" Width="637.668">
+             mc:Ignorable="d" Height="300" Width="716.668">
     <Grid>
         <Label x:Name="lblInicio" FontSize="25" Content="Ingreso de Pacientes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="50" HorizontalContentAlignment="Center"/>
         <Label Content="DPI:" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
@@ -17,8 +17,9 @@
         <TextBox x:Name="txtNoIGSS" HorizontalAlignment="Left" Height="23" Margin="165,93,0,0" TextWrapping="Wrap"              Text="{Binding Path=NoIGSS, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="165,127,0,0" TextWrapping="Wrap"             Text="{Binding Path=Nombre, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtApellido" HorizontalAlignment="Left" Height="23" Margin="165,158,0,0" TextWrapping="Wrap"           Text="{Binding Path=Apellido, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtFechaNacimiento" HorizontalAlignment="Left" Height="23" Margin="165,192,0,0" TextWrapping="Wrap"    Text="{Binding Path=FechaNacimiento, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="lblInicio_Copy" FontSize="25" Content="Ingreso de Pacientes" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="307" Height="50" HorizontalContentAlignment="Center"/>
-        <DataGrid x:Name="dgPacientes" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Pacientes}" HorizontalAlignment="Left" Margin="310,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="225" Width="307"/>
+        <TextBox x:Name="txtFechaNacimiento" HorizontalAlignment="Left" Height="23" Margin="165,192,0,0" TextWrapping="Wrap"    Text="{Binding Path=FechaNacimiento, Mode=TwoWay, StringFormat=dd-MM-yyyy}" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lbllista" FontSize="25" Content="Lista de Pacientes" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="307" Height="50" HorizontalContentAlignment="Center"/>
+        <DataGrid x:Name="dgPacientes" IsReadOnly="True" SelectedItem="{Binding Paciente, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Pacientes}" HorizontalAlignment="Left" Margin="310,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="225" Width="307"/>
+        <Button Content="Button" Command="{Binding Eliminar}" HorizontalAlignment="Left" Margin="622,66,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </UserControl>

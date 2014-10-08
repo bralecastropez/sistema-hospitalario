@@ -14,8 +14,10 @@ Namespace SH.BusinessLogic.Services
                 Dim cama As New Cama
                 cama.estado = False
                 cama.idPlanta = CInt(numeroPlanta)
-                db.AddToCama(cama)
+                'db.AddToCama(cama)
+                db.Cama.Add(cama)
                 db.SaveChanges()
+                MsgBox("Cama Agregada Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
                 MsgBox(ex.InnerException.ToString)

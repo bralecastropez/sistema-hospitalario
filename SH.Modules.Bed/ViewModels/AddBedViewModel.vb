@@ -84,13 +84,11 @@ Namespace SH.Modules.Bed.ViewModels
             _bedAccess.AddBed(NumeroPlanta)
             Plantas = _mainAccess.GetPlants
             Camas = _mainAccess.GetBeds
-            MsgBox("Cama Agregada Satisfactoriamente")
         End Sub
         Public Sub AddPlant()
             _plantAccess.AddPlant(NombrePlanta, NumeroCamas)
             Plantas = _mainAccess.GetPlants
             Camas = _mainAccess.GetBeds
-            MsgBox("Planta Agregada Satisfactoriamente")
         End Sub
     End Class
 End Namespace

@@ -13,7 +13,8 @@ Namespace SH.BusinessLogic.Services
                 Dim db As New dbHospitalEntities
                 Dim diagnostico As New Diagnostico
                 diagnostico.descripcion = descripcion
-                db.AddToDiagnostico(diagnostico)
+                'db.AddToDiagnostico(diagnostico)
+                db.Diagnostico.Add(diagnostico)
                 db.SaveChanges()
             Catch ex As Exception
                 MsgBox(ex.Message)
@@ -25,11 +26,13 @@ Namespace SH.BusinessLogic.Services
             Try
                 Dim db As New dbHospitalEntities
                 Dim medicoPaciente As New Medico_Paciente
-                medicoPaciente.codigoMedico = CInt(CodigoMedico)
-                medicoPaciente.DPI = CInt(DPI)
+                medicoPaciente.codigoMedico = CDbl(CodigoMedico)
+                medicoPaciente.DPI = CDbl(DPI)
                 medicoPaciente.fecha = DateAndTime.Now
-                db.AddToMedico_Paciente(medicoPaciente)
+                db.Medico_Paciente.Add(medicoPaciente)
+                'db.AddToMedico_Paciente(medicoPaciente)
                 db.SaveChanges()
+                MsgBox("Paciente Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
                 MsgBox(ex.InnerException.ToString)
@@ -44,11 +47,12 @@ Namespace SH.BusinessLogic.Services
                 If bed.estado = True Then
                     MsgBox("La Cama Está Ocupada")
                 Else
-                    bedPatient.idCama = CInt(idCama)
-                    bedPatient.DPI = CInt(DPI)
+                    bedPatient.idCama = CDbl(idCama)
+                    bedPatient.DPI = CDbl(DPI)
                     bedPatient.fecha = DateAndTime.Now
                     bed.estado = True
-                    db.AddToCama_Paciente(bedPatient)
+                    'db.AddToCama_Paciente(bedPatient)
+                    db.Cama_Paciente.Add(bedPatient)
                     db.SaveChanges()
                     MsgBox("Agregado Satisfactoriamente")
                 End If
@@ -66,7 +70,8 @@ Namespace SH.BusinessLogic.Services
                 'diagnosticDoctor.codigoMedico = CInt(CodigoMedico)
                 'diagnosticDoctor.codigoDiagnostico = CInt(CodigoDiagnostico)
                 'db.AddToDiagnostico_Medico(diagnosticDoctor)
-                db.SaveChanges()
+                'db.SaveChanges()
+                MsgBox("Diagnostico Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
                 MsgBox(ex.InnerException.ToString)
@@ -77,11 +82,13 @@ Namespace SH.BusinessLogic.Services
             Try
                 Dim db As New dbHospitalEntities
                 Dim diagnosticPatient As New Diagnostico_Paciente
-                diagnosticPatient.DPI = CInt(DPI)
-                diagnosticPatient.codigoDiagnostico = CInt(CodigoDiagnostico)
+                diagnosticPatient.DPI = CDbl(DPI)
+                diagnosticPatient.codigoDiagnostico = CDbl(CodigoDiagnostico)
                 diagnosticPatient.fecha = DateAndTime.Now
-                db.AddToDiagnostico_Paciente(diagnosticPatient)
+                'db.AddToDiagnostico_Paciente(diagnosticPatient)
+                db.Diagnostico_Paciente.Add(diagnosticPatient)
                 db.SaveChanges()
+                MsgBox("Diagnostico Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
                 MsgBox(ex.InnerException.ToString)
