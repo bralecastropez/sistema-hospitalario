@@ -37,13 +37,13 @@ Namespace SH.Modules.Card.ViewModels
                 OnPropertyChanged("Visitas")
             End Set
         End Property
-        Public Property TarjetaVisita As TarjetaVisita
+        Public Property Card As TarjetaVisita
             Get
                 Return _card
             End Get
             Set(value As TarjetaVisita)
                 _card = value
-                OnPropertyChanged("TarjetaVisita")
+                OnPropertyChanged("Card")
             End Set
         End Property
         Public Property DPI As String
@@ -75,6 +75,7 @@ Namespace SH.Modules.Card.ViewModels
         End Property
         Public Property AgregarTarjeta As ICommand
         Public Property ModificarTarjeta As ICommand
+        Public Property EliminarTarjeta As ICommand
 
         Public Sub New()
             ServiceLocator.RegisterService(Of ICardDataService)(New CardDataService)
@@ -83,6 +84,7 @@ Namespace SH.Modules.Card.ViewModels
             _cardAccess = GetService(Of ICardDataService)()
             AgregarTarjeta = New RelayCommand(AddressOf AgregarNuevaTarjeta)
             ModificarTarjeta = New RelayCommand(AddressOf EditarTarjeta)
+            EliminarTarjeta = New RelayCommand(AddressOf EliminarTarjetaSeleccionada)
             Pacientes = _mainAccess.GetPatients
             Visitas = _mainAccess.GetCards
         End Sub
@@ -92,9 +94,13 @@ Namespace SH.Modules.Card.ViewModels
             Visitas = _mainAccess.GetCards
         End Sub
         Public Sub EditarTarjeta()
-            HoraComienzo() = TarjetaVisita.horaComienzo
-            HoraFin() = TarjetaVisita.horaFin
 
+        End Sub
+        Public Sub EliminarTarjetaSeleccionada()
+            MsgBox(Card.DPI)
+            MsgBox(Card.horaComienzo.ToString)
+            MsgBox(Card.horaFin.ToString)
+            MsgBox(Card.noVisita)
         End Sub
     End Class
 End Namespace

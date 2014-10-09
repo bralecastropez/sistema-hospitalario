@@ -14,13 +14,12 @@ Namespace SH.BusinessLogic.Services
                 Dim db As New dbHospitalEntities
                 Dim tarjetaVisita As New TarjetaVisita
                 Dim tarjetas = (From visita In DataContext.DBEntities.TarjetaVisita Where visita.DPI = DPI).Count
-                MsgBox(tarjetas.ToString)
-                If tarjetas = 1 Or tarjetas = 2 Or tarjetas = 3 Or tarjetas = 4 Then
+                If tarjetas < 4 Then
                     tarjetaVisita.DPI = CDbl(DPI)
                     tarjetaVisita.horaComienzo = horaComienzo
                     tarjetaVisita.horaFin = horaFin
-                    'db.AddToTarjetaVisita(tarjetaVisita)
-                    db.TarjetaVisita.Add(tarjetaVisita)
+                    db.AddToTarjetaVisita(tarjetaVisita)
+                    'db.TarjetaVisita.Add(tarjetaVisita)
                     db.SaveChanges()
                     MsgBox("Tarjeta de Visita Agregada Satisfactoriamente")
                 Else

@@ -20,13 +20,13 @@ Namespace SH.Modules.Patient.ViewModels
         Private _mainAccess As IMainDataService
         Private _dgPacientes As List(Of Paciente)
 
-        Public Property Paciente As Paciente
+        Public Property Patient As Paciente
             Get
                 Return _paciente
             End Get
             Set(value As Paciente)
                 _paciente = value
-                OnPropertyChanged("Paciente")
+                OnPropertyChanged("Patient")
             End Set
         End Property
 
@@ -102,8 +102,7 @@ Namespace SH.Modules.Patient.ViewModels
         End Sub
 
         Public Sub EliminarNuevoPaciente()
-            _patientAccess.DeletePatient(Paciente)
-            MsgBox("Hola Mundo!!!")
+            MsgBox("No Se Puede Eliminar Un Paciente Porque Esta Enlazado A Otros Datos")
         End Sub
     End Class
 End Namespace

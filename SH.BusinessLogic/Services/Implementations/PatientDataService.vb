@@ -19,8 +19,8 @@ Namespace SH.BusinessLogic.Services
                 paciente.nombre = Nombre
                 paciente.apellido = Apellido
                 paciente.fechaNacimiento = FechaNacimiento
-                'db.AddToPaciente(paciente)
-                db.Paciente.Add(paciente)
+                db.AddToPaciente(paciente)
+                'db.Paciente.Add(paciente)
                 db.SaveChanges()
                 MsgBox("Paciente Agregado Satisfactoriamente")
             Catch ex As Exception
@@ -31,7 +31,8 @@ Namespace SH.BusinessLogic.Services
         Public Sub DeletePatient(Paciente As Paciente) Implements IPatientDataService.DeletePatient
             Try
                 Dim db As New dbHospitalEntities
-                db.Paciente.Remove(Paciente)
+                db.Paciente.DeleteObject(Paciente)
+                'db.Paciente.Remove(Paciente)
                 db.SaveChanges()
                 MsgBox("Paciente Eliminado Satisfactoriamente")
             Catch ex As Exception
