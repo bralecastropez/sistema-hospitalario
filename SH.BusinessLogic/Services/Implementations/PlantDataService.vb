@@ -8,20 +8,32 @@ Imports SH.Infrastructure.Helpers
 Namespace SH.BusinessLogic.Services
     Public Class PlantDataService
         Implements IPlantDataService
-
         Public Sub AddPlant(nombrePlanta As String, numeroCamas As String) Implements IPlantDataService.AddPlant
             Try
                 Dim db As New dbHospitalEntities
                 Dim planta As New Planta
                 planta.nombre = nombrePlanta
                 planta.noCamas = CDbl(numeroCamas)
-                db.AddToPlanta(planta)
-                'db.Planta.Add(planta)
-                db.SaveChanges()
+                'db.AddToPlanta(planta)
+                db.Planta.Add(planta)
+                DataContext.DBEntities.SaveChanges()
                 MsgBox("Planta Agregada Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
-                MsgBox(ex.InnerException.ToString)
+            End Try
+        End Sub
+
+        Public Sub UpdatePlant(idPlanta As String, nombre As String, numeroCamas As String) Implements IPlantDataService.UpdatePlant
+            Try
+                Dim db As New dbHospitalEntities
+                Dim plant = (From u In DataContext.DBEntities.Planta Where u.idPlanta = idPlanta Select u).FirstOrDefault
+
+                plant.nombre = nombre
+                plant.noCamas = numeroCamas
+                DataContext.DBEntities.SaveChanges()
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
             End Try
         End Sub
     End Class

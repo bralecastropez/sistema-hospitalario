@@ -17,9 +17,9 @@ Namespace SH.BusinessLogic.Services
                     tarjetaVisita.DPI = CDbl(DPI)
                     tarjetaVisita.horaComienzo = horaComienzo
                     tarjetaVisita.horaFin = horaFin
-                    db.AddToTarjetaVisita(tarjetaVisita)
-                    'db.TarjetaVisita.Add(tarjetaVisita)
-                    db.SaveChanges()
+                    'db.AddToTarjetaVisita(tarjetaVisita)
+                    db.TarjetaVisita.Add(tarjetaVisita)
+                    DataContext.DBEntities.SaveChanges()
                     MsgBox("Tarjeta de Visita Agregada Satisfactoriamente")
                 Else
                     MsgBox("El Paciente ha llegado al Maximo de Tarjetas de Visita")
@@ -37,7 +37,7 @@ Namespace SH.BusinessLogic.Services
                 Dim tarjetaVisita = (From tarj In DataContext.DBEntities.TarjetaVisita Where tarj.noVisita = noVisita Select tarj).SingleOrDefault
                 tarjetaVisita.horaComienzo = horaComienzo
                 tarjetaVisita.horaFin = horaFin
-                db.SaveChanges()
+                DataContext.DBEntities.SaveChanges()
                 MsgBox("Tarjeta de Visita Modificada Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
@@ -49,7 +49,8 @@ Namespace SH.BusinessLogic.Services
             Dim db As New dbHospitalEntities
             Dim card = (From u In DataContext.DBEntities.TarjetaVisita Where u.noVisita = noVisita Select u).FirstOrDefault
             ' db.TarjetaVisita.DeleteObject(card)
-            db.SaveChanges()
+            db.TarjetaVisita.Remove(card)
+            DataContext.DBEntities.SaveChanges()
             MsgBox("Tarjeta de Visita Eliminada Satisfactoriamente")
         End Sub
     End Class

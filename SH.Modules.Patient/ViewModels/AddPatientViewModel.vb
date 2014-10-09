@@ -163,6 +163,7 @@ Namespace SH.Modules.Patient.ViewModels
         Public Sub ActualizarNuevoPaciente()
             _patientAccess.UpdatePatient(Patient.DPI, NuevoNoIGSS, NuevoNombre, NuevoApellido, NuevoFechaNacimiento)
             Pacientes = _mainAccess.GetPatients
+            Update = Visibility.Hidden
         End Sub
         Public Sub EditarNuevoPaciente()
             NuevoNombre = Patient.nombre

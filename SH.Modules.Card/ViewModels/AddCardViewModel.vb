@@ -145,6 +145,7 @@ Namespace SH.Modules.Card.ViewModels
             _cardAccess.UpdateCard(idVista, NuevaHoraComienzo, NuevaHoraFin)
             Pacientes = _mainAccess.GetPatients
             Visitas = _mainAccess.GetCards
+            Update = Visibility.Hidden
         End Sub
     End Class
 End Namespace

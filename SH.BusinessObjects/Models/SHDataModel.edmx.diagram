@@ -4,25 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b12afd619adf4d88a1a4728d97e56ad3" Name="Diagrama1">
-        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Cama" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Cama_Paciente" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Diagnostico" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Diagnostico_Paciente" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Medico" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Medico_Paciente" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Paciente" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SH.BusinessObjects.Models.Planta" Width="1.5" PointX="1.5" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SH.BusinessObjects.Models.TarjetaVisita" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
-        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Cama__idPlanta__164452B1" ManuallyRouted="false" />
-        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Cama_Paci__idCam__1920BF5C" ManuallyRouted="false" />
-        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Cama_Pacien__DPI__1A14E395" ManuallyRouted="false" />
-        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996" ManuallyRouted="false" />
-        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D" ManuallyRouted="false" />
-        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725" ManuallyRouted="false" />
-        <AssociationConnector Association="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E" ManuallyRouted="false" />
-        <AssociationConnector Association="SH.BusinessObjects.Models.FK__TarjetaVisi__DPI__1CF15040" ManuallyRouted="false" />
-        <AssociationConnector Association="SH.BusinessObjects.Models.Diagnostico_Medico" ManuallyRouted="false" />
+      <Diagram DiagramId="d97bd36f83c34c1f9bb2d94594b14811" Name="Diagram1">
+        <EntityTypeShape EntityType="SH.BusinessObjects.Cama" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Cama_Paciente" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Diagnostico" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Diagnostico_Paciente" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Medico" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Medico_Paciente" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Paciente" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.Planta" Width="1.5" PointX="1.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SH.BusinessObjects.TarjetaVisita" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="SH.BusinessObjects.FK__Cama__idPlanta__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.FK__Cama_Paci__idCam__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.FK__Cama_Pacien__DPI__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.FK__Diagnosti__codig__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.FK__Diagnostico__DPI__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.FK__Medico_Pa__codig__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.FK__Medico_Paci__DPI__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.FK__TarjetaVisi__DPI__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="SH.BusinessObjects.Diagnostico_Medico" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

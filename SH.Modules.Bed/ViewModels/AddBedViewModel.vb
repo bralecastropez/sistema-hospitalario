@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Collections.ObjectModel
+Imports System.Windows
 Imports System.Windows.Input
 Imports System.Threading
 Imports SH.BusinessObjects.Models
@@ -13,6 +14,11 @@ Namespace SH.Modules.Bed.ViewModels
         Private _strNombrePlanta As String
         Private _strNumeroCamas As String
         Private _strNumeroPlanta As String
+        Private _strNuevoNombrePlanta As String
+        Private _strNuevoNumeroCamas As String
+        Private _strNuevoNumeroPlanta As String
+        Private _vblUpdatePlant As Visibility = Visibility.Hidden
+        Private _vblUpdateBed As Visibility = Visibility.Hidden
         Private _bedAccess As IBedDataService
         Private _plantAccess As IPlantDataService
         Private _mainAccess As IMainDataService
@@ -21,6 +27,24 @@ Namespace SH.Modules.Bed.ViewModels
         Private _bed As Cama
         Private _plant As Planta
 #Region "Properties"
+        Public Property UpdatePlant As Visibility
+            Get
+                Return _vblUpdatePlant
+            End Get
+            Set(value As Visibility)
+                _vblUpdatePlant = value
+                OnPropertyChanged("UpdatePlant")
+            End Set
+        End Property
+        Public Property UpdateBed As Visibility
+            Get
+                Return _vblUpdateBed
+            End Get
+            Set(value As Visibility)
+                _vblUpdateBed = value
+                OnPropertyChanged("UpdateBed")
+            End Set
+        End Property
         Public Property Bed As Cama
             Get
                 Return _bed
@@ -82,13 +106,43 @@ Namespace SH.Modules.Bed.ViewModels
             End Get
             Set(value As String)
                 _strNumeroPlanta = value
-                OnPropertyChanged("Numero Planta")
+                OnPropertyChanged("NumeroPlanta")
+            End Set
+        End Property
+
+        Public Property NuevoNombrePlanta As String
+            Get
+                Return _strNuevoNombrePlanta
+            End Get
+            Set(value As String)
+                _strNuevoNombrePlanta = value
+                OnPropertyChanged("NuevoNombrePlanta")
+            End Set
+        End Property
+        Public Property NuevoNumeroCamas As String
+            Get
+                Return _strNuevoNumeroCamas
+            End Get
+            Set(value As String)
+                _strNuevoNumeroCamas = value
+                OnPropertyChanged("NuevoNumeroCamas")
+            End Set
+        End Property
+        Public Property NuevoNumeroPlanta As String
+            Get
+                Return _strNuevoNumeroPlanta
+            End Get
+            Set(value As String)
+                _strNuevoNumeroPlanta = value
+                OnPropertyChanged("NuevoNumeroPlanta")
             End Set
         End Property
         Public Property AgregarPlanta As ICommand
         Public Property EditarPlanta As ICommand
         Public Property AgregarCama As ICommand
         Public Property EditarCama As ICommand
+        Public Property ActualizarCama As ICommand
+        Public Property ActualizarPlanta As ICommand
 #End Region
         
 
@@ -103,6 +157,8 @@ Namespace SH.Modules.Bed.ViewModels
             AgregarPlanta = New RelayCommand(AddressOf AddPlant)
             EditarCama = New RelayCommand(AddressOf EditBed)
             EditarPlanta = New RelayCommand(AddressOf EditPlant)
+            ActualizarCama = New RelayCommand(AddressOf SetBed)
+            ActualizarPlanta = New RelayCommand(AddressOf SetPlant)
             Plantas = _mainAccess.GetPlants
             Camas = _mainAccess.GetBeds
         End Sub
@@ -117,13 +173,25 @@ Namespace SH.Modules.Bed.ViewModels
             Camas = _mainAccess.GetBeds
         End Sub
         Public Sub EditBed()
-            MsgBox(Bed.estado)
-            MsgBox(Bed.idCama)
+            UpdateBed = Visibility.Visible
+            NuevoNumeroPlanta = Bed.idPlanta
         End Sub
         Public Sub EditPlant()
-            MsgBox(Plant.idPlanta)
-            MsgBox(Plant.nombre)
-            MsgBox(Plant.noCamas)
+            UpdatePlant = Visibility.Visible
+            NuevoNombrePlanta = Plant.nombre
+            NuevoNumeroCamas = Plant.noCamas
+        End Sub
+        Public Sub SetBed()
+            _bedAccess.UpdateBed(Bed.idCama, NuevoNumeroPlanta)
+            Plantas = _mainAccess.GetPlants
+            Camas = _mainAccess.GetBeds
+            UpdateBed = Visibility.Hidden
+        End Sub
+        Public Sub SetPlant()
+            Plantas = _mainAccess.GetPlants
+            Camas = _mainAccess.GetBeds
+            _plantAccess.UpdatePlant(Plant.idPlanta, NuevoNombrePlanta, NuevoNumeroCamas)
+            UpdateBed = Visibility.Hidden
         End Sub
     End Class
 End Namespace

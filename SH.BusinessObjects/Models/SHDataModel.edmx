@@ -4,64 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SH.BusinessObjects.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="SHBusinessObjectsModelsStoreContainer">
-          <EntitySet Name="Cama" EntityType="SH.BusinessObjects.Models.Store.Cama" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Cama_Paciente" EntityType="SH.BusinessObjects.Models.Store.Cama_Paciente" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Diagnostico" EntityType="SH.BusinessObjects.Models.Store.Diagnostico" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Diagnostico_Medico" EntityType="SH.BusinessObjects.Models.Store.Diagnostico_Medico" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Diagnostico_Paciente" EntityType="SH.BusinessObjects.Models.Store.Diagnostico_Paciente" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Medico" EntityType="SH.BusinessObjects.Models.Store.Medico" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Medico_Paciente" EntityType="SH.BusinessObjects.Models.Store.Medico_Paciente" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Paciente" EntityType="SH.BusinessObjects.Models.Store.Paciente" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Planta" EntityType="SH.BusinessObjects.Models.Store.Planta" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TarjetaVisita" EntityType="SH.BusinessObjects.Models.Store.TarjetaVisita" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK__Cama__idPlanta__164452B1" Association="SH.BusinessObjects.Models.Store.FK__Cama__idPlanta__164452B1">
-            <End Role="Planta" EntitySet="Planta" />
-            <End Role="Cama" EntitySet="Cama" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cama_Paci__idCam__1920BF5C" Association="SH.BusinessObjects.Models.Store.FK__Cama_Paci__idCam__1920BF5C">
-            <End Role="Cama" EntitySet="Cama" />
-            <End Role="Cama_Paciente" EntitySet="Cama_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cama_Pacien__DPI__1A14E395" Association="SH.BusinessObjects.Models.Store.FK__Cama_Pacien__DPI__1A14E395">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="Cama_Paciente" EntitySet="Cama_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Diagnosti__codig__22AA2996" Association="SH.BusinessObjects.Models.Store.FK__Diagnosti__codig__22AA2996">
-            <End Role="Diagnostico" EntitySet="Diagnostico" />
-            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Diagnosti__codig__25869641" Association="SH.BusinessObjects.Models.Store.FK__Diagnosti__codig__25869641">
-            <End Role="Medico" EntitySet="Medico" />
-            <End Role="Diagnostico_Medico" EntitySet="Diagnostico_Medico" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Diagnosti__codig__267ABA7A" Association="SH.BusinessObjects.Models.Store.FK__Diagnosti__codig__267ABA7A">
-            <End Role="Diagnostico" EntitySet="Diagnostico" />
-            <End Role="Diagnostico_Medico" EntitySet="Diagnostico_Medico" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Diagnostico__DPI__21B6055D" Association="SH.BusinessObjects.Models.Store.FK__Diagnostico__DPI__21B6055D">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Medico_Pa__codig__29572725" Association="SH.BusinessObjects.Models.Store.FK__Medico_Pa__codig__29572725">
-            <End Role="Medico" EntitySet="Medico" />
-            <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Medico_Paci__DPI__2A4B4B5E" Association="SH.BusinessObjects.Models.Store.FK__Medico_Paci__DPI__2A4B4B5E">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TarjetaVisi__DPI__1CF15040" Association="SH.BusinessObjects.Models.Store.FK__TarjetaVisi__DPI__1CF15040">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="TarjetaVisita" EntitySet="TarjetaVisita" />
-          </AssociationSet>
-        </EntityContainer>
+      <Schema Namespace="SH.BusinessObjects.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cama">
           <Key>
             <PropertyRef Name="idCama" />
           </Key>
-          <Property Name="idCama" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idCama" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idPlanta" Type="int" Nullable="false" />
           <Property Name="estado" Type="bit" Nullable="false" />
         </EntityType>
@@ -78,8 +26,8 @@
           <Key>
             <PropertyRef Name="codigoDiagnostico" />
           </Key>
-          <Property Name="codigoDiagnostico" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="codigoDiagnostico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Diagnostico_Medico">
           <Key>
@@ -103,8 +51,8 @@
             <PropertyRef Name="codigoMedico" />
           </Key>
           <Property Name="codigoMedico" Type="int" Nullable="false" />
-          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="apellido" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Medico_Paciente">
           <Key>
@@ -121,30 +69,30 @@
           </Key>
           <Property Name="DPI" Type="int" Nullable="false" />
           <Property Name="noIGSS" Type="int" Nullable="false" />
-          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="apellido" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="fechaNacimiento" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Planta">
           <Key>
             <PropertyRef Name="idPlanta" />
           </Key>
-          <Property Name="idPlanta" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="idPlanta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="noCamas" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TarjetaVisita">
           <Key>
             <PropertyRef Name="noVisita" />
           </Key>
-          <Property Name="noVisita" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="noVisita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DPI" Type="int" Nullable="false" />
           <Property Name="horaComienzo" Type="date" Nullable="false" />
           <Property Name="horaFin" Type="date" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Cama__idPlanta__164452B1">
-          <End Role="Planta" Type="SH.BusinessObjects.Models.Store.Planta" Multiplicity="1" />
-          <End Role="Cama" Type="SH.BusinessObjects.Models.Store.Cama" Multiplicity="*" />
+        <Association Name="FK__Cama__idPlanta__1BFD2C07">
+          <End Role="Planta" Type="Self.Planta" Multiplicity="1" />
+          <End Role="Cama" Type="Self.Cama" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Planta">
               <PropertyRef Name="idPlanta" />
@@ -154,9 +102,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cama_Paci__idCam__1920BF5C">
-          <End Role="Cama" Type="SH.BusinessObjects.Models.Store.Cama" Multiplicity="1" />
-          <End Role="Cama_Paciente" Type="SH.BusinessObjects.Models.Store.Cama_Paciente" Multiplicity="*" />
+        <Association Name="FK__Cama_Paci__idCam__1ED998B2">
+          <End Role="Cama" Type="Self.Cama" Multiplicity="1" />
+          <End Role="Cama_Paciente" Type="Self.Cama_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cama">
               <PropertyRef Name="idCama" />
@@ -166,9 +114,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cama_Pacien__DPI__1A14E395">
-          <End Role="Paciente" Type="SH.BusinessObjects.Models.Store.Paciente" Multiplicity="1" />
-          <End Role="Cama_Paciente" Type="SH.BusinessObjects.Models.Store.Cama_Paciente" Multiplicity="*" />
+        <Association Name="FK__Cama_Pacien__DPI__1FCDBCEB">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Cama_Paciente" Type="Self.Cama_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="DPI" />
@@ -178,21 +126,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnosti__codig__22AA2996">
-          <End Role="Diagnostico" Type="SH.BusinessObjects.Models.Store.Diagnostico" Multiplicity="1" />
-          <End Role="Diagnostico_Paciente" Type="SH.BusinessObjects.Models.Store.Diagnostico_Paciente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Diagnostico">
-              <PropertyRef Name="codigoDiagnostico" />
-            </Principal>
-            <Dependent Role="Diagnostico_Paciente">
-              <PropertyRef Name="codigoDiagnostico" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Diagnosti__codig__25869641">
-          <End Role="Medico" Type="SH.BusinessObjects.Models.Store.Medico" Multiplicity="1" />
-          <End Role="Diagnostico_Medico" Type="SH.BusinessObjects.Models.Store.Diagnostico_Medico" Multiplicity="*" />
+        <Association Name="FK__Diagnosti__codig__164452B1">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Diagnostico_Medico" Type="Self.Diagnostico_Medico" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medico">
               <PropertyRef Name="codigoMedico" />
@@ -202,9 +138,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnosti__codig__267ABA7A">
-          <End Role="Diagnostico" Type="SH.BusinessObjects.Models.Store.Diagnostico" Multiplicity="1" />
-          <End Role="Diagnostico_Medico" Type="SH.BusinessObjects.Models.Store.Diagnostico_Medico" Multiplicity="*" />
+        <Association Name="FK__Diagnosti__codig__173876EA">
+          <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="1" />
+          <End Role="Diagnostico_Medico" Type="Self.Diagnostico_Medico" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Diagnostico">
               <PropertyRef Name="codigoDiagnostico" />
@@ -214,9 +150,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnostico__DPI__21B6055D">
-          <End Role="Paciente" Type="SH.BusinessObjects.Models.Store.Paciente" Multiplicity="1" />
-          <End Role="Diagnostico_Paciente" Type="SH.BusinessObjects.Models.Store.Diagnostico_Paciente" Multiplicity="*" />
+        <Association Name="FK__Diagnosti__codig__267ABA7A">
+          <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="1" />
+          <End Role="Diagnostico_Paciente" Type="Self.Diagnostico_Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnostico">
+              <PropertyRef Name="codigoDiagnostico" />
+            </Principal>
+            <Dependent Role="Diagnostico_Paciente">
+              <PropertyRef Name="codigoDiagnostico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnostico__DPI__25869641">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Diagnostico_Paciente" Type="Self.Diagnostico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="DPI" />
@@ -227,8 +175,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Medico_Pa__codig__29572725">
-          <End Role="Medico" Type="SH.BusinessObjects.Models.Store.Medico" Multiplicity="1" />
-          <End Role="Medico_Paciente" Type="SH.BusinessObjects.Models.Store.Medico_Paciente" Multiplicity="*" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Medico_Paciente" Type="Self.Medico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medico">
               <PropertyRef Name="codigoMedico" />
@@ -239,8 +187,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Medico_Paci__DPI__2A4B4B5E">
-          <End Role="Paciente" Type="SH.BusinessObjects.Models.Store.Paciente" Multiplicity="1" />
-          <End Role="Medico_Paciente" Type="SH.BusinessObjects.Models.Store.Medico_Paciente" Multiplicity="*" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Medico_Paciente" Type="Self.Medico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="DPI" />
@@ -250,9 +198,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TarjetaVisi__DPI__1CF15040">
-          <End Role="Paciente" Type="SH.BusinessObjects.Models.Store.Paciente" Multiplicity="1" />
-          <End Role="TarjetaVisita" Type="SH.BusinessObjects.Models.Store.TarjetaVisita" Multiplicity="*" />
+        <Association Name="FK__TarjetaVisi__DPI__22AA2996">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="TarjetaVisita" Type="Self.TarjetaVisita" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="DPI" />
@@ -262,67 +210,72 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="SHBusinessObjectsStoreContainer">
+          <EntitySet Name="Cama" EntityType="Self.Cama" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cama_Paciente" EntityType="Self.Cama_Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagnostico" EntityType="Self.Diagnostico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagnostico_Medico" EntityType="Self.Diagnostico_Medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagnostico_Paciente" EntityType="Self.Diagnostico_Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medico_Paciente" EntityType="Self.Medico_Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Planta" EntityType="Self.Planta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TarjetaVisita" EntityType="Self.TarjetaVisita" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cama__idPlanta__1BFD2C07" Association="Self.FK__Cama__idPlanta__1BFD2C07">
+            <End Role="Planta" EntitySet="Planta" />
+            <End Role="Cama" EntitySet="Cama" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cama_Paci__idCam__1ED998B2" Association="Self.FK__Cama_Paci__idCam__1ED998B2">
+            <End Role="Cama" EntitySet="Cama" />
+            <End Role="Cama_Paciente" EntitySet="Cama_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cama_Pacien__DPI__1FCDBCEB" Association="Self.FK__Cama_Pacien__DPI__1FCDBCEB">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Cama_Paciente" EntitySet="Cama_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__codig__164452B1" Association="Self.FK__Diagnosti__codig__164452B1">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Diagnostico_Medico" EntitySet="Diagnostico_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__codig__173876EA" Association="Self.FK__Diagnosti__codig__173876EA">
+            <End Role="Diagnostico" EntitySet="Diagnostico" />
+            <End Role="Diagnostico_Medico" EntitySet="Diagnostico_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__codig__267ABA7A" Association="Self.FK__Diagnosti__codig__267ABA7A">
+            <End Role="Diagnostico" EntitySet="Diagnostico" />
+            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnostico__DPI__25869641" Association="Self.FK__Diagnostico__DPI__25869641">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medico_Pa__codig__29572725" Association="Self.FK__Medico_Pa__codig__29572725">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medico_Paci__DPI__2A4B4B5E" Association="Self.FK__Medico_Paci__DPI__2A4B4B5E">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TarjetaVisi__DPI__22AA2996" Association="Self.FK__TarjetaVisi__DPI__22AA2996">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="TarjetaVisita" EntitySet="TarjetaVisita" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SH.BusinessObjects.Models" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="dbHospitalEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Cama" EntityType="SH.BusinessObjects.Models.Cama" />
-          <EntitySet Name="Cama_Paciente" EntityType="SH.BusinessObjects.Models.Cama_Paciente" />
-          <EntitySet Name="Diagnostico" EntityType="SH.BusinessObjects.Models.Diagnostico" />
-          <EntitySet Name="Diagnostico_Paciente" EntityType="SH.BusinessObjects.Models.Diagnostico_Paciente" />
-          <EntitySet Name="Medico" EntityType="SH.BusinessObjects.Models.Medico" />
-          <EntitySet Name="Medico_Paciente" EntityType="SH.BusinessObjects.Models.Medico_Paciente" />
-          <EntitySet Name="Paciente" EntityType="SH.BusinessObjects.Models.Paciente" />
-          <EntitySet Name="Planta" EntityType="SH.BusinessObjects.Models.Planta" />
-          <EntitySet Name="TarjetaVisita" EntityType="SH.BusinessObjects.Models.TarjetaVisita" />
-          <AssociationSet Name="FK__Cama__idPlanta__164452B1" Association="SH.BusinessObjects.Models.FK__Cama__idPlanta__164452B1">
-            <End Role="Planta" EntitySet="Planta" />
-            <End Role="Cama" EntitySet="Cama" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cama_Paci__idCam__1920BF5C" Association="SH.BusinessObjects.Models.FK__Cama_Paci__idCam__1920BF5C">
-            <End Role="Cama" EntitySet="Cama" />
-            <End Role="Cama_Paciente" EntitySet="Cama_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cama_Pacien__DPI__1A14E395" Association="SH.BusinessObjects.Models.FK__Cama_Pacien__DPI__1A14E395">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="Cama_Paciente" EntitySet="Cama_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Diagnosti__codig__22AA2996" Association="SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996">
-            <End Role="Diagnostico" EntitySet="Diagnostico" />
-            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Diagnostico__DPI__21B6055D" Association="SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Medico_Pa__codig__29572725" Association="SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725">
-            <End Role="Medico" EntitySet="Medico" />
-            <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Medico_Paci__DPI__2A4B4B5E" Association="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TarjetaVisi__DPI__1CF15040" Association="SH.BusinessObjects.Models.FK__TarjetaVisi__DPI__1CF15040">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="TarjetaVisita" EntitySet="TarjetaVisita" />
-          </AssociationSet>
-          <AssociationSet Name="Diagnostico_Medico" Association="SH.BusinessObjects.Models.Diagnostico_Medico">
-            <End Role="Medico" EntitySet="Medico" />
-            <End Role="Diagnostico" EntitySet="Diagnostico" />
-          </AssociationSet>
-        </EntityContainer>
+      <Schema Namespace="SH.BusinessObjects" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cama">
           <Key>
             <PropertyRef Name="idCama" />
           </Key>
-          <Property Name="idCama" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="idCama" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idPlanta" Type="Int32" Nullable="false" />
           <Property Name="estado" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Planta" Relationship="SH.BusinessObjects.Models.FK__Cama__idPlanta__164452B1" FromRole="Cama" ToRole="Planta" />
-          <NavigationProperty Name="Cama_Paciente" Relationship="SH.BusinessObjects.Models.FK__Cama_Paci__idCam__1920BF5C" FromRole="Cama" ToRole="Cama_Paciente" />
+          <NavigationProperty Name="Planta" Relationship="Self.FK__Cama__idPlanta__1BFD2C07" FromRole="Cama" ToRole="Planta" />
+          <NavigationProperty Name="Cama_Paciente" Relationship="Self.FK__Cama_Paci__idCam__1ED998B2" FromRole="Cama" ToRole="Cama_Paciente" />
         </EntityType>
         <EntityType Name="Cama_Paciente">
           <Key>
@@ -332,17 +285,17 @@
           <Property Name="idCama" Type="Int32" Nullable="false" />
           <Property Name="DPI" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Cama" Relationship="SH.BusinessObjects.Models.FK__Cama_Paci__idCam__1920BF5C" FromRole="Cama_Paciente" ToRole="Cama" />
-          <NavigationProperty Name="Paciente" Relationship="SH.BusinessObjects.Models.FK__Cama_Pacien__DPI__1A14E395" FromRole="Cama_Paciente" ToRole="Paciente" />
+          <NavigationProperty Name="Cama" Relationship="Self.FK__Cama_Paci__idCam__1ED998B2" FromRole="Cama_Paciente" ToRole="Cama" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__Cama_Pacien__DPI__1FCDBCEB" FromRole="Cama_Paciente" ToRole="Paciente" />
         </EntityType>
         <EntityType Name="Diagnostico">
           <Key>
             <PropertyRef Name="codigoDiagnostico" />
           </Key>
-          <Property Name="codigoDiagnostico" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Diagnostico_Paciente" Relationship="SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996" FromRole="Diagnostico" ToRole="Diagnostico_Paciente" />
-          <NavigationProperty Name="Medico" Relationship="SH.BusinessObjects.Models.Diagnostico_Medico" FromRole="Diagnostico" ToRole="Medico" />
+          <Property Name="codigoDiagnostico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Diagnostico_Paciente" Relationship="Self.FK__Diagnosti__codig__267ABA7A" FromRole="Diagnostico" ToRole="Diagnostico_Paciente" />
+          <NavigationProperty Name="Medico" Relationship="Self.Diagnostico_Medico" FromRole="Diagnostico" ToRole="Medico" />
         </EntityType>
         <EntityType Name="Diagnostico_Paciente">
           <Key>
@@ -352,18 +305,18 @@
           <Property Name="codigoDiagnostico" Type="Int32" Nullable="false" />
           <Property Name="DPI" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Diagnostico" Relationship="SH.BusinessObjects.Models.FK__Diagnosti__codig__22AA2996" FromRole="Diagnostico_Paciente" ToRole="Diagnostico" />
-          <NavigationProperty Name="Paciente" Relationship="SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D" FromRole="Diagnostico_Paciente" ToRole="Paciente" />
+          <NavigationProperty Name="Diagnostico" Relationship="Self.FK__Diagnosti__codig__267ABA7A" FromRole="Diagnostico_Paciente" ToRole="Diagnostico" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__Diagnostico__DPI__25869641" FromRole="Diagnostico_Paciente" ToRole="Paciente" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
             <PropertyRef Name="codigoMedico" />
           </Key>
           <Property Name="codigoMedico" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="apellido" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Medico_Paciente" Relationship="SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725" FromRole="Medico" ToRole="Medico_Paciente" />
-          <NavigationProperty Name="Diagnostico" Relationship="SH.BusinessObjects.Models.Diagnostico_Medico" FromRole="Medico" ToRole="Diagnostico" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Medico_Paciente" Relationship="Self.FK__Medico_Pa__codig__29572725" FromRole="Medico" ToRole="Medico_Paciente" />
+          <NavigationProperty Name="Diagnostico" Relationship="Self.Diagnostico_Medico" FromRole="Medico" ToRole="Diagnostico" />
         </EntityType>
         <EntityType Name="Medico_Paciente">
           <Key>
@@ -373,8 +326,8 @@
           <Property Name="codigoMedico" Type="Int32" Nullable="false" />
           <Property Name="DPI" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Medico" Relationship="SH.BusinessObjects.Models.FK__Medico_Pa__codig__29572725" FromRole="Medico_Paciente" ToRole="Medico" />
-          <NavigationProperty Name="Paciente" Relationship="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E" FromRole="Medico_Paciente" ToRole="Paciente" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__Medico_Pa__codig__29572725" FromRole="Medico_Paciente" ToRole="Medico" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__Medico_Paci__DPI__2A4B4B5E" FromRole="Medico_Paciente" ToRole="Paciente" />
         </EntityType>
         <EntityType Name="Paciente">
           <Key>
@@ -382,36 +335,36 @@
           </Key>
           <Property Name="DPI" Type="Int32" Nullable="false" />
           <Property Name="noIGSS" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="apellido" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Cama_Paciente" Relationship="SH.BusinessObjects.Models.FK__Cama_Pacien__DPI__1A14E395" FromRole="Paciente" ToRole="Cama_Paciente" />
-          <NavigationProperty Name="Diagnostico_Paciente" Relationship="SH.BusinessObjects.Models.FK__Diagnostico__DPI__21B6055D" FromRole="Paciente" ToRole="Diagnostico_Paciente" />
-          <NavigationProperty Name="Medico_Paciente" Relationship="SH.BusinessObjects.Models.FK__Medico_Paci__DPI__2A4B4B5E" FromRole="Paciente" ToRole="Medico_Paciente" />
-          <NavigationProperty Name="TarjetaVisita" Relationship="SH.BusinessObjects.Models.FK__TarjetaVisi__DPI__1CF15040" FromRole="Paciente" ToRole="TarjetaVisita" />
+          <NavigationProperty Name="Cama_Paciente" Relationship="Self.FK__Cama_Pacien__DPI__1FCDBCEB" FromRole="Paciente" ToRole="Cama_Paciente" />
+          <NavigationProperty Name="Diagnostico_Paciente" Relationship="Self.FK__Diagnostico__DPI__25869641" FromRole="Paciente" ToRole="Diagnostico_Paciente" />
+          <NavigationProperty Name="Medico_Paciente" Relationship="Self.FK__Medico_Paci__DPI__2A4B4B5E" FromRole="Paciente" ToRole="Medico_Paciente" />
+          <NavigationProperty Name="TarjetaVisita" Relationship="Self.FK__TarjetaVisi__DPI__22AA2996" FromRole="Paciente" ToRole="TarjetaVisita" />
         </EntityType>
         <EntityType Name="Planta">
           <Key>
             <PropertyRef Name="idPlanta" />
           </Key>
-          <Property Name="idPlanta" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="idPlanta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="noCamas" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cama" Relationship="SH.BusinessObjects.Models.FK__Cama__idPlanta__164452B1" FromRole="Planta" ToRole="Cama" />
+          <NavigationProperty Name="Cama" Relationship="Self.FK__Cama__idPlanta__1BFD2C07" FromRole="Planta" ToRole="Cama" />
         </EntityType>
         <EntityType Name="TarjetaVisita">
           <Key>
             <PropertyRef Name="noVisita" />
           </Key>
-          <Property Name="noVisita" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="noVisita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DPI" Type="Int32" Nullable="false" />
           <Property Name="horaComienzo" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="horaFin" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Paciente" Relationship="SH.BusinessObjects.Models.FK__TarjetaVisi__DPI__1CF15040" FromRole="TarjetaVisita" ToRole="Paciente" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__TarjetaVisi__DPI__22AA2996" FromRole="TarjetaVisita" ToRole="Paciente" />
         </EntityType>
-        <Association Name="FK__Cama__idPlanta__164452B1">
-          <End Role="Planta" Type="SH.BusinessObjects.Models.Planta" Multiplicity="1" />
-          <End Role="Cama" Type="SH.BusinessObjects.Models.Cama" Multiplicity="*" />
+        <Association Name="FK__Cama__idPlanta__1BFD2C07">
+          <End Role="Planta" Type="Self.Planta" Multiplicity="1" />
+          <End Role="Cama" Type="Self.Cama" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Planta">
               <PropertyRef Name="idPlanta" />
@@ -421,9 +374,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cama_Paci__idCam__1920BF5C">
-          <End Role="Cama" Type="SH.BusinessObjects.Models.Cama" Multiplicity="1" />
-          <End Role="Cama_Paciente" Type="SH.BusinessObjects.Models.Cama_Paciente" Multiplicity="*" />
+        <Association Name="FK__Cama_Paci__idCam__1ED998B2">
+          <End Role="Cama" Type="Self.Cama" Multiplicity="1" />
+          <End Role="Cama_Paciente" Type="Self.Cama_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cama">
               <PropertyRef Name="idCama" />
@@ -433,9 +386,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cama_Pacien__DPI__1A14E395">
-          <End Role="Paciente" Type="SH.BusinessObjects.Models.Paciente" Multiplicity="1" />
-          <End Role="Cama_Paciente" Type="SH.BusinessObjects.Models.Cama_Paciente" Multiplicity="*" />
+        <Association Name="FK__Cama_Pacien__DPI__1FCDBCEB">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Cama_Paciente" Type="Self.Cama_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="DPI" />
@@ -445,9 +398,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnosti__codig__22AA2996">
-          <End Role="Diagnostico" Type="SH.BusinessObjects.Models.Diagnostico" Multiplicity="1" />
-          <End Role="Diagnostico_Paciente" Type="SH.BusinessObjects.Models.Diagnostico_Paciente" Multiplicity="*" />
+        <Association Name="FK__Diagnosti__codig__267ABA7A">
+          <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="1" />
+          <End Role="Diagnostico_Paciente" Type="Self.Diagnostico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Diagnostico">
               <PropertyRef Name="codigoDiagnostico" />
@@ -457,9 +410,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnostico__DPI__21B6055D">
-          <End Role="Paciente" Type="SH.BusinessObjects.Models.Paciente" Multiplicity="1" />
-          <End Role="Diagnostico_Paciente" Type="SH.BusinessObjects.Models.Diagnostico_Paciente" Multiplicity="*" />
+        <Association Name="FK__Diagnostico__DPI__25869641">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Diagnostico_Paciente" Type="Self.Diagnostico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="DPI" />
@@ -470,8 +423,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Medico_Pa__codig__29572725">
-          <End Role="Medico" Type="SH.BusinessObjects.Models.Medico" Multiplicity="1" />
-          <End Role="Medico_Paciente" Type="SH.BusinessObjects.Models.Medico_Paciente" Multiplicity="*" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="Medico_Paciente" Type="Self.Medico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medico">
               <PropertyRef Name="codigoMedico" />
@@ -482,8 +435,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Medico_Paci__DPI__2A4B4B5E">
-          <End Role="Paciente" Type="SH.BusinessObjects.Models.Paciente" Multiplicity="1" />
-          <End Role="Medico_Paciente" Type="SH.BusinessObjects.Models.Medico_Paciente" Multiplicity="*" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Medico_Paciente" Type="Self.Medico_Paciente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="DPI" />
@@ -493,9 +446,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TarjetaVisi__DPI__1CF15040">
-          <End Role="Paciente" Type="SH.BusinessObjects.Models.Paciente" Multiplicity="1" />
-          <End Role="TarjetaVisita" Type="SH.BusinessObjects.Models.TarjetaVisita" Multiplicity="*" />
+        <Association Name="FK__TarjetaVisi__DPI__22AA2996">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="TarjetaVisita" Type="Self.TarjetaVisita" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="DPI" />
@@ -506,17 +459,64 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Diagnostico_Medico">
-          <End Role="Medico" Type="SH.BusinessObjects.Models.Medico" Multiplicity="*" />
-          <End Role="Diagnostico" Type="SH.BusinessObjects.Models.Diagnostico" Multiplicity="*" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="*" />
         </Association>
+        <EntityContainer Name="dbHospitalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cama" EntityType="Self.Cama" />
+          <EntitySet Name="Cama_Paciente" EntityType="Self.Cama_Paciente" />
+          <EntitySet Name="Diagnostico" EntityType="Self.Diagnostico" />
+          <EntitySet Name="Diagnostico_Paciente" EntityType="Self.Diagnostico_Paciente" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" />
+          <EntitySet Name="Medico_Paciente" EntityType="Self.Medico_Paciente" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" />
+          <EntitySet Name="Planta" EntityType="Self.Planta" />
+          <EntitySet Name="TarjetaVisita" EntityType="Self.TarjetaVisita" />
+          <AssociationSet Name="FK__Cama__idPlanta__1BFD2C07" Association="Self.FK__Cama__idPlanta__1BFD2C07">
+            <End Role="Planta" EntitySet="Planta" />
+            <End Role="Cama" EntitySet="Cama" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cama_Paci__idCam__1ED998B2" Association="Self.FK__Cama_Paci__idCam__1ED998B2">
+            <End Role="Cama" EntitySet="Cama" />
+            <End Role="Cama_Paciente" EntitySet="Cama_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cama_Pacien__DPI__1FCDBCEB" Association="Self.FK__Cama_Pacien__DPI__1FCDBCEB">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Cama_Paciente" EntitySet="Cama_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__codig__267ABA7A" Association="Self.FK__Diagnosti__codig__267ABA7A">
+            <End Role="Diagnostico" EntitySet="Diagnostico" />
+            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnostico__DPI__25869641" Association="Self.FK__Diagnostico__DPI__25869641">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Diagnostico_Paciente" EntitySet="Diagnostico_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medico_Pa__codig__29572725" Association="Self.FK__Medico_Pa__codig__29572725">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medico_Paci__DPI__2A4B4B5E" Association="Self.FK__Medico_Paci__DPI__2A4B4B5E">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Medico_Paciente" EntitySet="Medico_Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TarjetaVisi__DPI__22AA2996" Association="Self.FK__TarjetaVisi__DPI__22AA2996">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="TarjetaVisita" EntitySet="TarjetaVisita" />
+          </AssociationSet>
+          <AssociationSet Name="Diagnostico_Medico" Association="Self.Diagnostico_Medico">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Diagnostico" EntitySet="Diagnostico" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SHBusinessObjectsModelsStoreContainer" CdmEntityContainer="dbHospitalEntities">
+        <EntityContainerMapping StorageEntityContainer="SHBusinessObjectsStoreContainer" CdmEntityContainer="dbHospitalEntities">
           <EntitySetMapping Name="Cama">
-            <EntityTypeMapping TypeName="SH.BusinessObjects.Models.Cama">
+            <EntityTypeMapping TypeName="SH.BusinessObjects.Cama">
               <MappingFragment StoreEntitySet="Cama">
                 <ScalarProperty Name="idCama" ColumnName="idCama" />
                 <ScalarProperty Name="idPlanta" ColumnName="idPlanta" />
@@ -525,7 +525,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cama_Paciente">
-            <EntityTypeMapping TypeName="SH.BusinessObjects.Models.Cama_Paciente">
+            <EntityTypeMapping TypeName="SH.BusinessObjects.Cama_Paciente">
               <MappingFragment StoreEntitySet="Cama_Paciente">
                 <ScalarProperty Name="idCama" ColumnName="idCama" />
                 <ScalarProperty Name="DPI" ColumnName="DPI" />
@@ -534,7 +534,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Diagnostico">
-            <EntityTypeMapping TypeName="SH.BusinessObjects.Models.Diagnostico">
+            <EntityTypeMapping TypeName="SH.BusinessObjects.Diagnostico">
               <MappingFragment StoreEntitySet="Diagnostico">
                 <ScalarProperty Name="codigoDiagnostico" ColumnName="codigoDiagnostico" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -542,7 +542,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Diagnostico_Paciente">
-            <EntityTypeMapping TypeName="SH.BusinessObjects.Models.Diagnostico_Paciente">
+            <EntityTypeMapping TypeName="SH.BusinessObjects.Diagnostico_Paciente">
               <MappingFragment StoreEntitySet="Diagnostico_Paciente">
                 <ScalarProperty Name="codigoDiagnostico" ColumnName="codigoDiagnostico" />
                 <ScalarProperty Name="DPI" ColumnName="DPI" />
@@ -551,7 +551,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Medico">
-            <EntityTypeMapping TypeName="SH.BusinessObjects.Models.Medico">
+            <EntityTypeMapping TypeName="SH.BusinessObjects.Medico">
               <MappingFragment StoreEntitySet="Medico">
                 <ScalarProperty Name="codigoMedico" ColumnName="codigoMedico" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -560,7 +560,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Medico_Paciente">
-            <EntityTypeMapping TypeName="SH.BusinessObjects.Models.Medico_Paciente">
+            <EntityTypeMapping TypeName="SH.BusinessObjects.Medico_Paciente">
               <MappingFragment StoreEntitySet="Medico_Paciente">
                 <ScalarProperty Name="codigoMedico" ColumnName="codigoMedico" />
                 <ScalarProperty Name="DPI" ColumnName="DPI" />
@@ -569,7 +569,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Paciente">
-            <EntityTypeMapping TypeName="SH.BusinessObjects.Models.Paciente">
+            <EntityTypeMapping TypeName="SH.BusinessObjects.Paciente">
               <MappingFragment StoreEntitySet="Paciente">
                 <ScalarProperty Name="DPI" ColumnName="DPI" />
                 <ScalarProperty Name="noIGSS" ColumnName="noIGSS" />
@@ -580,7 +580,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Planta">
-            <EntityTypeMapping TypeName="SH.BusinessObjects.Models.Planta">
+            <EntityTypeMapping TypeName="SH.BusinessObjects.Planta">
               <MappingFragment StoreEntitySet="Planta">
                 <ScalarProperty Name="idPlanta" ColumnName="idPlanta" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -589,7 +589,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TarjetaVisita">
-            <EntityTypeMapping TypeName="SH.BusinessObjects.Models.TarjetaVisita">
+            <EntityTypeMapping TypeName="SH.BusinessObjects.TarjetaVisita">
               <MappingFragment StoreEntitySet="TarjetaVisita">
                 <ScalarProperty Name="noVisita" ColumnName="noVisita" />
                 <ScalarProperty Name="DPI" ColumnName="DPI" />
@@ -598,7 +598,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Diagnostico_Medico" TypeName="SH.BusinessObjects.Models.Diagnostico_Medico" StoreEntitySet="Diagnostico_Medico">
+          <AssociationSetMapping Name="Diagnostico_Medico" TypeName="SH.BusinessObjects.Diagnostico_Medico" StoreEntitySet="Diagnostico_Medico">
             <EndProperty Name="Medico">
               <ScalarProperty Name="codigoMedico" ColumnName="codigoMedico" />
             </EndProperty>
@@ -620,8 +620,10 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

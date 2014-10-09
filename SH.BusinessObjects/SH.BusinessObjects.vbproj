@@ -71,12 +71,49 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\DataContext.vb" />
+    <Compile Include="Models\Cama.vb">
+      <DependentUpon>SHDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cama_Paciente.vb">
+      <DependentUpon>SHDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Diagnostico.vb">
+      <DependentUpon>SHDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Diagnostico_Paciente.vb">
+      <DependentUpon>SHDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityBusinessObject.vb" />
+    <Compile Include="Models\Medico.vb">
+      <DependentUpon>SHDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Medico_Paciente.vb">
+      <DependentUpon>SHDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Paciente.vb">
+      <DependentUpon>SHDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Planta.vb">
+      <DependentUpon>SHDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PrincipleBusinessObject.vb" />
+    <Compile Include="Models\SHDataModel.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHDataModel.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SHDataModel.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SHDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SHDataModel.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TarjetaVisita.vb">
+      <DependentUpon>SHDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -108,8 +145,18 @@
       <LastGenOutput>SHDataModel.Designer.vb</LastGenOutput>
     </EntityDeploy>
     <None Include="App.Config" />
+    <None Include="Models\SHDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SHDataModel.edmx</DependentUpon>
+      <LastGenOutput>SHDataModel.Context.vb</LastGenOutput>
+    </None>
     <None Include="Models\SHDataModel.edmx.diagram">
       <DependentUpon>SHDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="Models\SHDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SHDataModel.edmx</DependentUpon>
+      <LastGenOutput>SHDataModel.vb</LastGenOutput>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

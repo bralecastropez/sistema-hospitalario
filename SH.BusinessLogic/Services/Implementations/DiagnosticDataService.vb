@@ -13,9 +13,9 @@ Namespace SH.BusinessLogic.Services
                 Dim db As New dbHospitalEntities
                 Dim diagnostico As New Diagnostico
                 diagnostico.descripcion = descripcion
-                db.AddToDiagnostico(diagnostico)
-                'db.Diagnostico.Add(diagnostico)
-                db.SaveChanges()
+                'db.AddToDiagnostico(diagnostico)
+                db.Diagnostico.Add(diagnostico)
+                DataContext.DBEntities.SaveChanges()
             Catch ex As Exception
                 MsgBox(ex.Message)
                 MsgBox(ex.InnerException.ToString)
@@ -29,9 +29,9 @@ Namespace SH.BusinessLogic.Services
                 medicoPaciente.codigoMedico = CDbl(CodigoMedico)
                 medicoPaciente.DPI = CDbl(DPI)
                 medicoPaciente.fecha = DateAndTime.Now
-                'db.Medico_Paciente.Add(medicoPaciente)
-                db.AddToMedico_Paciente(medicoPaciente)
-                db.SaveChanges()
+                db.Medico_Paciente.Add(medicoPaciente)
+                'db.AddToMedico_Paciente(medicoPaciente)
+                DataContext.DBEntities.SaveChanges()
                 MsgBox("Paciente Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
@@ -51,9 +51,9 @@ Namespace SH.BusinessLogic.Services
                     bedPatient.DPI = CDbl(DPI)
                     bedPatient.fecha = DateAndTime.Now
                     bed.estado = True
-                    db.AddToCama_Paciente(bedPatient)
-                    'db.Cama_Paciente.Add(bedPatient)
-                    db.SaveChanges()
+                    'db.AddToCama_Paciente(bedPatient)
+                    db.Cama_Paciente.Add(bedPatient)
+                    DataContext.DBEntities.SaveChanges()
                     MsgBox("Agregado Satisfactoriamente")
                 End If
 
@@ -85,9 +85,9 @@ Namespace SH.BusinessLogic.Services
                 diagnosticPatient.DPI = CDbl(DPI)
                 diagnosticPatient.codigoDiagnostico = CDbl(CodigoDiagnostico)
                 diagnosticPatient.fecha = DateAndTime.Now
-                db.AddToDiagnostico_Paciente(diagnosticPatient)
-                'db.Diagnostico_Paciente.Add(diagnosticPatient)
-                db.SaveChanges()
+                'db.AddToDiagnostico_Paciente(diagnosticPatient)
+                db.Diagnostico_Paciente.Add(diagnosticPatient)
+                DataContext.DBEntities.SaveChanges()
                 MsgBox("Diagnostico Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
