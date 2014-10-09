@@ -18,6 +18,7 @@ Namespace SH.BusinessLogic.Services
                 'db.AddToCama(cama)
                 db.Cama.Add(cama)
                 DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
                 MsgBox("Cama Agregada Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
@@ -33,6 +34,7 @@ Namespace SH.BusinessLogic.Services
                 cama.idPlanta = CInt(numeroPlanta)
                 'db.AddToCama(cama)
                 DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
                 MsgBox("Cama Actualizada Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)

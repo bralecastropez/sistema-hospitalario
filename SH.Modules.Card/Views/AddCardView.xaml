@@ -20,7 +20,6 @@
         <Label Content="Listado De Pacientes" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" Width="280" HorizontalContentAlignment="Center" FontSize="13"/>
         <DataGrid x:Name="dgPacientes" IsReadOnly="True" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Pacientes}" HorizontalAlignment="Left" Margin="10,201,0,0" VerticalAlignment="Top" Height="89" Width="320"/>
         <Button Content="Editar" Command="{Binding EditarTarjeta}" HorizontalAlignment="Left" Margin="699,45,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Eliminar" Command="{Binding EliminarTarjeta}" HorizontalAlignment="Left" Margin="699,72,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Editar Visitas"         Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="779,10,0,0" VerticalAlignment="Top" Height="50" Width="280" HorizontalContentAlignment="Center" FontSize="30"/>
         <Label Content="Hora Comienzo"          Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="779,65,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Hora Finalizacion"      Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="779,96,0,0" VerticalAlignment="Top" Width="150"/>

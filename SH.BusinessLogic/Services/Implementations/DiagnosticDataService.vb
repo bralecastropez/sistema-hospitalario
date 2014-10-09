@@ -8,6 +8,7 @@ Imports SH.Infrastructure.Helpers
 Namespace SH.BusinessLogic.Services
     Public Class DiagnosticDataService
         Implements IDiagnosticDataService
+
         Public Sub AddDiagnostic(descripcion As String) Implements IDiagnosticDataService.AddDiagnostic
             Try
                 Dim db As New dbHospitalEntities
@@ -16,9 +17,9 @@ Namespace SH.BusinessLogic.Services
                 'db.AddToDiagnostico(diagnostico)
                 db.Diagnostico.Add(diagnostico)
                 DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
             Catch ex As Exception
                 MsgBox(ex.Message)
-                MsgBox(ex.InnerException.ToString)
             End Try
         End Sub
 
@@ -32,6 +33,7 @@ Namespace SH.BusinessLogic.Services
                 db.Medico_Paciente.Add(medicoPaciente)
                 'db.AddToMedico_Paciente(medicoPaciente)
                 DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
                 MsgBox("Paciente Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
@@ -54,19 +56,19 @@ Namespace SH.BusinessLogic.Services
                     'db.AddToCama_Paciente(bedPatient)
                     db.Cama_Paciente.Add(bedPatient)
                     DataContext.DBEntities.SaveChanges()
+                    db.SaveChanges()
                     MsgBox("Agregado Satisfactoriamente")
                 End If
 
             Catch ex As Exception
                 MsgBox(ex.Message)
-                MsgBox(ex.InnerException.ToString)
             End Try
         End Sub
 
         Public Sub AddDiagnosticToDoctor(CodigoMedico As String, CodigoDiagnostico As String) Implements IDiagnosticDataService.AddDiagnosticToDoctor
             Try
                 Dim db As New dbHospitalEntities
-                ' Dim diagnosticDoctor As New Diagnostico_Medico
+                'Dim diagnosticDoctor As New Diagnostico_Medico
                 'diagnosticDoctor.codigoMedico = CInt(CodigoMedico)
                 'diagnosticDoctor.codigoDiagnostico = CInt(CodigoDiagnostico)
                 'db.AddToDiagnostico_Medico(diagnosticDoctor)
@@ -74,7 +76,6 @@ Namespace SH.BusinessLogic.Services
                 MsgBox("Diagnostico Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
-                MsgBox(ex.InnerException.ToString)
             End Try
         End Sub
 
@@ -88,11 +89,25 @@ Namespace SH.BusinessLogic.Services
                 'db.AddToDiagnostico_Paciente(diagnosticPatient)
                 db.Diagnostico_Paciente.Add(diagnosticPatient)
                 DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
                 MsgBox("Diagnostico Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
-                MsgBox(ex.InnerException.ToString)
             End Try
         End Sub
-    End Class
+
+        Public Sub UpdateDiagnostic(idDiagnostico As String, nuevaDescripcion As String) Implements IDiagnosticDataService.UpdateDiagnostic
+            Try
+                Dim db As New dbHospitalEntities
+                Dim diagnosticPatient = (From u In DataContext.DBEntities.Diagnostico Where u.codigoDiagnostico = idDiagnostico Select u).FirstOrDefault
+                diagnosticPatient.descripcion = nuevaDescripcion
+                DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
+                MsgBox("Diagnostico Actualizado Correctamente")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End Sub
+
+        End Class
 End Namespace

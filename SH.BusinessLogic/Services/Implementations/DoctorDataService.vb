@@ -20,6 +20,7 @@ Namespace SH.BusinessLogic.Services
                 'db.AddToMedico(doctor)
                 db.Medico.Add(doctor)
                 DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
                 MsgBox("Doctor Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
@@ -28,10 +29,12 @@ Namespace SH.BusinessLogic.Services
 
         Public Sub UpdateDoctor(codigoMedico As String, nombre As String, Apellido As String) Implements IDoctorDataService.UpdateDoctor
             Try
+                Dim db As New dbHospitalEntities
                 Dim doctor = (From u In DataContext.DBEntities.Medico Where u.codigoMedico = codigoMedico Select u).FirstOrDefault
                 doctor.nombre = nombre
                 doctor.apellido = Apellido
                 DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
                 MsgBox("Doctor Actualizado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)

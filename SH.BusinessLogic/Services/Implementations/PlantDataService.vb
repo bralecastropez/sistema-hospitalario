@@ -18,6 +18,7 @@ Namespace SH.BusinessLogic.Services
                 db.Planta.Add(planta)
                 DataContext.DBEntities.SaveChanges()
                 MsgBox("Planta Agregada Satisfactoriamente")
+                db.SaveChanges()
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try
@@ -27,11 +28,10 @@ Namespace SH.BusinessLogic.Services
             Try
                 Dim db As New dbHospitalEntities
                 Dim plant = (From u In DataContext.DBEntities.Planta Where u.idPlanta = idPlanta Select u).FirstOrDefault
-
                 plant.nombre = nombre
                 plant.noCamas = numeroCamas
                 DataContext.DBEntities.SaveChanges()
-
+                db.SaveChanges()
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try

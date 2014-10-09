@@ -135,7 +135,6 @@ Namespace SH.Modules.Card.ViewModels
             Update = Visibility.Visible
         End Sub
         Public Sub EliminarTarjetaSeleccionada()
-            _cardAccess.DeleteCard(Card.noVisita)
             _cardAccess.UpdateCard(idVista, NuevaHoraComienzo, NuevaHoraFin)
             Pacientes = _mainAccess.GetPatients
             Visitas = _mainAccess.GetCards

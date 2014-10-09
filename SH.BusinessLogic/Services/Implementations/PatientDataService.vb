@@ -21,10 +21,10 @@ Namespace SH.BusinessLogic.Services
                 'db.AddToPaciente(paciente)
                 db.Paciente.Add(paciente)
                 DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
                 MsgBox("Paciente Agregado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
-                MsgBox(ex.InnerException.ToString)
             End Try
         End Sub
         Public Sub DeletePatient(NoIGSS As Integer) Implements IPatientDataService.DeletePatient
@@ -33,10 +33,10 @@ Namespace SH.BusinessLogic.Services
                 Dim patient = {From u In DataContext.DBEntities.Paciente Where u.noIGSS = NoIGSS Select u}.FirstOrDefault
                 db.Paciente.Remove(patient)
                 DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
                 MsgBox("Paciente Eliminado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
-                MsgBox(ex.InnerException.ToString)
             End Try
         End Sub
 
@@ -49,10 +49,10 @@ Namespace SH.BusinessLogic.Services
                 patient.apellido = Apellido
                 patient.fechaNacimiento = FechaNacimiento
                 DataContext.DBEntities.SaveChanges()
+                db.SaveChanges()
                 MsgBox("Paciente Modificado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
-                'MsgBox(ex.InnerException.ToString)
             End Try
         End Sub
     End Class

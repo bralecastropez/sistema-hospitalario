@@ -2,6 +2,7 @@
 Imports System.Collections.ObjectModel
 Imports System.Windows.Input
 Imports System.Threading
+Imports System.Windows
 Imports SH.BusinessObjects.Models
 Imports SH.Infrastructure
 Imports SH.Infrastructure.Helpers
@@ -13,15 +14,36 @@ Namespace SH.Modules.Diagnostic.ViewModels
 
         Private _strDPI As String
         Private _strDescripcion As String
+        Private _strNuevaDescripcion As String
         Private _strCodigoDiagnosticoPaciente As String
         Private _strCodigoDiagnosticoMedico As String
         Private _strCodigoMedico As String
+        Private _diagnostic As Diagnostico
+        Private _vblUpdate As Visibility = Visibility.Hidden
         Private _diagnosticAccess As IDiagnosticDataService
         Private _mainAccess As IMainDataService
         Private _dgPacientes As List(Of Paciente)
         Private _dgDiagnosticos As List(Of Diagnostico)
         Private _dgMedicos As List(Of Medico)
 
+        Public Property Diagnostic As Diagnostico
+            Get
+                Return _diagnostic
+            End Get
+            Set(value As Diagnostico)
+                _diagnostic = value
+                OnPropertyChanged("Diagnostic")
+            End Set
+        End Property
+        Public Property Update As Visibility
+            Get
+                Return _vblUpdate
+            End Get
+            Set(value As Visibility)
+                _vblUpdate = value
+                OnPropertyChanged("Update")
+            End Set
+        End Property
         Public Property Pacientes As List(Of Paciente)
             Get
                 Return _dgPacientes
@@ -68,6 +90,15 @@ Namespace SH.Modules.Diagnostic.ViewModels
                 OnPropertyChanged("Descripcion")
             End Set
         End Property
+        Public Property NuevaDescripcion As String
+            Get
+                Return _strNuevaDescripcion
+            End Get
+            Set(value As String)
+                _strNuevaDescripcion = value
+                OnPropertyChanged("DescripciNuevaDescripcionon")
+            End Set
+        End Property
         Public Property CodigoMedico As String
             Get
                 Return _strCodigoMedico
@@ -98,6 +129,8 @@ Namespace SH.Modules.Diagnostic.ViewModels
         Public Property AgregarDiagnostico As ICommand
         Public Property AgregarDiagnosticoAPaciente As ICommand
         Public Property AgregarDiagnosticoAMedico As ICommand
+        Public Property EditarDiagnostico As ICommand
+        Public Property ActualizarDiagnostico As ICommand
 
         Sub New()
             ServiceLocator.RegisterService(Of IDiagnosticDataService)(New DiagnosticDataService)
@@ -105,6 +138,8 @@ Namespace SH.Modules.Diagnostic.ViewModels
             AgregarDiagnostico = New RelayCommand(AddressOf AgregarNuevoDiagnostico)
             AgregarDiagnosticoAPaciente = New RelayCommand(AddressOf AgregarNuevoDiagnosticoAPaciente)
             AgregarDiagnosticoAMedico = New RelayCommand(AddressOf AgregarNuevoDiagnosticoMedico)
+            EditarDiagnostico = New RelayCommand(AddressOf Editar)
+            ActualizarDiagnostico = New RelayCommand(AddressOf SetDiagnostic)
             ServiceLocator.RegisterService(Of IMainDataService)(New MainDataService)
             _mainAccess = GetService(Of IMainDataService)()
             Pacientes = _mainAccess.GetPatients
@@ -129,6 +164,21 @@ Namespace SH.Modules.Diagnostic.ViewModels
             Pacientes = _mainAccess.GetPatients
             Medicos = _mainAccess.GetDoctors
             Diagnosticos = _mainAccess.GetDiagnostics
+        End Sub
+
+        Public Sub Editar()
+            Update = Visibility.Visible
+            Pacientes = _mainAccess.GetPatients
+            Medicos = _mainAccess.GetDoctors
+            Diagnosticos = _mainAccess.GetDiagnostics
+            NuevaDescripcion = Diagnostic.descripcion
+        End Sub
+        Public Sub SetDiagnostic()
+            _diagnosticAccess.UpdateDiagnostic(Diagnostic.codigoDiagnostico, NuevaDescripcion)
+            Pacientes = _mainAccess.GetPatients
+            Medicos = _mainAccess.GetDoctors
+            Diagnosticos = _mainAccess.GetDiagnostics
+            Update = Visibility.Hidden
         End Sub
     End Class
 End Namespace

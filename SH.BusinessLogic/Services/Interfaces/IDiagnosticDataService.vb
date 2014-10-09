@@ -7,5 +7,6 @@ Namespace SH.BusinessLogic.Services
         Sub AddBedToPatient(ByRef DPI As String, ByVal idCama As String)
         Sub AddDiagnosticToDoctor(ByVal CodigoMedico As String, ByVal CodigoDiagnostico As String)
         Sub AddDiagnosticToPatient(ByVal DPI As String, ByVal CodigoDiagnostico As String)
+        Sub UpdateDiagnostic(ByVal idDiagnostico As String, ByVal nuevaDescripcion As String)
     End Interface
 End Namespace

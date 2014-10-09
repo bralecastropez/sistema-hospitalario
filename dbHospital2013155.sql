@@ -77,7 +77,10 @@ CREATE TABLE Medico_Paciente(
 	FOREIGN KEY (codigoMedico) REFERENCES Medico(codigoMedico),
 	FOREIGN KEY (DPI) REFERENCES Paciente(DPI)
 )
-INSERT INTO Paciente(DPI, noIGSS, nombre, apellido, fechaNacimiento) VALUES(2013155,12345, 'Brandon','Castro','2013-12-12')
+INSERT INTO Paciente(DPI, noIGSS, nombre, apellido, fechaNacimiento) VALUES(2013155,12345, 'Brandon Alexander','Castro','2013-12-12')
+INSERT INTO Medico(codigoMedico, nombre, apellido) VALUES (2013155, 'Brandon Alexander', 'Castro Lopez')
+INSERT INTO Diagnostico(descripcion) VALUES ('Dolor de Espalda Severa')
+INSERT INTO Planta(nombre, noCamas) VALUES ('Primer Piso Recepcion', 25)
 SELECT COUNT(*) FROM TarjetaVisita 	WHERE DPI = 2013155
 SELECT * FROM Diagnostico
 SELECT * FROM Paciente

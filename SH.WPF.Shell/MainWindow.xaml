@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:myViewModels="clr-namespace:SH.Modules.Main.ViewModels"
     xmlns:myMainControl="clr-namespace:SH.Modules.Main.Views;assembly=SH.Modules.Main"
-    Title="Sistema Hospitalario" Height="415" Width="715" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Icon="External  Resources/lodgo.bmp">
+    Title="Sistema Hospitalario" Height="415" Width="715" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Icon="Resources/lodgo.bmp">
     <Grid>
         <myMainControl:MainView></myMainControl:MainView>
     </Grid>
