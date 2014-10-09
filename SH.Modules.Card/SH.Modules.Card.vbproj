@@ -85,12 +85,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\AddCardViewModel.vb" />
-    <Compile Include="ViewModels\UpdateCardViewModel.vb" />
     <Compile Include="Views\AddCardView.xaml.vb">
       <DependentUpon>AddCardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UpdateCardView.xaml.vb">
-      <DependentUpon>UpdateCardView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -129,10 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AddCardView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UpdateCardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -18,7 +18,27 @@ Namespace SH.Modules.Bed.ViewModels
         Private _mainAccess As IMainDataService
         Private _dgPlantas As List(Of Planta)
         Private _dgCamas As List(Of Cama)
-
+        Private _bed As Cama
+        Private _plant As Planta
+#Region "Properties"
+        Public Property Bed As Cama
+            Get
+                Return _bed
+            End Get
+            Set(value As Cama)
+                _bed = value
+                OnPropertyChanged("Bed")
+            End Set
+        End Property
+        Public Property Plant As Planta
+            Get
+                Return _plant
+            End Get
+            Set(value As Planta)
+                _plant = value
+                OnPropertyChanged("Plant")
+            End Set
+        End Property
         Public Property Camas As List(Of Cama)
             Get
                 Return _dgCamas
@@ -66,7 +86,11 @@ Namespace SH.Modules.Bed.ViewModels
             End Set
         End Property
         Public Property AgregarPlanta As ICommand
+        Public Property EditarPlanta As ICommand
         Public Property AgregarCama As ICommand
+        Public Property EditarCama As ICommand
+#End Region
+        
 
         Public Sub New()
             ServiceLocator.RegisterService(Of IBedDataService)(New BedDataService)
@@ -77,6 +101,8 @@ Namespace SH.Modules.Bed.ViewModels
             _mainAccess = GetService(Of IMainDataService)()
             AgregarCama = New RelayCommand(AddressOf AddBed)
             AgregarPlanta = New RelayCommand(AddressOf AddPlant)
+            EditarCama = New RelayCommand(AddressOf EditBed)
+            EditarPlanta = New RelayCommand(AddressOf EditPlant)
             Plantas = _mainAccess.GetPlants
             Camas = _mainAccess.GetBeds
         End Sub
@@ -89,6 +115,15 @@ Namespace SH.Modules.Bed.ViewModels
             _plantAccess.AddPlant(NombrePlanta, NumeroCamas)
             Plantas = _mainAccess.GetPlants
             Camas = _mainAccess.GetBeds
+        End Sub
+        Public Sub EditBed()
+            MsgBox(Bed.estado)
+            MsgBox(Bed.idCama)
+        End Sub
+        Public Sub EditPlant()
+            MsgBox(Plant.idPlanta)
+            MsgBox(Plant.nombre)
+            MsgBox(Plant.noCamas)
         End Sub
     End Class
 End Namespace

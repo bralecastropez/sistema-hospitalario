@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Doctor.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="600">
+             d:DesignHeight="300" Width="980">
     <Grid>
         <Label Content="Ingreso de Medicos" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="50" Width="280" HorizontalContentAlignment="Center" FontSize="30"/>
         <Label Content="Codigo del Medico: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
@@ -17,5 +17,12 @@
         <DataGrid x:Name="dgMedicos" IsReadOnly="True" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Medicos}" HorizontalAlignment="Left" Margin="310,45,0,0" VerticalAlignment="Top" Height="245" Width="280"/>
         <Label Content="Listado De  Medicos" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="280" HorizontalContentAlignment="Center" FontSize="15"/>
         <Button x:Name="btnAgregarMedico" Command="{Binding AgregarMedico}" Content="Agregar Medico" HorizontalAlignment="Left" Margin="165,158,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="595,45,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Edicion de Medicos" HorizontalAlignment="Left" Margin="677,10,0,0" VerticalAlignment="Top" Height="50" Width="280" HorizontalContentAlignment="Center" FontSize="30"/>
+        <Label Content="Nombre(s):" HorizontalAlignment="Left" Margin="677,60,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Apellido(s): " HorizontalAlignment="Left" Margin="682,91,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox x:Name="txtNombreMedico_Copy" HorizontalAlignment="Left" Height="23" Margin="832,68,0,0" TextWrapping="Wrap" Text="{Binding Nombre}" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="txtApellidoMedico_Copy" HorizontalAlignment="Left" Height="23" Margin="832,99,0,0" TextWrapping="Wrap" Text="{Binding Apellido}" VerticalAlignment="Top" Width="125"/>
+        <Button x:Name="btnAgregarMedico_Copy" Command="{Binding AgregarMedico}" Content="Actualizar Medico" HorizontalAlignment="Left" Margin="832,127,0,0" VerticalAlignment="Top" Width="125"/>
     </Grid>
 </UserControl>

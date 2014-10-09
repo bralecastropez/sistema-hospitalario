@@ -8,7 +8,6 @@ Imports SH.Infrastructure.Helpers
 Namespace SH.BusinessLogic.Services
     Public Class CardDataService
         Implements ICardDataService
-
         Public Sub AddCard(DPI As String, horaComienzo As Date, horaFin As Date) Implements ICardDataService.AddCard
             Try
                 Dim db As New dbHospitalEntities
@@ -30,6 +29,28 @@ Namespace SH.BusinessLogic.Services
                 MsgBox(ex.Message)
                 MsgBox(ex.InnerException.ToString)
             End Try
+        End Sub
+
+        Public Sub UpdateCard(noVisita As Integer, horaComienzo As Date, horaFin As Date) Implements ICardDataService.UpdateCard
+            Try
+                Dim db As New dbHospitalEntities
+                Dim tarjetaVisita = (From tarj In DataContext.DBEntities.TarjetaVisita Where tarj.noVisita = noVisita Select tarj).SingleOrDefault
+                tarjetaVisita.horaComienzo = horaComienzo
+                tarjetaVisita.horaFin = horaFin
+                db.SaveChanges()
+                MsgBox("Tarjeta de Visita Modificada Satisfactoriamente")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                'MsgBox(ex.InnerException.ToString)
+            End Try
+        End Sub
+
+        Public Sub DeleteCard(noVisita As Integer) Implements ICardDataService.DeleteCard
+            Dim db As New dbHospitalEntities
+            Dim card = (From u In DataContext.DBEntities.TarjetaVisita Where u.noVisita = noVisita Select u).FirstOrDefault
+            ' db.TarjetaVisita.DeleteObject(card)
+            db.SaveChanges()
+            MsgBox("Tarjeta de Visita Eliminada Satisfactoriamente")
         End Sub
     End Class
 End Namespace

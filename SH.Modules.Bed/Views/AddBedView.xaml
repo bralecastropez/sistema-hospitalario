@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Bed.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="600" Height="365">
+             mc:Ignorable="d" Height="535" Width="648">
     <Grid>
         <Label Content="Ingreso de Plantas" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="30" HorizontalContentAlignment="Center"/>
         <Label Content="Nombre: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
@@ -14,13 +14,25 @@
         <TextBox x:Name="txtNumeroCamas" Text="{Binding Path=NumeroCamas, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="165,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
         <Label Content="Numero de Planta: " HorizontalAlignment="Left" Margin="310,65,0,0" VerticalAlignment="Top" Width="150"/>
         <TextBox x:Name="txtNumeroPlanta" Text="{Binding Path=NumeroPlanta, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="465,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
-        <Button Content="Agregar Planta" Command="{Binding AgregarPlanta}" HorizontalAlignment="Left" Margin="140,156,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Agregar Cama" Command="{Binding AgregarCama}" HorizontalAlignment="Left" Margin="465,156,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Agregar Planta" Command="{Binding AgregarPlanta}" HorizontalAlignment="Left" Margin="190,127,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Agregar Cama" Command="{Binding AgregarCama}" HorizontalAlignment="Left" Margin="490,96,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="295,0,0,0" VerticalAlignment="Top" Width="10" Height="300"/>
-        <DataGrid x:Name="dgListadoDePlantas" IsReadOnly="True" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Plantas}" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Height="141" Width="198"/>
-        <Label Content="Listado De Plantas"  HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="198" HorizontalContentAlignment="Center" FontSize="14"/>
-        <DataGrid x:Name="dgListadoDeCamas" IsReadOnly="True" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Camas}" HorizontalAlignment="Left" Margin="371,214,0,0" VerticalAlignment="Top" Height="141" Width="156"/>
-        <Label Content="Listado De Camas"  HorizontalAlignment="Left" Margin="371,183,0,0" VerticalAlignment="Top" Width="156" HorizontalContentAlignment="Center" FontSize="14"/>
+        <DataGrid x:Name="dgListadoDePlantas" SelectedItem="{Binding Plant}" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Plantas}" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top" Height="167" Width="198"/>
+        <Label Content="Listado De Plantas"  HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="198" HorizontalContentAlignment="Center" FontSize="14"/>
+        <DataGrid x:Name="dgListadoDeCamas" SelectedItem="{Binding Bed}" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Camas}" HorizontalAlignment="Left" Margin="371,188,0,0" VerticalAlignment="Top" Height="167" Width="156"/>
+        <Label Content="Listado De Camas"  HorizontalAlignment="Left" Margin="371,154,0,0" VerticalAlignment="Top" Width="156" HorizontalContentAlignment="Center" FontSize="14"/>
+        <Button x:Name="btnEditarCama" Command="{Binding  EditarCama}" Content="Editar Cama" HorizontalAlignment="Left" Margin="532,214,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnEditarPlanta" Command="{Binding  EditarPlanta}" Content="Editar Planta" HorizontalAlignment="Left" Margin="213,214,0,0" VerticalAlignment="Top" Width="77"/>
+        <Label Content="Edicion de Plantas" Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="30" HorizontalContentAlignment="Center"/>
+        <Label Content="Nombre: " Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="10,415,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Numero de Camas: "  Visibility="{Binding Update}"  HorizontalAlignment="Left" Margin="10,446,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox x:Name="txtNombrePlanta_Copy" Visibility="{Binding Update}" Text="{Binding NombrePlanta, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="165,418,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
+        <TextBox x:Name="txtNumeroCamas_Copy" Visibility="{Binding Update}" Text="{Binding NumeroCamas, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="165,446,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Actualizar Planta" Visibility="{Binding Update}" Command="{Binding AgregarPlanta}" HorizontalAlignment="Left" Margin="190,474,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Edicion de Camas" Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="358,360,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="30" HorizontalContentAlignment="Center"/>
+        <Label Content="Numero de Planta: " Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="358,415,0,0" VerticalAlignment="Top" Width="150"/>
+        <TextBox x:Name="txtNumeroPlanta_Copy" Visibility="{Binding Update}" Text="{Binding NumeroPlanta, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="513,415,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Actualizar Cama" Visibility="{Binding Update}" Command="{Binding AgregarCama}" HorizontalAlignment="Left" Margin="538,443,0,0" VerticalAlignment="Top" Width="100"/>
 
 
     </Grid>

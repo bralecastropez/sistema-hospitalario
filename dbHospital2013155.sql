@@ -20,6 +20,18 @@ CREATE TABLE Medico(
 	apellido VARCHAR(255) NOT NULL,
 	PRIMARY KEY(codigoMedico)
 )
+CREATE TABLE Diagnostico(
+	codigoDiagnostico INT IDENTITY (1,1) NOT NULL,
+	descripcion VARCHAR (255) NOT NULL,
+	PRIMARY KEY (codigoDiagnostico)
+)
+CREATE TABLE Diagnostico_Medico(
+	codigoMedico INT NOT NULL,
+	codigoDiagnostico INT NOT NULL,
+	PRIMARY KEY (codigoMedico, codigoDiagnostico),
+	FOREIGN KEY (codigoMedico) REFERENCES Medico(codigoMedico),
+	FOREIGN KEY (codigoDiagnostico)	 REFERENCES Diagnostico(codigoDiagnostico)
+)
 CREATE TABLE Planta(
 	idPlanta INT IDENTITY (1,1) NOT  NULL,
 	nombre VARCHAR (255) NOT NULL,
@@ -49,24 +61,12 @@ CREATE TABLE TarjetaVisita(
 	PRIMARY KEY(noVisita),
 	FOREIGN KEY (DPI) REFERENCES Paciente(DPI)
 )
-CREATE TABLE Diagnostico(
-	codigoDiagnostico INT IDENTITY (1,1) NOT NULL,
-	descripcion VARCHAR (255) NOT NULL,
-	PRIMARY KEY (codigoDiagnostico)
-)
 CREATE TABLE Diagnostico_Paciente(
 	codigoDiagnostico INT NOT NULL,
 	DPI INT NOT NULL,
 	fecha DATE NOT NULL,
 	PRIMARY KEY (codigoDiagnostico, DPI),
 	FOREIGN KEY (DPI) REFERENCES Paciente(DPI),
-	FOREIGN KEY (codigoDiagnostico)	 REFERENCES Diagnostico(codigoDiagnostico)
-)
-CREATE TABLE Diagnostico_Medico(
-	codigoMedico INT NOT NULL,
-	codigoDiagnostico INT NOT NULL,
-	PRIMARY KEY (codigoMedico, codigoDiagnostico),
-	FOREIGN KEY (codigoMedico) REFERENCES Medico(codigoMedico),
 	FOREIGN KEY (codigoDiagnostico)	 REFERENCES Diagnostico(codigoDiagnostico)
 )
 CREATE TABLE Medico_Paciente(

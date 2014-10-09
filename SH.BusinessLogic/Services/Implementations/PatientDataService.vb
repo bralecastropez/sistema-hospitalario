@@ -9,7 +9,6 @@ Namespace SH.BusinessLogic.Services
     Public Class PatientDataService
         Implements IPatientDataService
 
-
         Public Sub AddPatient(idPaciente As String, NoIGSS As String, Nombre As String, Apellido As String, FechaNacimiento As Date) Implements IPatientDataService.AddPatient
             Try
                 Dim db As New dbHospitalEntities
@@ -28,16 +27,33 @@ Namespace SH.BusinessLogic.Services
                 MsgBox(ex.InnerException.ToString)
             End Try
         End Sub
-        Public Sub DeletePatient(Paciente As Paciente) Implements IPatientDataService.DeletePatient
+        Public Sub DeletePatient(NoIGSS As Integer) Implements IPatientDataService.DeletePatient
             Try
                 Dim db As New dbHospitalEntities
-                db.Paciente.DeleteObject(Paciente)
+                Dim patient = {From u In DataContext.DBEntities.Paciente Where u.noIGSS = NoIGSS Select u}.FirstOrDefault
+                db.Paciente.DeleteObject(patient)
                 'db.Paciente.Remove(Paciente)
                 db.SaveChanges()
                 MsgBox("Paciente Eliminado Satisfactoriamente")
             Catch ex As Exception
                 MsgBox(ex.Message)
                 MsgBox(ex.InnerException.ToString)
+            End Try
+        End Sub
+
+        Public Sub UpdatePatient(idPaciente As String, NoIGSS As String, Nombre As String, Apellido As String, FechaNacimiento As Date) Implements IPatientDataService.UpdatePatient
+            Try
+                Dim db As New dbHospitalEntities
+                Dim patient = (From u In DataContext.DBEntities.Paciente Where u.DPI = idPaciente Select u).FirstOrDefault
+                patient.noIGSS = CDbl(NoIGSS)
+                patient.nombre = Nombre
+                patient.apellido = Apellido
+                patient.fechaNacimiento = FechaNacimiento
+                db.SaveChanges()
+                MsgBox("Paciente Modificado Satisfactoriamente")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                'MsgBox(ex.InnerException.ToString)
             End Try
         End Sub
     End Class

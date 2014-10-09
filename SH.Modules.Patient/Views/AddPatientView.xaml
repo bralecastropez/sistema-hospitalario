@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Patient.ViewModels"
-             mc:Ignorable="d" Height="300" Width="716.668">
+             mc:Ignorable="d" Height="300" Width="1115.668">
     <Grid>
         <Label x:Name="lblInicio" FontSize="25" Content="Ingreso de Pacientes" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="50" HorizontalContentAlignment="Center"/>
         <Label Content="DPI:" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
@@ -20,6 +20,16 @@
         <TextBox x:Name="txtFechaNacimiento" HorizontalAlignment="Left" Height="23" Margin="165,192,0,0" TextWrapping="Wrap"    Text="{Binding Path=FechaNacimiento, Mode=TwoWay, StringFormat=dd-MM-yyyy}" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lbllista" FontSize="25" Content="Lista de Pacientes" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="307" Height="50" HorizontalContentAlignment="Center"/>
         <DataGrid x:Name="dgPacientes" IsReadOnly="True" SelectedItem="{Binding Patient}" SelectionMode="Single" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Pacientes}" HorizontalAlignment="Left" Margin="310,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="225" Width="307"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" Command="{Binding Eliminar}" HorizontalAlignment="Left" Margin="622,66,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnEditar" Content="Editar" Command="{Binding EditarPaciente}" HorizontalAlignment="Left" Margin="622,66,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label  FontSize="25" Content="Edicion de Pacientes"    Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="706,13,0,0" VerticalAlignment="Top" Width="280" Height="50" HorizontalContentAlignment="Center"/>
+        <Label Content="Apellido(s): "                          Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="706,130,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Nombre(s):  "                           Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="706,99,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="No.  IGSS:  "                           Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="706,68,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Fecha de Nacimiento:"                   Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="711,161,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Content="Actualizar"                            Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="706,194,0,0" VerticalAlignment="Top" Width="280" Height="50"   Command="{Binding ActualizarPaciente}"/>
+        <TextBox x:Name="txtNuevaNoIGSS"                        Visibility="{Binding Update}" HorizontalAlignment="Left" Height="23" Margin="861,71,0,0" TextWrapping="Wrap"                    Text="{Binding NuevoNoIGSS, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtNuevaNombre"                        Visibility="{Binding Update}" HorizontalAlignment="Left" Height="23" Margin="861,102,0,0" TextWrapping="Wrap"                   Text="{Binding NuevoNombre, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtNuevaApellido"                      Visibility="{Binding Update}" HorizontalAlignment="Left" Height="23" Margin="861,138,0,0" TextWrapping="Wrap"                   Text="{Binding NuevoApellido, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtNuevaFechaNacimiento"               Visibility="{Binding Update}" HorizontalAlignment="Left" Height="23" Margin="861,166,0,0" TextWrapping="Wrap"                   Text="{Binding NuevoFechaNacimiento, Mode=TwoWay, StringFormat=dd-MM-yyyy}" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </UserControl>

@@ -6,6 +6,7 @@ Imports SH.BusinessObjects.Models
 Imports SH.Infrastructure
 Imports SH.Infrastructure.Helpers
 Imports SH.BusinessLogic.Services
+Imports System.Windows
 
 Namespace SH.Modules.Patient.ViewModels
     Public Class AddPatientViewModel
@@ -16,6 +17,13 @@ Namespace SH.Modules.Patient.ViewModels
         Private _intDPI As String
         Private _intNoIGSS As String
         Private _datFecha As Date
+        Private _vblUpdate As Visibility = Visibility.Hidden
+        Private _strNuevoNombre As String
+        Private _strNuevoApellido As String
+        Private _intNuevoDPI As String
+        Private _intNuevoNoIGSS As String
+        Private _datNuevoFecha As Date
+
         Private _paciente As Paciente
         Private _mainAccess As IMainDataService
         Private _dgPacientes As List(Of Paciente)
@@ -37,6 +45,16 @@ Namespace SH.Modules.Patient.ViewModels
             Set(value As List(Of Paciente))
                 _dgPacientes = value
                 OnPropertyChanged("Pacientes")
+            End Set
+        End Property
+
+        Public Property Update As Visibility
+            Get
+                Return _vblUpdate
+            End Get
+            Set(value As Visibility)
+                _vblUpdate = value
+                OnPropertyChanged("Update")
             End Set
         End Property
 
@@ -85,8 +103,48 @@ Namespace SH.Modules.Patient.ViewModels
                 OnPropertyChanged("idPaciente")
             End Set
         End Property
+
+        Public Property NuevoNombre As String
+            Get
+                Return _strNuevoNombre
+            End Get
+            Set(value As String)
+                _strNuevoNombre = value
+                OnPropertyChanged("NuevoNombre")
+            End Set
+        End Property
+        Public Property NuevoApellido As String
+            Get
+                Return _strNuevoApellido
+            End Get
+            Set(value As String)
+                _strNuevoApellido = value
+                OnPropertyChanged("NuevoApellido")
+            End Set
+        End Property
+        Public Property NuevoFechaNacimiento As Date
+            Get
+                Return _datNuevoFecha
+            End Get
+            Set(value As Date)
+                _datNuevoFecha = value
+                OnPropertyChanged("NuevoFechaNacimiento")
+            End Set
+        End Property
+        Public Property NuevoNoIGSS As String
+            Get
+                Return _intNuevoNoIGSS
+            End Get
+            Set(value As String)
+                _intNuevoNoIGSS = value
+                OnPropertyChanged("NuevoNoIGSS")
+            End Set
+        End Property
+
         Public Property AgregarPaciente As ICommand
-        Public Property EliminarPaciente As ICommand
+        Public Property EditarPaciente As ICommand
+        Public Property ActualizarPaciente As ICommand
+
         Public Sub New()
             ServiceLocator.RegisterService(Of IPatientDataService)(New PatientDataService)
             _patientAccess = GetService(Of IPatientDataService)()
@@ -94,15 +152,24 @@ Namespace SH.Modules.Patient.ViewModels
             _mainAccess = GetService(Of IMainDataService)()
             Pacientes = _mainAccess.GetPatients
             AgregarPaciente = New RelayCommand(AddressOf AgregarNuevoPaciente)
-            EliminarPaciente = New RelayCommand(AddressOf EliminarNuevoPaciente)
+            EditarPaciente = New RelayCommand(AddressOf EditarNuevoPaciente)
+            ActualizarPaciente = New RelayCommand(AddressOf ActualizarNuevoPaciente)
         End Sub
         Public Sub AgregarNuevoPaciente()
             _patientAccess.AddPatient(idPaciente, NoIGSS, Nombre, Apellido, FechaNacimiento)
             Pacientes = _mainAccess.GetPatients
         End Sub
 
-        Public Sub EliminarNuevoPaciente()
-            MsgBox("No Se Puede Eliminar Un Paciente Porque Esta Enlazado A Otros Datos")
+        Public Sub ActualizarNuevoPaciente()
+            _patientAccess.UpdatePatient(Patient.DPI, NuevoNoIGSS, NuevoNombre, NuevoApellido, NuevoFechaNacimiento)
+            Pacientes = _mainAccess.GetPatients
+        End Sub
+        Public Sub EditarNuevoPaciente()
+            NuevoNombre = Patient.nombre
+            NuevoApellido = Patient.apellido
+            NuevoNoIGSS = Patient.noIGSS
+            NuevoFechaNacimiento = Patient.fechaNacimiento
+            Update = Visibility.Visible
         End Sub
     End Class
 End Namespace
