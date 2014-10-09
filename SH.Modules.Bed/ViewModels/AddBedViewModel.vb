@@ -191,7 +191,7 @@ Namespace SH.Modules.Bed.ViewModels
             Plantas = _mainAccess.GetPlants
             Camas = _mainAccess.GetBeds
             _plantAccess.UpdatePlant(Plant.idPlanta, NuevoNombrePlanta, NuevoNumeroCamas)
-            UpdateBed = Visibility.Hidden
+            UpdatePlant = Visibility.Hidden
         End Sub
     End Class
 End Namespace
