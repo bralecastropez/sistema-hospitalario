@@ -12,6 +12,7 @@ Namespace SH.Modules.Diagnostic.ViewModels
     Public Class AddDiagnosticViewModel
         Inherits ViewModelBase
 
+#Region "Declarations"
         Private _strDPI As String
         Private _strDescripcion As String
         Private _strNuevaDescripcion As String
@@ -25,7 +26,9 @@ Namespace SH.Modules.Diagnostic.ViewModels
         Private _dgPacientes As List(Of Paciente)
         Private _dgDiagnosticos As List(Of Diagnostico)
         Private _dgMedicos As List(Of Medico)
+#End Region
 
+#Region "Properties"
         Public Property Diagnostic As Diagnostico
             Get
                 Return _diagnostic
@@ -131,6 +134,9 @@ Namespace SH.Modules.Diagnostic.ViewModels
         Public Property AgregarDiagnosticoAMedico As ICommand
         Public Property EditarDiagnostico As ICommand
         Public Property ActualizarDiagnostico As ICommand
+#End Region
+
+        
 
         Sub New()
             ServiceLocator.RegisterService(Of IDiagnosticDataService)(New DiagnosticDataService)
@@ -147,6 +153,7 @@ Namespace SH.Modules.Diagnostic.ViewModels
             Diagnosticos = _mainAccess.GetDiagnostics
         End Sub
 
+#Region "Methods"
         Public Sub AgregarNuevoDiagnostico()
             _diagnosticAccess.AddDiagnostic(Descripcion)
             Pacientes = _mainAccess.GetPatients
@@ -167,11 +174,15 @@ Namespace SH.Modules.Diagnostic.ViewModels
         End Sub
 
         Public Sub Editar()
-            Update = Visibility.Visible
-            Pacientes = _mainAccess.GetPatients
-            Medicos = _mainAccess.GetDoctors
-            Diagnosticos = _mainAccess.GetDiagnostics
-            NuevaDescripcion = Diagnostic.descripcion
+            If Not Diagnostic Is Nothing Then
+                Update = Visibility.Visible
+                Pacientes = _mainAccess.GetPatients
+                Medicos = _mainAccess.GetDoctors
+                Diagnosticos = _mainAccess.GetDiagnostics
+                NuevaDescripcion = Diagnostic.descripcion
+            Else
+                MsgBox("Debe Seleccionar Una Fila")
+            End If
         End Sub
         Public Sub SetDiagnostic()
             _diagnosticAccess.UpdateDiagnostic(Diagnostic.codigoDiagnostico, NuevaDescripcion)
@@ -180,5 +191,6 @@ Namespace SH.Modules.Diagnostic.ViewModels
             Diagnosticos = _mainAccess.GetDiagnostics
             Update = Visibility.Hidden
         End Sub
+#End Region
     End Class
 End Namespace

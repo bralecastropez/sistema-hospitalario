@@ -1,10 +1,9 @@
 ﻿<Window x:Class="SH.WPF.Shell.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:myViewModels="clr-namespace:SH.Modules.Main.ViewModels"
     xmlns:myMainControl="clr-namespace:SH.Modules.Main.Views;assembly=SH.Modules.Main"
-    Title="Sistema Hospitalario" Height="415" Width="715" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Icon="Resources/lodgo.bmp">
+    Title="Sistema Hospitalario" Height="820" Width="1160" WindowStartupLocation="CenterScreen" Icon="Resources/lodgo.bmp" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
     <Grid>
-        <myMainControl:MainView></myMainControl:MainView>
+        <myMainControl:MainView Margin="270,0,247,667"></myMainControl:MainView>
     </Grid>
 </Window>

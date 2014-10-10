@@ -5,23 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Plant.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" Width="634">
+             d:DesignHeight="300" Width="634" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
     <Grid>
         <Label Content="Asignacion de Cama a Paciente" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="18" HorizontalContentAlignment="Center"/>
         <Label Content="Numero de Cama: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="DPI del Paciente: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="150"/>
-        <Button Content="Agregar" Command="{Binding AgregarCamaAPaciente}" HorizontalAlignment="Left" Margin="165,124,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Agregar" Command="{Binding AgregarCamaAPaciente}" HorizontalAlignment="Left" Margin="165,124,0,0" VerticalAlignment="Top" Width="125" BorderBrush="{x:Null}"/>
         <TextBox x:Name="txtNumeroCama" HorizontalAlignment="Left" Height="23" Margin="165,68,0,0" TextWrapping="Wrap" Text="{Binding NumeroCama}" VerticalAlignment="Top" Width="125"/>
         <TextBox x:Name="txtDPI" HorizontalAlignment="Left" Height="23" Margin="165,96,0,0" TextWrapping="Wrap" Text="{Binding DPICama}" VerticalAlignment="Top" Width="125"/>
         <Label Content="Asignacion de Medico a Paciente" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="280" Height="50" FontSize="18" HorizontalContentAlignment="Center"/>
         <Label Content="Codigo del Medico: " HorizontalAlignment="Left" Margin="310,65,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="DPI del Paciente: " HorizontalAlignment="Left" Margin="310,96,0,0" VerticalAlignment="Top" Width="150"/>
-        <Button Content="Agregar" Command="{Binding AgregarMedicoAPaciente}" HorizontalAlignment="Left" Margin="465,124,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Agregar" Command="{Binding AgregarMedicoAPaciente}" HorizontalAlignment="Left" Margin="465,124,0,0" VerticalAlignment="Top" Width="125" BorderBrush="{x:Null}"/>
         <TextBox x:Name="txtCodigoMedico" HorizontalAlignment="Left" Height="23" Margin="465,68,0,0" TextWrapping="Wrap" Text="{Binding CodigoMedico}" VerticalAlignment="Top" Width="125"/>
         <TextBox x:Name="txtDPIMedico" HorizontalAlignment="Left" Height="23" Margin="465,96,0,0" TextWrapping="Wrap" Text="{Binding DPIMedico}" VerticalAlignment="Top" Width="125"/>
-        <DataGrid x:Name="dgPacientes" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Pacientes}" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="215" Height="107" IsReadOnly="True"/>
-        <DataGrid x:Name="dgMedicos" CanUserAddRows="False"  HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Medicos}" HorizontalAlignment="Left" Margin="420,183,0,0" VerticalAlignment="Top" Width="200" Height="107" IsReadOnly="True"/>
-        <DataGrid x:Name="dgCamas" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Camas}" HorizontalAlignment="Left" Margin="240,183,0,0" VerticalAlignment="Top" Width="153" Height="107" IsReadOnly="True"/>
+        <DataGrid x:Name="dgPacientes" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Pacientes}" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" Width="215" Height="107" IsReadOnly="True" AlternatingRowBackground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <DataGrid x:Name="dgMedicos" CanUserAddRows="False"  HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Medicos}" HorizontalAlignment="Left" Margin="420,183,0,0" VerticalAlignment="Top" Width="200" Height="107" IsReadOnly="True" AlternatingRowBackground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <DataGrid x:Name="dgCamas" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Camas}" HorizontalAlignment="Left" Margin="240,183,0,0" VerticalAlignment="Top" Width="153" Height="107" IsReadOnly="True" AlternatingRowBackground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
         <Label Content="Listado De Pacientes" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Width="200" FontSize="13" HorizontalContentAlignment="Center"/>
         <Label Content="Listado De Camas" HorizontalAlignment="Left" Margin="215,151,0,0" VerticalAlignment="Top" Width="200" FontSize="13" HorizontalContentAlignment="Center"/>
         <Label Content="Listado De Medicos" HorizontalAlignment="Left" Margin="420,151,0,0" VerticalAlignment="Top" Width="200" HorizontalContentAlignment="Center" FontSize="13"/>

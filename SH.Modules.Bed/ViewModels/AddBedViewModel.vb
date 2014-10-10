@@ -11,6 +11,7 @@ Imports SH.BusinessLogic.Services
 Namespace SH.Modules.Bed.ViewModels
     Public Class AddBedViewModel
         Inherits ViewModelBase
+#Region "Declarations"
         Private _strNombrePlanta As String
         Private _strNumeroCamas As String
         Private _strNumeroPlanta As String
@@ -26,6 +27,7 @@ Namespace SH.Modules.Bed.ViewModels
         Private _dgCamas As List(Of Cama)
         Private _bed As Cama
         Private _plant As Planta
+#End Region
 #Region "Properties"
         Public Property UpdatePlant As Visibility
             Get
@@ -144,7 +146,6 @@ Namespace SH.Modules.Bed.ViewModels
         Public Property ActualizarCama As ICommand
         Public Property ActualizarPlanta As ICommand
 #End Region
-        
 
         Public Sub New()
             ServiceLocator.RegisterService(Of IBedDataService)(New BedDataService)
@@ -162,6 +163,8 @@ Namespace SH.Modules.Bed.ViewModels
             Plantas = _mainAccess.GetPlants
             Camas = _mainAccess.GetBeds
         End Sub
+
+#Region "Methods"
         Public Sub AddBed()
             _bedAccess.AddBed(NumeroPlanta)
             Plantas = _mainAccess.GetPlants
@@ -173,13 +176,21 @@ Namespace SH.Modules.Bed.ViewModels
             Camas = _mainAccess.GetBeds
         End Sub
         Public Sub EditBed()
-            UpdateBed = Visibility.Visible
-            NuevoNumeroPlanta = Bed.idPlanta
+            If Not Bed Is Nothing Then
+                UpdateBed = Visibility.Visible
+                NuevoNumeroPlanta = Bed.idPlanta
+            Else
+                MsgBox("Debe Seleccionar Una Fila")
+            End If
         End Sub
         Public Sub EditPlant()
-            UpdatePlant = Visibility.Visible
-            NuevoNombrePlanta = Plant.nombre
-            NuevoNumeroCamas = Plant.noCamas
+            If Not Plant Is Nothing Then
+                UpdatePlant = Visibility.Visible
+                NuevoNombrePlanta = Plant.nombre
+                NuevoNumeroCamas = Plant.noCamas
+            Else
+                MsgBox("Debe Seleccionar Una Fila")
+            End If
         End Sub
         Public Sub SetBed()
             _bedAccess.UpdateBed(Bed.idCama, NuevoNumeroPlanta)
@@ -193,5 +204,7 @@ Namespace SH.Modules.Bed.ViewModels
             _plantAccess.UpdatePlant(Plant.idPlanta, NuevoNombrePlanta, NuevoNumeroCamas)
             UpdatePlant = Visibility.Hidden
         End Sub
+#End Region
     End Class
+
 End Namespace

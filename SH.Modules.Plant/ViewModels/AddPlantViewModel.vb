@@ -10,6 +10,7 @@ Imports SH.BusinessLogic.Services
 Namespace SH.Modules.Plant.ViewModels
     Public Class AddPlantViewModel
         Inherits ViewModelBase
+#Region "Declarations"
         Private _strDPIMedico As String
         Private _strDPICama As String
         Private _strNumeroCama As String
@@ -19,7 +20,9 @@ Namespace SH.Modules.Plant.ViewModels
         Private _dgMedicos As List(Of Medico)
         Private _dgCamas As List(Of Cama)
         Private _dgPacientes As List(Of Paciente)
+#End Region
 
+#Region "Properties"
         Public Property Medicos As List(Of Medico)
             Get
                 Return _dgMedicos
@@ -87,6 +90,9 @@ Namespace SH.Modules.Plant.ViewModels
         Public Property AgregarCamaAPaciente As ICommand
         Public Property AgregarMedicoAPaciente As ICommand
 
+#End Region
+
+        
         Sub New()
             ServiceLocator.RegisterService(Of IDiagnosticDataService)(New DiagnosticDataService)
             _DiagnosticAccess = GetService(Of IDiagnosticDataService)()
@@ -99,6 +105,7 @@ Namespace SH.Modules.Plant.ViewModels
             Camas = _mainAccess.GetBeds
         End Sub
 
+#Region "Methods"
         Public Sub AddBedToPatient()
             _DiagnosticAccess.AddBedToPatient(DPICama, NumeroCama)
             Pacientes = _mainAccess.GetPatients
@@ -111,5 +118,7 @@ Namespace SH.Modules.Plant.ViewModels
             Medicos = _mainAccess.GetDoctors
             Camas = _mainAccess.GetBeds
         End Sub
+#End Region
+        
     End Class
 End Namespace

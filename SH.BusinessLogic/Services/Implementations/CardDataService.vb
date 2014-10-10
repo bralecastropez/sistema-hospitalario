@@ -18,8 +18,7 @@ Namespace SH.BusinessLogic.Services
                     tarjetaVisita.DPI = CDbl(DPI)
                     tarjetaVisita.horaComienzo = horaComienzo
                     tarjetaVisita.horaFin = horaFin
-                    'db.AddToTarjetaVisita(tarjetaVisita)
-                    db.TarjetaVisita.Add(tarjetaVisita)
+                    db.TarjetaVisita.AddObject(tarjetaVisita)
                     DataContext.DBEntities.SaveChanges()
                     db.SaveChanges()
                     MsgBox("Tarjeta de Visita Agregada Satisfactoriamente")

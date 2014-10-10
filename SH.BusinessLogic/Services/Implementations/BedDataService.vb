@@ -15,8 +15,7 @@ Namespace SH.BusinessLogic.Services
                 Dim cama As New Cama
                 cama.estado = False
                 cama.idPlanta = CInt(numeroPlanta)
-                'db.AddToCama(cama)
-                db.Cama.Add(cama)
+                db.Cama.AddObject(cama)
                 DataContext.DBEntities.SaveChanges()
                 db.SaveChanges()
                 MsgBox("Cama Agregada Satisfactoriamente")
@@ -32,7 +31,6 @@ Namespace SH.BusinessLogic.Services
                 Dim cama = (From u In DataContext.DBEntities.Cama Where u.idCama = idCama Select u).FirstOrDefault
                 cama.estado = False
                 cama.idPlanta = CInt(numeroPlanta)
-                'db.AddToCama(cama)
                 DataContext.DBEntities.SaveChanges()
                 db.SaveChanges()
                 MsgBox("Cama Actualizada Satisfactoriamente")

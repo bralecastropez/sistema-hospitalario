@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:myViewModels="clr-namespace:SH.Modules.Card.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" Width="1077.68">
+             d:DesignHeight="300" Width="1077.68" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
     <Grid>
         <Label Content="Ingreso de Tarjetas de Visita" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" Height="39" HorizontalContentAlignment="Center" FontSize="21"/>
         <Label Content="DPI del Paciente: " HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="150"/>
@@ -15,15 +15,15 @@
         <TextBox x:Name="txtHoraComienzo" HorizontalAlignment="Left" Height="23" Margin="165,88,0,0" TextWrapping="Wrap"    Text="{Binding HoraComienzo}" VerticalAlignment="Top" Width="125"/>
         <TextBox x:Name="txtHoraFin" HorizontalAlignment="Left" Height="23" Margin="165,119,0,0" TextWrapping="Wrap"        Text="{Binding HoraFin}" VerticalAlignment="Top" Width="125"/>
         <Label Content="Listado De Tarjetas de Visita" HorizontalAlignment="Left" Margin="335,10,0,0" VerticalAlignment="Top" Width="359" HorizontalContentAlignment="Center" FontSize="15"/>
-        <DataGrid x:Name="dbVisitas" IsReadOnly="True" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Visitas}" SelectedItem="{Binding Card}" SelectionMode="Single" HorizontalAlignment="Left" Margin="335,45,0,0" VerticalAlignment="Top" Height="245" Width="359"/>
-        <Button x:Name="btnAgregarTarjeta" Command="{Binding AgregarTarjeta}" Content="Agregar Tarjeta" HorizontalAlignment="Left" Margin="165,147,0,0" VerticalAlignment="Top" Width="125"/>
+        <DataGrid x:Name="dbVisitas" IsReadOnly="True" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Visitas}" SelectedItem="{Binding Card}" SelectionMode="Single" HorizontalAlignment="Left" Margin="335,45,0,0" VerticalAlignment="Top" Height="245" Width="359" AlternatingRowBackground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <Button x:Name="btnAgregarTarjeta" Command="{Binding AgregarTarjeta}" Content="Agregar Tarjeta" HorizontalAlignment="Left" Margin="165,147,0,0" VerticalAlignment="Top" Width="125" BorderBrush="{x:Null}"/>
         <Label Content="Listado De Pacientes" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" Width="280" HorizontalContentAlignment="Center" FontSize="13"/>
-        <DataGrid x:Name="dgPacientes" IsReadOnly="True" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Pacientes}" HorizontalAlignment="Left" Margin="10,201,0,0" VerticalAlignment="Top" Height="89" Width="320"/>
-        <Button Content="Editar" Command="{Binding EditarTarjeta}" HorizontalAlignment="Left" Margin="699,45,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid x:Name="dgPacientes" IsReadOnly="True" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Pacientes}" HorizontalAlignment="Left" Margin="10,201,0,0" VerticalAlignment="Top" Height="89" Width="320" AlternatingRowBackground="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+        <Button Content="Editar" Command="{Binding EditarTarjeta}" HorizontalAlignment="Left" Margin="699,45,0,0" VerticalAlignment="Top" Width="75" BorderBrush="{x:Null}"/>
         <Label Content="Editar Visitas"         Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="779,10,0,0" VerticalAlignment="Top" Height="50" Width="280" HorizontalContentAlignment="Center" FontSize="30"/>
         <Label Content="Hora Comienzo"          Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="779,65,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Hora Finalizacion"      Visibility="{Binding Update}" HorizontalAlignment="Left" Margin="779,96,0,0" VerticalAlignment="Top" Width="150"/>
-        <Button Content="Actualizar"            Visibility="{Binding Update}" Command="{Binding Actualizar}" HorizontalAlignment="Left" Margin="984,124,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Actualizar"            Visibility="{Binding Update}" Command="{Binding Actualizar}" HorizontalAlignment="Left" Margin="984,124,0,0" VerticalAlignment="Top" Width="75" BorderBrush="{x:Null}"/>
         <TextBox HorizontalAlignment="Left"     Visibility="{Binding Update}" Height="23" Margin="934,68,0,0" TextWrapping="Wrap" Text="{Binding NuevaHoraComienzo}" VerticalAlignment="Top" Width="125"/>
         <TextBox HorizontalAlignment="Left"     Visibility="{Binding Update}" Height="23" Margin="934,96,0,0" TextWrapping="Wrap" Text="{Binding NuevaHoraFin}" VerticalAlignment="Top" Width="125"/>
 

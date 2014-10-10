@@ -24,6 +24,7 @@ Namespace SH.Modules.Main.ViewModels
         Public Property Medico As ICommand
         Public Property Paciente As ICommand
         Public Property Planta As ICommand
+        Public Property AcercaDe As ICommand
 #End Region
         Sub New()
             Cama = New RelayCommand(AddressOf CamaControl)
@@ -32,8 +33,19 @@ Namespace SH.Modules.Main.ViewModels
             Diagnostico = New RelayCommand(AddressOf DiagnosticoControl)
             Planta = New RelayCommand(AddressOf PlantaControl)
             Medico = New RelayCommand(AddressOf MedicoControl)
+            AcercaDe = New RelayCommand(AddressOf About)
         End Sub
-
+#Region "Methods"
+        Public Sub About()
+            Dim respuesta = MsgBox("¿Desea Ir A La Pagina Web?", MsgBoxStyle.YesNo, "Creado Por: Brandon Castro")
+            If respuesta = MsgBoxResult.Yes Then
+                Dim webAddress As String = "https://bitbucket.org/bralecastropez/sistema-hospitalario"
+                Process.Start(webAddress)
+            ElseIf respuesta = MsgBoxResult.No Then
+                MsgBox("Gracias Por Usar la Aplicacion", MsgBoxStyle.Information, "Gracias")
+            End If
+            
+        End Sub
         Public Sub CamaControl()
             Dim BedWindow As New Window
             Dim bedView As New AddBedView
@@ -88,5 +100,8 @@ Namespace SH.Modules.Main.ViewModels
             DoctorWindow.Content() = doctorView
             DoctorWindow.Show()
         End Sub
+#End Region
+
+        
     End Class
 End Namespace

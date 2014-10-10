@@ -17,8 +17,7 @@ Namespace SH.BusinessLogic.Services
                 doctor.codigoMedico = CDbl(codigoMedico)
                 doctor.nombre = Nombre
                 doctor.apellido = Apellido
-                'db.AddToMedico(doctor)
-                db.Medico.Add(doctor)
+                db.Medico.AddObject(doctor)
                 DataContext.DBEntities.SaveChanges()
                 db.SaveChanges()
                 MsgBox("Doctor Agregado Satisfactoriamente")

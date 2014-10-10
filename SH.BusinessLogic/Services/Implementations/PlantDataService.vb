@@ -14,8 +14,7 @@ Namespace SH.BusinessLogic.Services
                 Dim planta As New Planta
                 planta.nombre = nombrePlanta
                 planta.noCamas = CDbl(numeroCamas)
-                'db.AddToPlanta(planta)
-                db.Planta.Add(planta)
+                db.Planta.AddObject(planta)
                 DataContext.DBEntities.SaveChanges()
                 MsgBox("Planta Agregada Satisfactoriamente")
                 db.SaveChanges()

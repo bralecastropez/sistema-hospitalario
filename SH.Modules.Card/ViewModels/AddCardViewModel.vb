@@ -12,6 +12,7 @@ Imports System.Windows
 Namespace SH.Modules.Card.ViewModels
     Public Class AddCardViewModel
         Inherits ViewModelBase
+#Region "Declarations"
         Private _strDPI As String
         Private _datHoraInicio As Date
         Private _datNuevaHoraInicio As Date
@@ -23,7 +24,8 @@ Namespace SH.Modules.Card.ViewModels
         Private _mainAccess As IMainDataService
         Private _dgPacientes As List(Of Paciente)
         Private _dgVisitas As List(Of TarjetaVisita)
-        Dim idVista As Integer
+#End Region
+        
 #Region "Properties"
         Public Property Pacientes As List(Of Paciente)
             Get
@@ -126,25 +128,35 @@ Namespace SH.Modules.Card.ViewModels
             Visitas = _mainAccess.GetCards
         End Sub
 
+#Region "Methods"
         Public Sub AgregarNuevaTarjeta()
             _cardAccess.AddCard(DPI, HoraComienzo, HoraFin)
             Pacientes = _mainAccess.GetPatients
             Visitas = _mainAccess.GetCards
         End Sub
         Public Sub ModificarTarjeta()
-            Update = Visibility.Visible
+            If Not Card Is Nothing Then
+                Update = Visibility.Visible
+                NuevaHoraComienzo = Card.horaComienzo
+                NuevaHoraFin = Card.horaFin
+            Else
+                MsgBox("Debe Seleccionar Una Fila")
+            End If
         End Sub
         Public Sub EliminarTarjetaSeleccionada()
-            _cardAccess.UpdateCard(idVista, NuevaHoraComienzo, NuevaHoraFin)
+            Dim idVisita As Integer = Card.noVisita
+            _cardAccess.UpdateCard(idVisita, NuevaHoraComienzo, NuevaHoraFin)
             Pacientes = _mainAccess.GetPatients
             Visitas = _mainAccess.GetCards
         End Sub
         Public Sub ActualizarTarjeta()
-            idVista = Card.noVisita
-            _cardAccess.UpdateCard(idVista, NuevaHoraComienzo, NuevaHoraFin)
+            Dim idVisita As Integer = Card.noVisita
+            _cardAccess.UpdateCard(idVisita, NuevaHoraComienzo, NuevaHoraFin)
             Pacientes = _mainAccess.GetPatients
             Visitas = _mainAccess.GetCards
             Update = Visibility.Hidden
         End Sub
+#End Region
+        
     End Class
 End Namespace

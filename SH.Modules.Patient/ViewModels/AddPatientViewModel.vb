@@ -11,6 +11,8 @@ Imports System.Windows
 Namespace SH.Modules.Patient.ViewModels
     Public Class AddPatientViewModel
         Inherits ViewModelBase
+
+#Region "Declarations"
         Private _patientAccess As IPatientDataService
         Private _strNombre As String
         Private _strApellido As String
@@ -27,7 +29,9 @@ Namespace SH.Modules.Patient.ViewModels
         Private _paciente As Paciente
         Private _mainAccess As IMainDataService
         Private _dgPacientes As List(Of Paciente)
-
+#End Region
+        
+#Region "Properties"
         Public Property Patient As Paciente
             Get
                 Return _paciente
@@ -144,6 +148,8 @@ Namespace SH.Modules.Patient.ViewModels
         Public Property AgregarPaciente As ICommand
         Public Property EditarPaciente As ICommand
         Public Property ActualizarPaciente As ICommand
+#End Region
+        
 
         Public Sub New()
             ServiceLocator.RegisterService(Of IPatientDataService)(New PatientDataService)
@@ -155,6 +161,8 @@ Namespace SH.Modules.Patient.ViewModels
             EditarPaciente = New RelayCommand(AddressOf EditarNuevoPaciente)
             ActualizarPaciente = New RelayCommand(AddressOf ActualizarNuevoPaciente)
         End Sub
+
+#Region "Methods"
         Public Sub AgregarNuevoPaciente()
             _patientAccess.AddPatient(idPaciente, NoIGSS, Nombre, Apellido, FechaNacimiento)
             Pacientes = _mainAccess.GetPatients
@@ -166,11 +174,17 @@ Namespace SH.Modules.Patient.ViewModels
             Update = Visibility.Hidden
         End Sub
         Public Sub EditarNuevoPaciente()
-            NuevoNombre = Patient.nombre
-            NuevoApellido = Patient.apellido
-            NuevoNoIGSS = Patient.noIGSS
-            NuevoFechaNacimiento = Patient.fechaNacimiento
-            Update = Visibility.Visible
+            If Not Patient Is Nothing Then
+                NuevoNombre = Patient.nombre
+                NuevoApellido = Patient.apellido
+                NuevoNoIGSS = Patient.noIGSS
+                NuevoFechaNacimiento = Patient.fechaNacimiento
+                Update = Visibility.Visible
+            Else
+                MsgBox("Debe Seleccionar Una Fila")
+            End If
         End Sub
+#End Region
+        
     End Class
 End Namespace

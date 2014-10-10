@@ -11,6 +11,7 @@ Imports SH.BusinessLogic.Services
 Namespace SH.Modules.Doctor.ViewModels
     Public Class AddDoctorViewModel
         Inherits ViewModelBase
+#Region "Declarations"
         Private _strCodigoMedico As String
         Private _strNombre As String
         Private _strApellido As String
@@ -21,7 +22,9 @@ Namespace SH.Modules.Doctor.ViewModels
         Private _mainAccess As IMainDataService
         Private _medico As Medico
         Private _dgMedicos As List(Of Medico)
-
+#End Region
+        
+#Region "Properties"
         Public Property Medico As Medico
             Get
                 Return _medico
@@ -98,6 +101,8 @@ Namespace SH.Modules.Doctor.ViewModels
         Public Property AgregarMedico As ICommand
         Public Property EditarMedico As ICommand
         Public Property ActualizarMedico As ICommand
+#End Region
+        
 
         Public Sub New()
             ServiceLocator.RegisterService(Of IDoctorDataService)(New DoctorDataService)
@@ -110,15 +115,20 @@ Namespace SH.Modules.Doctor.ViewModels
             Medicos = _mainAccess.GetDoctors
         End Sub
 
+#Region "Methods"
         Public Sub AgregarNuevoMedico()
             _doctorAccess.AddDoctor(CodigoMedico, Nombre, Apellido)
             Medicos = _mainAccess.GetDoctors
         End Sub
 
         Public Sub EditarNuevoMedico()
-            NuevoApellido = Medico.apellido
-            NuevoNombre = Medico.nombre
-            Update = Visibility.Visible
+            If Not Medico Is Nothing Then
+                NuevoApellido = Medico.apellido
+                NuevoNombre = Medico.nombre
+                Update = Visibility.Visible
+            Else
+                MsgBox("Debe Seleccionar Una Fila")
+            End If
         End Sub
         Public Sub SetMedico()
             Medicos = _mainAccess.GetDoctors
@@ -126,5 +136,7 @@ Namespace SH.Modules.Doctor.ViewModels
             Medicos = _mainAccess.GetDoctors
             Update = Visibility.Hidden
         End Sub
+#End Region
+       
     End Class
 End Namespace

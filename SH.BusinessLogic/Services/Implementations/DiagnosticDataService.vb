@@ -14,8 +14,7 @@ Namespace SH.BusinessLogic.Services
                 Dim db As New dbHospitalEntities
                 Dim diagnostico As New Diagnostico
                 diagnostico.descripcion = descripcion
-                'db.AddToDiagnostico(diagnostico)
-                db.Diagnostico.Add(diagnostico)
+                db.Diagnostico.AddObject(diagnostico)
                 DataContext.DBEntities.SaveChanges()
                 db.SaveChanges()
             Catch ex As Exception
@@ -30,8 +29,7 @@ Namespace SH.BusinessLogic.Services
                 medicoPaciente.codigoMedico = CDbl(CodigoMedico)
                 medicoPaciente.DPI = CDbl(DPI)
                 medicoPaciente.fecha = DateAndTime.Now
-                db.Medico_Paciente.Add(medicoPaciente)
-                'db.AddToMedico_Paciente(medicoPaciente)
+                db.Medico_Paciente.AddObject(medicoPaciente)
                 DataContext.DBEntities.SaveChanges()
                 db.SaveChanges()
                 MsgBox("Paciente Agregado Satisfactoriamente")
@@ -53,8 +51,7 @@ Namespace SH.BusinessLogic.Services
                     bedPatient.DPI = CDbl(DPI)
                     bedPatient.fecha = DateAndTime.Now
                     bed.estado = True
-                    'db.AddToCama_Paciente(bedPatient)
-                    db.Cama_Paciente.Add(bedPatient)
+                    db.Cama_Paciente.AddObject(bedPatient)
                     DataContext.DBEntities.SaveChanges()
                     db.SaveChanges()
                     MsgBox("Agregado Satisfactoriamente")
@@ -86,8 +83,7 @@ Namespace SH.BusinessLogic.Services
                 diagnosticPatient.DPI = CDbl(DPI)
                 diagnosticPatient.codigoDiagnostico = CDbl(CodigoDiagnostico)
                 diagnosticPatient.fecha = DateAndTime.Now
-                'db.AddToDiagnostico_Paciente(diagnosticPatient)
-                db.Diagnostico_Paciente.Add(diagnosticPatient)
+                db.Diagnostico_Paciente.AddObject(diagnosticPatient)
                 DataContext.DBEntities.SaveChanges()
                 db.SaveChanges()
                 MsgBox("Diagnostico Agregado Satisfactoriamente")

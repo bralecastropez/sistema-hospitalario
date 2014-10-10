@@ -18,8 +18,7 @@ Namespace SH.BusinessLogic.Services
                 paciente.nombre = Nombre
                 paciente.apellido = Apellido
                 paciente.fechaNacimiento = FechaNacimiento
-                'db.AddToPaciente(paciente)
-                db.Paciente.Add(paciente)
+                db.Paciente.AddObject(paciente)
                 DataContext.DBEntities.SaveChanges()
                 db.SaveChanges()
                 MsgBox("Paciente Agregado Satisfactoriamente")
@@ -31,7 +30,7 @@ Namespace SH.BusinessLogic.Services
             Try
                 Dim db As New dbHospitalEntities
                 Dim patient = {From u In DataContext.DBEntities.Paciente Where u.noIGSS = NoIGSS Select u}.FirstOrDefault
-                db.Paciente.Remove(patient)
+                db.Paciente.DeleteObject(patient)
                 DataContext.DBEntities.SaveChanges()
                 db.SaveChanges()
                 MsgBox("Paciente Eliminado Satisfactoriamente")
